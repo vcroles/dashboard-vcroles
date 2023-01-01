@@ -52,7 +52,7 @@ const FeatureSection: React.FC<{ features: Feature[] }> = ({ features }) => {
                         {features.map((feature) => (
                             <div key={feature.name}>
                                 <dt>
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500 text-white">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-highlight-light text-white">
                                         <feature.icon
                                             className="h-8 w-8"
                                             aria-hidden="true"

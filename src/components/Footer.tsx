@@ -14,6 +14,19 @@ const navigation = [
             </svg>
         ),
     },
+    {
+        name: "Website",
+        href: "https://ethancoward.dev",
+        icon: (props: React.SVGProps<SVGSVGElement>) => (
+            <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+                <path
+                    fillRule="evenodd"
+                    d="M3 3a1 1 0 00-1 1v16a1 1 0 001 1h18a1 1 0 001-1V4a1 1 0 00-1-1H3zm1 2h16v16H4V5zm5 2a1 1 0 011 1v8a1 1 0 01-2 0V8a1 1 0 011-1zm4 0a1 1 0 011 1v8a1 1 0 01-2 0V8a1 1 0 011-1z"
+                    clipRule="evenodd"
+                />
+            </svg>
+        ),
+    },
 ];
 
 const Footer = () => {

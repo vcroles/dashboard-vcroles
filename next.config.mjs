@@ -13,5 +13,17 @@ const config = {
         locales: ["en"],
         defaultLocale: "en",
     },
+    images: {
+        domains: ["cdn.discordapp.com"],
+    },
+    async redirects() {
+        return [
+            {
+                source: "/invite",
+                destination: "/api/invite",
+                permanent: true,
+            },
+        ];
+    },
 };
 export default config;

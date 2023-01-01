@@ -41,7 +41,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                 {tier.title}
                             </h3>
                             {tier.mostPopular ? (
-                                <p className="absolute top-0 -translate-y-1/2 transform rounded-full bg-indigo-500 py-1.5 px-4 text-sm font-semibold text-white">
+                                <p className="absolute top-0 -translate-y-1/2 transform rounded-full bg-highlight-light py-1.5 px-4 text-sm font-semibold text-white">
                                     Most popular
                                 </p>
                             ) : null}
@@ -70,7 +70,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                 {tier.features.map((feature) => (
                                     <li key={feature} className="flex">
                                         <CheckIcon
-                                            className="h-6 w-6 flex-shrink-0 text-indigo-500"
+                                            className="h-6 w-6 flex-shrink-0 text-highlight-light"
                                             aria-hidden="true"
                                         />
                                         <span className="ml-3 text-gray-500">
@@ -85,7 +85,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                             href={tier.url}
                             className={classNames(
                                 tier.mostPopular
-                                    ? "bg-indigo-500 text-white hover:bg-indigo-600"
+                                    ? "bg-highlight-light text-white hover:bg-highlight"
                                     : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100",
                                 "mt-8 block w-full rounded-md border border-transparent py-3 px-6 text-center font-medium"
                             )}
