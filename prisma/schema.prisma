@@ -2,144 +2,144 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 // Bot specific models
 
 model Guild {
-  id             String           @id
-  ttsEnabled     Boolean          @default(false)
-  ttsRole        String?
-  ttsLeave       Boolean          @default(true)
-  logging        String?
-  links          Link[]
-  voiceGenerator VoiceGenerator[]
-  premium        Boolean          @default(false)
-  botMasterRoles String[]
+    id             String           @id
+    ttsEnabled     Boolean          @default(false)
+    ttsRole        String?
+    ttsLeave       Boolean          @default(true)
+    logging        String?
+    links          Link[]
+    voiceGenerator VoiceGenerator[]
+    premium        Boolean          @default(false)
+    botMasterRoles String[]
 }
 
 enum LinkType {
-  CATEGORY
-  STAGE
-  ALL
-  PERMANENT
-  REGULAR
+    CATEGORY
+    STAGE
+    ALL
+    PERMANENT
+    REGULAR
 }
 
 model Link {
-  dbId               String   @unique @default(cuid())
-  id                 String
-  type               LinkType @default(REGULAR)
-  guild              Guild    @relation(fields: [guildId], references: [id])
-  guildId            String
-  linkedRoles        String[]
-  reverseLinkedRoles String[]
-  suffix             String?
-  speakerRoles       String[]
-  excludeChannels    String[]
+    dbId               String   @unique @default(cuid())
+    id                 String
+    type               LinkType @default(REGULAR)
+    guild              Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
+    guildId            String
+    linkedRoles        String[]
+    reverseLinkedRoles String[]
+    suffix             String?
+    speakerRoles       String[]
+    excludeChannels    String[]
 
-  @@id([id, type])
+    @@id([id, type])
 }
 
 enum VoiceGeneratorType {
-  DEFAULT
-  NUMBERED
-  CLONED
-  CUSTOM_NAME
+    DEFAULT
+    NUMBERED
+    CLONED
+    CUSTOM_NAME
 }
 
 enum VoiceGeneratorOption {
-  LOCK
-  HIDE
-  TEXT
-  EDITABLE
-  OWNER
+    LOCK
+    HIDE
+    TEXT
+    EDITABLE
+    OWNER
 }
 
 model VoiceGenerator {
-  id               String                 @id @default(cuid())
-  guild            Guild                  @relation(fields: [guildId], references: [id])
-  guildId          String
-  categoryId       String
-  generatorId      String
-  interfaceChannel String?
-  interfaceMessage String?
-  openChannels     GeneratedChannel[]
-  type             VoiceGeneratorType     @default(DEFAULT)
-  defaultOptions   VoiceGeneratorOption[]
-  defaultUserLimit Int                    @default(0)
-  channelLimit     Int                    @default(100)
-  defaultRole      String?
-  channelName      String?
-  restrictRole     String?
-  hideAtLimit      Boolean                @default(false)
+    id               String                 @id @default(cuid())
+    guild            Guild                  @relation(fields: [guildId], references: [id], onDelete: Cascade)
+    guildId          String
+    categoryId       String
+    generatorId      String
+    interfaceChannel String?
+    interfaceMessage String?
+    openChannels     GeneratedChannel[]
+    type             VoiceGeneratorType     @default(DEFAULT)
+    defaultOptions   VoiceGeneratorOption[]
+    defaultUserLimit Int                    @default(0)
+    channelLimit     Int                    @default(100)
+    defaultRole      String?
+    channelName      String?
+    restrictRole     String?
+    hideAtLimit      Boolean                @default(false)
 
-  @@unique([guildId, generatorId])
+    @@unique([guildId, generatorId])
 }
 
 model GeneratedChannel {
-  id               String         @id @default(cuid())
-  channelId        String         @unique
-  ownerId          String
-  textChannelId    String?
-  VoiceGenerator   VoiceGenerator @relation(fields: [voiceGeneratorId], references: [id], onDelete: Cascade)
-  voiceGeneratorId String
-  userEditable     Boolean        @default(true)
+    id               String         @id @default(cuid())
+    channelId        String         @unique
+    ownerId          String
+    textChannelId    String?
+    VoiceGenerator   VoiceGenerator @relation(fields: [voiceGeneratorId], references: [id], onDelete: Cascade)
+    voiceGeneratorId String
+    userEditable     Boolean        @default(true)
 }
 
 // Necessary for Next auth
 model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    id                String  @id @default(cuid())
+    userId            String
+    type              String
+    provider          String
+    providerAccountId String
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String? @db.Text
+    session_state     String?
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
+    @@unique([provider, providerAccountId])
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    userId       String
+    expires      DateTime
+    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
+    id            String    @id @default(cuid())
+    name          String?
+    email         String?   @unique
+    emailVerified DateTime?
+    image         String?
+    accounts      Account[]
+    sessions      Session[]
 }
 
 model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+    identifier String
+    token      String   @unique
+    expires    DateTime
 
-  @@unique([identifier, token])
+    @@unique([identifier, token])
 }

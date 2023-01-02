@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { router, protectedProcedure } from "../trpc";
-import { env } from "../../../env/server.mjs";
+import { prisma } from "../../db/client";
 
 const baseURL = "https://discord.com/api/v10";
 
@@ -15,20 +15,7 @@ export type GuildResponse = {
 };
 
 export const fetchBotGuilds = async () => {
-    const TOKEN = env.DISCORD_BOT_TOKEN;
-    const URL = `${baseURL}/users/@me/guilds`;
-
-    const response = await axios.get<GuildResponse[]>(URL, {
-        headers: {
-            Authorization: `Bot ${TOKEN}`,
-        },
-    });
-
-    if (response.status !== 200) {
-        return [];
-    }
-
-    return response.data;
+    return await prisma.guild.findMany();
 };
 
 export const discordRouter = router({
