@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 import { features, pricing } from "../constants";
 import NavBar from "../components/NavBar";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -55,8 +56,8 @@ export default function Home() {
                                     ease.
                                 </p>
                                 <div className="mt-8 flex gap-x-4 sm:justify-center">
-                                    <a
-                                        href="#"
+                                    <Link
+                                        href="/dashboard"
                                         className="inline-block rounded-lg bg-highlight-light px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-highlight-light hover:bg-highlight hover:ring-highlight"
                                     >
                                         Get started
@@ -66,9 +67,9 @@ export default function Home() {
                                         >
                                             &rarr;
                                         </span>
-                                    </a>
-                                    <a
-                                        href="#"
+                                    </Link>
+                                    <Link
+                                        href="/docs"
                                         className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                                     >
                                         Documentation
@@ -78,7 +79,7 @@ export default function Home() {
                                         >
                                             &rarr;
                                         </span>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">

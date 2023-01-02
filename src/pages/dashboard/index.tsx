@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
-import NavBar from "../../components/NavBar";
+import Image from "next/image";
 import { useSession, signIn } from "next-auth/react";
 
 import { trpc } from "../../utils/trpc";
-import Image from "next/image";
+import NavBar from "../../components/NavBar";
 
 const iconHashToUrl = (hash: string, guildID: string) => {
     return `https://cdn.discordapp.com/icons/${guildID}/${hash}.png`;
