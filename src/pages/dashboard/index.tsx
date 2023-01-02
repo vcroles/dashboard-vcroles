@@ -4,6 +4,7 @@ import { useSession, signIn } from "next-auth/react";
 
 import { trpc } from "../../utils/trpc";
 import NavBar from "../../components/NavBar";
+import Loading from "../../components/Loading";
 
 const iconHashToUrl = (hash: string, guildID: string) => {
     return `https://cdn.discordapp.com/icons/${guildID}/${hash}.png`;
@@ -60,9 +61,7 @@ const Dashboard: NextPage = () => {
                         </div>
                     </div>
                     {loading ? (
-                        <div className="mt-6 flex justify-center">
-                            <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-gray-900"></div>
-                        </div>
+                        <Loading />
                     ) : (
                         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
                             {(guilds ?? []).map((guild) => (
