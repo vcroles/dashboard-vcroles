@@ -1,10 +1,13 @@
 import { PrismaClient } from "@prisma/client";
+import { Redis } from "@upstash/redis";
 
 import { env } from "../../env/server.mjs";
 
 declare global {
     // eslint-disable-next-line no-var
     var prisma: PrismaClient | undefined;
+    // eslint-disable-next-line no-var
+    var redis: Redis | undefined;
 }
 
 export const prisma =
@@ -16,6 +19,12 @@ export const prisma =
                 : ["error"],
     });
 
+export const redis = new Redis({
+    url: env.UPSTASH_REDIS_REST_URL,
+    token: env.UPSTASH_REDIS_REST_TOKEN,
+});
+
 if (env.NODE_ENV !== "production") {
     global.prisma = prisma;
+    global.redis = redis;
 }

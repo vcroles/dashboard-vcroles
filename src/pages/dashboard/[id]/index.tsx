@@ -11,6 +11,7 @@ import type { ReactElement } from "react";
 
 import type { NextPageWithLayout } from "../../_app";
 import DashboardLayout from "../../../Layouts/Dashboard";
+import { trpc } from "../../../utils/trpc";
 
 const navigation = [
     { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
@@ -29,11 +30,27 @@ const DashboardPage: NextPageWithLayout = () => {
     const router = useRouter();
     const { id } = router.query as Query;
 
+    const { data: channels } = trpc.discord.getGuildChannels.useQuery({
+        guild: id,
+    });
+
+    const textChannels = channels?.filter((channel) => channel.type === 0);
+
+    console.log(channels);
+
     return (
         <div className="h-96 rounded-lg border-4 border-dashed border-gray-200">
             <p className="pt-20 text-center text-2xl text-gray-400">
                 Main: {id}
             </p>
+            {textChannels?.map((channel) => (
+                <p
+                    key={channel.id}
+                    className="text-center text-2xl text-gray-400"
+                >
+                    {channel.name}
+                </p>
+            ))}
         </div>
     );
 };
