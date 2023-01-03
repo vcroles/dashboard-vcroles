@@ -1,11 +1,16 @@
 import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import {
+    CheckIcon,
+    ChevronUpDownIcon,
+    PlusIcon,
+} from "@heroicons/react/20/solid";
 import type { Guild } from "../server/trpc/router/discord";
 import Image from "next/image";
 
 import { iconHashToUrl, classNames } from "../utils/utils";
 import Link from "next/link";
+import { SmallLoading } from "./Loading";
 
 const GuildDropdown: React.FC<{ guilds: Guild[]; selectedID: string }> = ({
     guilds,
@@ -20,29 +25,35 @@ const GuildDropdown: React.FC<{ guilds: Guild[]; selectedID: string }> = ({
     }, [selectedID, guilds]);
 
     return (
-        <Listbox value={selected} onChange={setSelected}>
+        <Listbox value={selected}>
             {({ open }) => (
                 <>
                     <div className="relative mt-1">
                         <Listbox.Button className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
                             <span className="flex items-center">
-                                <Image
-                                    src={
-                                        selected?.icon
-                                            ? iconHashToUrl(
-                                                  selected.icon,
-                                                  selected?.id
-                                              )
-                                            : "https://cdn.discordapp.com/embed/avatars/0.png"
-                                    }
-                                    alt=""
-                                    className="h-6 w-6 flex-shrink-0 rounded-full"
-                                    width={24}
-                                    height={24}
-                                />
-                                <span className="ml-3 block truncate">
-                                    {selected?.name}
-                                </span>
+                                {selected ? (
+                                    <>
+                                        <Image
+                                            src={
+                                                selected?.icon
+                                                    ? iconHashToUrl(
+                                                          selected.icon,
+                                                          selected?.id
+                                                      )
+                                                    : "https://cdn.discordapp.com/embed/avatars/0.png"
+                                            }
+                                            alt=""
+                                            className="h-6 w-6 flex-shrink-0 rounded-full"
+                                            width={24}
+                                            height={24}
+                                        />
+                                        <span className="ml-3 block truncate">
+                                            {selected?.name}
+                                        </span>
+                                    </>
+                                ) : (
+                                    <SmallLoading />
+                                )}
                             </span>
                             <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                                 <ChevronUpDownIcon
@@ -127,6 +138,40 @@ const GuildDropdown: React.FC<{ guilds: Guild[]; selectedID: string }> = ({
                                         )}
                                     </Listbox.Option>
                                 ))}
+                                {/* Add bot button */}
+                                <Listbox.Option
+                                    key="add"
+                                    className={({ active }) =>
+                                        classNames(
+                                            active
+                                                ? "bg-indigo-600 text-white"
+                                                : "text-gray-900",
+                                            "relative cursor-default select-none border-t-2 border-gray-200 py-2 pl-3 pr-9"
+                                        )
+                                    }
+                                    value={null}
+                                >
+                                    {({ selected }) => (
+                                        <Link href="/dashboard">
+                                            <div className="flex items-center">
+                                                <PlusIcon
+                                                    className="h-6 w-6 flex-shrink-0 rounded-full"
+                                                    aria-hidden="true"
+                                                />
+                                                <span
+                                                    className={classNames(
+                                                        selected
+                                                            ? "font-semibold"
+                                                            : "font-normal",
+                                                        "ml-3 block truncate"
+                                                    )}
+                                                >
+                                                    Add a server
+                                                </span>
+                                            </div>
+                                        </Link>
+                                    )}
+                                </Listbox.Option>
                             </Listbox.Options>
                         </Transition>
                     </div>

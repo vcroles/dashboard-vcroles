@@ -31,7 +31,9 @@ const DashboardPage: NextPageWithLayout = () => {
 
     return (
         <div className="h-96 rounded-lg border-4 border-dashed border-gray-200">
-            <p className="pt-20 text-center text-2xl text-gray-400">{id}</p>
+            <p className="pt-20 text-center text-2xl text-gray-400">
+                Main: {id}
+            </p>
         </div>
     );
 };

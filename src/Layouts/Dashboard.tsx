@@ -8,10 +8,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../components/Logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Loading from "../components/Loading";
 import Image from "next/image";
 import GuildDropdown from "../components/GuildDropdown";
 import { classNames } from "../utils/utils";
+import Head from "next/head";
 
 type Query = {
     id: string;
@@ -45,32 +45,26 @@ const DashboardLayout: React.FC<Props> = ({ children, navigation }) => {
 
     const { data: guilds } = trpc.discord.getGuilds.useQuery();
     const filteredGuilds = guilds?.filter((g) => g.includesBot);
-    // const currentGuild = guilds?.find((g) => g.id === id);
 
     useEffect(() => {
         setSidebarOpen(false);
     }, [id]);
-
-    if (!id) {
-        return <Loading />;
-    }
 
     if (!session && status === "unauthenticated") {
         router.push("/api/auth/signin");
         return null;
     }
 
-    if (loading) {
-        return <Loading />;
-    }
-
-    if (!allowed) {
+    if (!allowed && !loading) {
         router.push("/dashboard");
         return null;
     }
 
     return (
         <>
+            <Head>
+                <title>VC Roles | Dashboard</title>
+            </Head>
             <div>
                 {/* Collapsible Sidebar */}
                 <Transition.Root show={sidebarOpen} as={Fragment}>
