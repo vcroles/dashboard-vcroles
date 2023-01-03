@@ -1,6 +1,8 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 import Script from "next/script";
 
+import { classNames } from "../utils/utils";
+
 export type Tier = {
     title: string;
     monthly: number;
@@ -11,10 +13,6 @@ export type Tier = {
     mostPopular: boolean;
     url: string;
 };
-
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-}
 
 const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
     return (

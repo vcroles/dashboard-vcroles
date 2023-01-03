@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 
 import { trpc } from "../../../utils/trpc";
-import NavBar from "../../../components/NavBar";
 
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
@@ -20,6 +19,9 @@ import Logo from "../../../components/Logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Loading from "../../../components/Loading";
+import Image from "next/image";
+import GuildDropdown from "../../../components/GuildDropdown";
+import { classNames } from "../../../utils/utils";
 
 const navigation = [
     { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
@@ -29,10 +31,6 @@ const navigation = [
     { name: "Documents", href: "#", icon: InboxIcon, current: false },
     { name: "Reports", href: "#", icon: ChartBarIcon, current: false },
 ];
-
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-}
 
 type Query = {
     id: string;
@@ -49,9 +47,16 @@ const DashboardPage: NextPage = () => {
             guild: id,
         });
 
-    console.log(allowed);
+    const { data: guilds } = trpc.discord.getGuilds.useQuery();
+    const filteredGuilds = guilds?.filter((g) => g.includesBot);
+    // const currentGuild = guilds?.find((g) => g.id === id);
+
+    useEffect(() => {
+        setSidebarOpen(false);
+    }, [id]);
 
     if (!id) {
+        return <Loading />;
     }
 
     if (!session && status === "unauthenticated") {
@@ -64,17 +69,14 @@ const DashboardPage: NextPage = () => {
     }
 
     if (!allowed) {
-        return (
-            <div className="flex h-screen flex-col items-center justify-center">
-                <h1 className="text-2xl font-bold">You are not allowed here</h1>
-            </div>
-        );
+        router.push("/dashboard");
+        return null;
     }
 
     return (
         <>
             <div>
-                <NavBar />
+                {/* Collapsible Sidebar */}
                 <Transition.Root show={sidebarOpen} as={Fragment}>
                     <Dialog
                         as="div"
@@ -138,6 +140,10 @@ const DashboardPage: NextPage = () => {
                                             </Link>
                                         </div>
                                         <nav className="mt-5 space-y-1 px-2">
+                                            <GuildDropdown
+                                                guilds={filteredGuilds ?? []}
+                                                selectedID={id}
+                                            />
                                             {navigation.map((item) => (
                                                 <a
                                                     key={item.name}
@@ -170,18 +176,24 @@ const DashboardPage: NextPage = () => {
                                         >
                                             <div className="flex items-center">
                                                 <div>
-                                                    <img
+                                                    <Image
                                                         className="inline-block h-10 w-10 rounded-full"
-                                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                        src={
+                                                            session?.user
+                                                                ?.image ??
+                                                            "https://cdn.discordapp.com/embed/avatars/0.png"
+                                                        }
                                                         alt=""
+                                                        height={40}
+                                                        width={40}
                                                     />
                                                 </div>
                                                 <div className="ml-3">
                                                     <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                                                        Tom Cook
+                                                        {session?.user?.name}
                                                     </p>
                                                     <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
-                                                        View profile
+                                                        {session?.user?.email}
                                                     </p>
                                                 </div>
                                             </div>
@@ -207,6 +219,10 @@ const DashboardPage: NextPage = () => {
                                 </Link>
                             </div>
                             <nav className="mt-5 flex-1 space-y-1 bg-white px-2">
+                                <GuildDropdown
+                                    guilds={filteredGuilds ?? []}
+                                    selectedID={id}
+                                />
                                 {navigation.map((item) => (
                                     <a
                                         key={item.name}
@@ -239,18 +255,23 @@ const DashboardPage: NextPage = () => {
                             >
                                 <div className="flex items-center">
                                     <div>
-                                        <img
-                                            className="inline-block h-9 w-9 rounded-full"
-                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                        <Image
+                                            className="inline-block h-10 w-10 rounded-full"
+                                            src={
+                                                session?.user?.image ??
+                                                "https://cdn.discordapp.com/embed/avatars/0.png"
+                                            }
                                             alt=""
+                                            height={40}
+                                            width={40}
                                         />
                                     </div>
                                     <div className="ml-3">
                                         <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                            Tom Cook
+                                            {session?.user?.name}
                                         </p>
-                                        <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                                            View profile
+                                        <p className="overflow-clip text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                            {session?.user?.email}
                                         </p>
                                     </div>
                                 </div>
@@ -294,5 +315,7 @@ const DashboardPage: NextPage = () => {
         </>
     );
 };
+
+// DashboardPage.getLayout = (page) => <Layout>{page}</Layout>;
 
 export default DashboardPage;

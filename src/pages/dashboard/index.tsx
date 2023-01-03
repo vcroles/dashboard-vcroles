@@ -5,10 +5,7 @@ import { useSession, signIn } from "next-auth/react";
 import { trpc } from "../../utils/trpc";
 import NavBar from "../../components/NavBar";
 import Loading from "../../components/Loading";
-
-const iconHashToUrl = (hash: string, guildID: string) => {
-    return `https://cdn.discordapp.com/icons/${guildID}/${hash}.png`;
-};
+import { iconHashToUrl } from "../../utils/utils";
 
 const Dashboard: NextPage = () => {
     const { data: session, status } = useSession();
