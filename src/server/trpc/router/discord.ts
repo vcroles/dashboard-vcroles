@@ -56,7 +56,10 @@ const fetchBotGuilds = async () => {
     return await prisma.guild.findMany();
 };
 
-const fetchUserGuilds = async (access_token: string | null) => {
+const fetchUserGuilds = async (
+    access_token: string | null,
+    discordID: string
+) => {
     if (!access_token) {
         return [];
     }
@@ -64,7 +67,8 @@ const fetchUserGuilds = async (access_token: string | null) => {
     const URL = `${BASE_URL}/users/@me/guilds`;
 
     // check the redis cache
-    const cached = await redis.get(URL);
+    const cacheKey = "discord:userGuilds:" + discordID;
+    const cached = await redis.get(cacheKey);
 
     if (cached) {
         return cached as GuildResponse[];
@@ -81,13 +85,18 @@ const fetchUserGuilds = async (access_token: string | null) => {
     }
 
     // cache the response
-    await redis.set(URL, response.data, { ex: CACHE_DURATION_LONG });
+    await redis.set(cacheKey, response.data, {
+        ex: CACHE_DURATION_LONG,
+    });
 
     return response.data;
 };
 
-const fetchMutualGuilds = async (access_token: string | null) => {
-    const userGuilds = await fetchUserGuilds(access_token);
+const fetchMutualGuilds = async (
+    access_token: string | null,
+    discordID: string
+) => {
+    const userGuilds = await fetchUserGuilds(access_token, discordID);
 
     const botGuilds = await fetchBotGuilds();
 
@@ -110,7 +119,10 @@ export const discordRouter = router({
             return [];
         }
 
-        const userGuilds = await fetchUserGuilds(account.access_token);
+        const userGuilds = await fetchUserGuilds(
+            account.access_token,
+            account.providerAccountId
+        );
 
         const guilds = userGuilds.filter(
             (guild) => guild.owner === true || guild.permissions & (1 << 3)
@@ -142,7 +154,10 @@ export const discordRouter = router({
                 return false;
             }
 
-            const mutualGuilds = await fetchMutualGuilds(account.access_token);
+            const mutualGuilds = await fetchMutualGuilds(
+                account.access_token,
+                account.providerAccountId
+            );
 
             const guild = mutualGuilds.find(
                 (guild) => guild.id === input.guild
@@ -174,7 +189,8 @@ export const discordRouter = router({
             const URL = `${BASE_URL}/guilds/${input.guild}/channels`;
 
             // check the redis cache for the channels
-            const cachedChannels = await redis.get(URL);
+            const cacheKey = "discord:channels:" + input.guild;
+            const cachedChannels = await redis.get(cacheKey);
 
             if (cachedChannels) {
                 return cachedChannels as Channel[];
@@ -207,7 +223,7 @@ export const discordRouter = router({
                         channel.type === 13
                 );
 
-            await redis.set(URL, JSON.stringify(channels), {
+            await redis.set(cacheKey, JSON.stringify(channels), {
                 ex: CACHE_DURATION,
             });
 
@@ -229,7 +245,8 @@ export const discordRouter = router({
             const URL = `${BASE_URL}/guilds/${input.guild}/roles`;
 
             // check the redis cache for the roles
-            const cachedRoles = await redis.get(URL);
+            const cacheKey = "discord:roles:" + input.guild;
+            const cachedRoles = await redis.get(cacheKey);
 
             if (cachedRoles) {
                 return cachedRoles as Role[];
@@ -247,7 +264,9 @@ export const discordRouter = router({
 
             const roles = response.data;
 
-            await redis.set(URL, JSON.stringify(roles), { ex: CACHE_DURATION });
+            await redis.set(cacheKey, JSON.stringify(roles), {
+                ex: CACHE_DURATION,
+            });
 
             return roles;
         }),
