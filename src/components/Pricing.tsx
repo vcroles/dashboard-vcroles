@@ -1,5 +1,4 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
-import Script from "next/script";
 
 import { classNames } from "../utils/utils";
 
@@ -17,7 +16,6 @@ export type Tier = {
 const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
     return (
         <div className="mx-auto max-w-7xl bg-white px-4 pb-24 sm:px-6 lg:px-8">
-            <Script src="https://gumroad.com/js/gumroad.js"></Script>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-none lg:text-6xl">
                 Premium plans everyone will love.
             </h2>
@@ -87,7 +85,6 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                     : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100",
                                 "mt-8 block w-full rounded-md border border-transparent py-3 px-6 text-center font-medium"
                             )}
-                            data-gumroad-overlay-checkout="true"
                         >
                             {tier.cta}
                         </a>

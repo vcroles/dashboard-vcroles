@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.gumroad .cart-button {
-    display: none !important;
-}
-
 html,
 body,
 body > div:first-child,

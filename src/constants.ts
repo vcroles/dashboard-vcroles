@@ -55,7 +55,7 @@ export const pricing = {
             ],
             cta: "Subscribe now!",
             mostPopular: false,
-            url: "https://cde90.gumroad.com/l/vcroles?option=Ypy6i23Wsp9LXur51GNQIA%3D%3D",
+            url: "https://cde90.gumroad.com/l/vcroles?option=Ypy6i23Wsp9LXur51GNQIA%3D%3D&wanted=true",
         },
         {
             title: "Premium Plus",
@@ -71,7 +71,7 @@ export const pricing = {
             ],
             cta: "Subscribe now!",
             mostPopular: true,
-            url: "https://cde90.gumroad.com/l/vcroles?option=RmRNbhZ7ixse_w7gH3J2-w%3D%3D",
+            url: "https://cde90.gumroad.com/l/vcroles?option=RmRNbhZ7ixse_w7gH3J2-w%3D%3D&wanted=true",
         },
         {
             title: "Premium Pro",
@@ -86,7 +86,7 @@ export const pricing = {
             ],
             cta: "Subscribe now!",
             mostPopular: false,
-            url: "https://cde90.gumroad.com/l/vcroles?option=lGHZQh6McZGSzEhz98xSfw%3D%3D",
+            url: "https://cde90.gumroad.com/l/vcroles?option=lGHZQh6McZGSzEhz98xSfw%3D%3D&wanted=true",
         },
     ] as Tier[],
 };
