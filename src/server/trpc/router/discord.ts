@@ -270,4 +270,56 @@ export const discordRouter = router({
 
             return roles;
         }),
+    getGuildData: protectedProcedure
+        .input(z.object({ guild: z.string() }))
+        .query(async ({ ctx, input }) => {
+            const guild = await ctx.prisma.guild.findUnique({
+                where: {
+                    id: input.guild,
+                },
+            });
+
+            if (!guild) {
+                return await ctx.prisma.guild.create({
+                    data: {
+                        id: input.guild,
+                    },
+                });
+            }
+
+            return guild;
+        }),
+    updateGuildData: protectedProcedure
+        .input(
+            z.object({
+                guild: z.string(),
+                data: z.object({
+                    loggingChannel: z.string().optional(),
+                    loggingEnabled: z.boolean(),
+                    ttsEnabled: z.boolean(),
+                    ttsRole: z.string().optional(),
+                    ttsLeave: z.boolean(),
+                }),
+            })
+        )
+        .mutation(async ({ ctx, input }) => {
+            // TODO: update the database
+            const logging = input.data.loggingEnabled
+                ? input.data.loggingChannel
+                : null;
+
+            const guild = await ctx.prisma.guild.update({
+                where: {
+                    id: input.guild,
+                },
+                data: {
+                    logging: logging,
+                    ttsEnabled: input.data.ttsEnabled,
+                    ttsRole: input.data.ttsRole,
+                    ttsLeave: input.data.ttsLeave,
+                },
+            });
+
+            return guild;
+        }),
 });
