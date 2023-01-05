@@ -2,9 +2,15 @@ import { useSession } from "next-auth/react";
 
 import { trpc } from "../utils/trpc";
 
-import { Fragment, useEffect, useState, type SVGProps } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+    Bars3Icon,
+    XMarkIcon,
+    Cog6ToothIcon,
+    LinkIcon,
+    BoltIcon,
+} from "@heroicons/react/24/outline";
 import Logo from "../components/Logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -19,22 +25,12 @@ type Query = {
 
 type Props = {
     children: React.ReactNode;
-    navigation: {
-        name: string;
-        href: string;
-        icon: (
-            props: SVGProps<SVGSVGElement> & {
-                title?: string | undefined;
-                titleId?: string | undefined;
-            }
-        ) => JSX.Element;
-        current: boolean;
-    }[];
 };
 
-const DashboardLayout: React.FC<Props> = ({ children, navigation }) => {
+const DashboardLayout: React.FC<Props> = ({ children }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const router = useRouter();
+    const path = router.pathname;
     const { id } = router.query as Query;
     const { data: session, status } = useSession();
 
@@ -45,6 +41,27 @@ const DashboardLayout: React.FC<Props> = ({ children, navigation }) => {
 
     const { data: guilds } = trpc.discord.getGuilds.useQuery();
     const filteredGuilds = guilds?.filter((g) => g.includesBot);
+
+    const navigation = [
+        {
+            name: "Server Settings",
+            href: `/dashboard/${id}`,
+            icon: Cog6ToothIcon,
+            current: path === "/dashboard/[id]",
+        },
+        {
+            name: "Linked Channels",
+            href: `/dashboard/${id}/links`,
+            icon: LinkIcon,
+            current: path === "/dashboard/[id]/links",
+        },
+        {
+            name: "Voice Generators",
+            href: `/dashboard/${id}/generators`,
+            icon: BoltIcon,
+            current: path === "/dashboard/[id]/generators",
+        },
+    ];
 
     useEffect(() => {
         setSidebarOpen(false);

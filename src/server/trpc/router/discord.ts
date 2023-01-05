@@ -322,4 +322,15 @@ export const discordRouter = router({
 
             return guild;
         }),
+    getLinks: protectedProcedure
+        .input(z.object({ guild: z.string() }))
+        .query(async ({ ctx, input }) => {
+            const links = await ctx.prisma.link.findMany({
+                where: {
+                    guildId: input.guild,
+                },
+            });
+
+            return links;
+        }),
 });

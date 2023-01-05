@@ -1,4 +1,3 @@
-import { Cog6ToothIcon, LinkIcon, BoltIcon } from "@heroicons/react/24/outline";
 import { Switch } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { type ReactElement, useEffect, useState } from "react";
@@ -10,12 +9,6 @@ import { classNames } from "../../../utils/utils";
 import ChannelDropdown from "../../../components/ChannelDropdown";
 import type { Channel, Role } from "../../../server/trpc/router/discord";
 import RoleDropdown from "../../../components/RoleDropdown";
-
-const navigation = [
-    { name: "Server Settings", href: "#", icon: Cog6ToothIcon, current: true },
-    { name: "Linked Channels", href: "#", icon: LinkIcon, current: false },
-    { name: "Voice Generators", href: "#", icon: BoltIcon, current: false },
-];
 
 type Query = {
     id: string;
@@ -308,7 +301,7 @@ const DashboardPage: NextPageWithLayout = () => {
 };
 
 DashboardPage.getLayout = (page: ReactElement) => {
-    return <DashboardLayout navigation={navigation}>{page}</DashboardLayout>;
+    return <DashboardLayout>{page}</DashboardLayout>;
 };
 
 export default DashboardPage;
