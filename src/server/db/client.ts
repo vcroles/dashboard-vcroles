@@ -5,9 +5,9 @@ import { env } from "../../env/server.mjs";
 
 declare global {
     // eslint-disable-next-line no-var
-    var prisma: PrismaClient | undefined;
+    var prisma: PrismaClient | undefined; // skipcq: JS-0239
     // eslint-disable-next-line no-var
-    var redis: Redis | undefined;
+    var redis: Redis | undefined; // skipcq: JS-0239
 }
 
 export const prisma =

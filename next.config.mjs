@@ -17,7 +17,6 @@ const config = {
         domains: ["cdn.discordapp.com"],
     },
     async redirects() {
-        // skipcq: JS-0116
         return [
             {
                 source: "/invite",
