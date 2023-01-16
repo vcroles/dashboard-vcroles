@@ -11,6 +11,7 @@ export const formatErrors = (
         .map(([name, value]) => {
             if (value && "_errors" in value)
                 return `${name}: ${value._errors.join(", ")}\n`;
+            return null;
         })
         .filter(Boolean);
 
@@ -22,7 +23,7 @@ if (!_clientEnv.success) {
     throw new Error("Invalid environment variables");
 }
 
-for (let key of Object.keys(_clientEnv.data)) {
+for (const key of Object.keys(_clientEnv.data)) {
     if (!key.startsWith("NEXT_PUBLIC_")) {
         console.warn(
             `❌ Invalid public environment variable name: ${key}. It must begin with 'NEXT_PUBLIC_'`

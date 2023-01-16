@@ -39,6 +39,7 @@ const Dashboard: NextPage = () => {
                                     </p>
                                     <div className="mt-6 flex justify-center">
                                         <button
+                                            type="button"
                                             onClick={() => signIn("discord")}
                                             className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                                         >

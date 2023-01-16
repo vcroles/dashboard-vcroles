@@ -39,6 +39,7 @@ const RoleSelectionBox: React.FC<{
                                 );
                             }}
                             className="ml-2"
+                            type="button"
                         >
                             <XMarkIcon
                                 className="h-5 w-5 text-gray-400"
@@ -56,8 +57,8 @@ const RoleSelectionBox: React.FC<{
                     );
                 })}
                 disabled={false}
-                selected={null}
-                setSelected={(role) => {
+                selectedRole={null}
+                setSelectedRole={(role) => {
                     if (role) {
                         setSelected([...selected, role]);
                     }

@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { env } from "../../env/server.mjs";
 
-const inviteHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+const inviteHandler = (req: NextApiRequest, res: NextApiResponse) => {
     const { guild: guild_id } = req.query;
 
     const BASE_URL = env.DISCORD_BOT_INVITE;

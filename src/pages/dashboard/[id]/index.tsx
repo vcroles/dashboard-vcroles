@@ -96,7 +96,7 @@ const DashboardPage: NextPageWithLayout = () => {
                         loggingEnabled: loggingToggle,
                         ttsEnabled: ttsToggle,
                         ttsRole: ttsRole?.id,
-                        ttsLeave: ttsLeave,
+                        ttsLeave,
                     },
                 });
             }}
@@ -156,8 +156,8 @@ const DashboardPage: NextPageWithLayout = () => {
                                 <ChannelDropdown
                                     channels={textChannels ?? []}
                                     disabled={!loggingToggle}
-                                    selected={loggingChannel}
-                                    setSelected={setLoggingChannel}
+                                    selectedChannel={loggingChannel}
+                                    setSelectedChannel={setLoggingChannel}
                                 />
                                 {loggingToggle && !loggingChannel && (
                                     <p className="mt-2 text-sm text-red-600">
@@ -223,8 +223,8 @@ const DashboardPage: NextPageWithLayout = () => {
                                 <RoleDropdown
                                     roles={roles ?? []}
                                     disabled={!ttsToggle}
-                                    selected={ttsRole}
-                                    setSelected={setTtsRole}
+                                    selectedRole={ttsRole}
+                                    setSelectedRole={setTtsRole}
                                 />
                             </div>
                         </div>

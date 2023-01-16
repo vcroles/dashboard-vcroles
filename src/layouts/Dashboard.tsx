@@ -177,10 +177,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                         </nav>
                                     </div>
                                     <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
-                                        <a
-                                            href="#"
-                                            className="group block flex-shrink-0"
-                                        >
+                                        <div className="group block flex-shrink-0">
                                             <div className="flex items-center">
                                                 <div>
                                                     <Image
@@ -204,7 +201,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
@@ -256,10 +253,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                             </nav>
                         </div>
                         <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
-                            <a
-                                href="#"
-                                className="group block w-full flex-shrink-0"
-                            >
+                            <div className="group block w-full flex-shrink-0">
                                 <div className="flex items-center">
                                     <div>
                                         <Image
@@ -282,7 +276,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                         </p>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

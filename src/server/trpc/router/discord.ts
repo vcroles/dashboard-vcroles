@@ -67,7 +67,7 @@ const fetchUserGuilds = async (
     const URL = `${BASE_URL}/users/@me/guilds`;
 
     // check the redis cache
-    const cacheKey = "discord:userGuilds:" + discordID;
+    const cacheKey = `discord:userGuilds:${discordID}`;
     const cached = await redis.get(cacheKey);
 
     if (cached) {
@@ -159,9 +159,7 @@ export const discordRouter = router({
                 account.providerAccountId
             );
 
-            const guild = mutualGuilds.find(
-                (guild) => guild.id === input.guild
-            );
+            const guild = mutualGuilds.find((g) => g.id === input.guild);
 
             if (!guild) {
                 return false;
@@ -189,7 +187,7 @@ export const discordRouter = router({
             const URL = `${BASE_URL}/guilds/${input.guild}/channels`;
 
             // check the redis cache for the channels
-            const cacheKey = "discord:channels:" + input.guild;
+            const cacheKey = `discord:channels:${input.guild}`;
             const cachedChannels = await redis.get(cacheKey);
 
             if (cachedChannels) {
@@ -245,7 +243,7 @@ export const discordRouter = router({
             const URL = `${BASE_URL}/guilds/${input.guild}/roles`;
 
             // check the redis cache for the roles
-            const cacheKey = "discord:roles:" + input.guild;
+            const cacheKey = `discord:roles:${input.guild}`;
             const cachedRoles = await redis.get(cacheKey);
 
             if (cachedRoles) {
@@ -313,7 +311,7 @@ export const discordRouter = router({
                     id: input.guild,
                 },
                 data: {
-                    logging: logging,
+                    logging,
                     ttsEnabled: input.data.ttsEnabled,
                     ttsRole: input.data.ttsRole,
                     ttsLeave: input.data.ttsLeave,

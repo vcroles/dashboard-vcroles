@@ -1,4 +1,3 @@
-import { Switch } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { type ReactElement, useEffect, useState } from "react";
 import {
@@ -12,10 +11,6 @@ import {
 import type { NextPageWithLayout } from "../../_app";
 import DashboardLayout from "../../../layouts/Dashboard";
 import { trpc } from "../../../utils/trpc";
-import { classNames } from "../../../utils/utils";
-import ChannelDropdown from "../../../components/ChannelDropdown";
-import type { Channel, Role } from "../../../server/trpc/router/discord";
-import RoleDropdown from "../../../components/RoleDropdown";
 import RoleSelectionBox from "../../../components/RoleSelectionBox";
 import Loading from "../../../components/Loading";
 import { LinkType } from "@prisma/client";

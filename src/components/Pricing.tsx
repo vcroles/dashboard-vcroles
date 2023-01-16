@@ -62,7 +62,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                             </p>
 
                             {/* Feature list */}
-                            <ul role="list" className="mt-6 space-y-6">
+                            <ul className="mt-6 space-y-6">
                                 {tier.features.map((feature) => (
                                     <li key={feature} className="flex">
                                         <CheckIcon
