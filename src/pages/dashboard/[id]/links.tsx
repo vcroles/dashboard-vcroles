@@ -10,6 +10,9 @@ import ChannelSelectionBox from "../../../components/ChannelSelectionBox";
 import LinkDropdown from "../../../components/LinkDropdown";
 import DeleteModal from "../../../components/DeleteModal";
 import SavedNotificationContainer from "../../../components/SavedNotification";
+import { type Channel } from "../../../server/trpc/router/discord";
+import LinkTypeDropdown from "../../../components/LinkTypeDropdown";
+import ChannelDropdown from "../../../components/ChannelDropdown";
 
 type Query = {
     id: string;
@@ -44,6 +47,27 @@ const DashboardLinksPage: NextPageWithLayout = () => {
 
     const [showSaved, setShowSaved] = useState(false);
 
+    const [createLinkType, setCreateLinkType] = useState<LinkType>(
+        LinkType.REGULAR
+    );
+    const [createLinkChannel, setCreateLinkChannel] = useState<Channel | null>(
+        null
+    );
+    const allowedChannelTypes =
+        createLinkType === LinkType.REGULAR
+            ? [2]
+            : createLinkType === LinkType.CATEGORY
+            ? [4]
+            : createLinkType === LinkType.STAGE
+            ? [13]
+            : createLinkType === LinkType.PERMANENT
+            ? [2, 4, 13]
+            : [];
+
+    useEffect(() => {
+        setCreateLinkChannel(null);
+    }, [createLinkType]);
+
     const utils = trpc.useContext();
     const updateMutation = trpc.discord.updateLink.useMutation({
         onMutate: () => {
@@ -73,6 +97,28 @@ const DashboardLinksPage: NextPageWithLayout = () => {
             utils.discord.getLinks.invalidate({ guild: id });
         },
     });
+    const createMutation = trpc.discord.createLink.useMutation({
+        onMutate: () => {
+            utils.discord.getLinks.cancel({ guild: id });
+            const optimisticUpdate = utils.discord.getLinks.getData({
+                guild: id,
+            });
+            if (optimisticUpdate) {
+                utils.discord.getLinks.setData({ guild: id }, optimisticUpdate);
+            }
+        },
+        onSettled: () => {
+            utils.discord.getLinks.invalidate({ guild: id });
+        },
+    });
+
+    useEffect(() => {
+        if (createMutation.isSuccess) {
+            setCreateLinkType(LinkType.REGULAR);
+            setCreateLinkChannel(null);
+            setSelectedLink(createMutation.data);
+        }
+    }, [createMutation.isSuccess, createMutation.data]);
 
     // every time the ID changes, update the state
     useEffect(() => {
@@ -261,6 +307,92 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                             </div>
                         </div>
                     ) : null}
+                </div>
+                <div className="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
+                    <div>
+                        <h3 className="text-lg font-medium leading-6 text-gray-900">
+                            Create Link
+                        </h3>
+                        <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                            Create a new link.
+                        </p>
+                    </div>
+
+                    <div className="space-y-6 sm:space-y-5">
+                        <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                            <label
+                                htmlFor="link-type"
+                                className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                            >
+                                Link Type
+                            </label>
+                            <div className="mt-1 sm:col-span-2 sm:mt-0">
+                                <LinkTypeDropdown
+                                    selected={createLinkType}
+                                    setSelected={setCreateLinkType}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {createLinkType !== LinkType.ALL ? (
+                        <div className="space-y-6 sm:space-y-5">
+                            <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                                <label
+                                    htmlFor="link-channel"
+                                    className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                                >
+                                    Channel
+                                </label>
+                                <div className="mt-1 sm:col-span-2 sm:mt-0">
+                                    <ChannelDropdown
+                                        channels={
+                                            channels?.filter((c) =>
+                                                allowedChannelTypes.includes(
+                                                    c.type
+                                                )
+                                            ) ?? []
+                                        }
+                                        selectedChannel={createLinkChannel}
+                                        setSelectedChannel={
+                                            setCreateLinkChannel
+                                        }
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    ) : null}
+
+                    {/* add a create button */}
+                    <div className="flex justify-end">
+                        <button
+                            className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            onClick={() => {
+                                // TODO: Check if the link already exists
+                                if (
+                                    !createLinkChannel &&
+                                    createLinkType !== LinkType.ALL
+                                ) {
+                                    return;
+                                } else if (
+                                    createLinkType === LinkType.ALL &&
+                                    !id
+                                ) {
+                                    return;
+                                }
+                                createMutation.mutate({
+                                    type: createLinkType,
+                                    guildId: id,
+                                    id:
+                                        createLinkType === LinkType.ALL
+                                            ? id
+                                            : createLinkChannel?.id ?? "",
+                                });
+                            }}
+                        >
+                            Create
+                        </button>
+                    </div>
                 </div>
             </form>
             <SavedNotificationContainer

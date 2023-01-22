@@ -108,15 +108,17 @@ const fetchMutualGuilds = async (
     return mutualGuilds;
 };
 
+const linkTypeSchema = z.enum([
+    LinkType.ALL,
+    LinkType.CATEGORY,
+    LinkType.STAGE,
+    LinkType.REGULAR,
+    LinkType.PERMANENT,
+]);
+
 const linkSchema = z.object({
     id: z.string(),
-    type: z.enum([
-        LinkType.ALL,
-        LinkType.CATEGORY,
-        LinkType.STAGE,
-        LinkType.REGULAR,
-        LinkType.PERMANENT,
-    ]),
+    type: linkTypeSchema,
     guildId: z.string(),
     linkedRoles: z.array(z.string()),
     reverseLinkedRoles: z.array(z.string()),
@@ -361,18 +363,19 @@ export const discordRouter = router({
             return link;
         }),
     createLink: protectedProcedure
-        .input(linkSchema)
+        .input(
+            z.object({
+                guildId: z.string(),
+                id: z.string(),
+                type: linkTypeSchema,
+            })
+        )
         .mutation(async ({ ctx, input }) => {
             const link = await ctx.prisma.link.create({
                 data: {
                     id: input.id,
                     guildId: input.guildId,
                     type: input.type,
-                    linkedRoles: input.linkedRoles,
-                    reverseLinkedRoles: input.reverseLinkedRoles,
-                    suffix: input.suffix,
-                    speakerRoles: input.speakerRoles,
-                    excludeChannels: input.excludeChannels,
                 },
             });
 

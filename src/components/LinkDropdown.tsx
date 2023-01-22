@@ -6,6 +6,7 @@ import {
     FolderIcon,
     SpeakerWaveIcon,
     SignalIcon,
+    XMarkIcon,
     ListBulletIcon,
     LockClosedIcon,
 } from "@heroicons/react/20/solid";
@@ -71,6 +72,13 @@ const LinkDropdown: React.FC<{
                                 <span className="ml-3 block truncate">
                                     Select a link
                                 </span>
+                            )}
+                            {/* add xmark icon which setsselected to null */}
+                            {selectedLink && (
+                                <XMarkIcon
+                                    className="ml-auto h-5 w-5 text-gray-400"
+                                    onClick={() => setSelectedLink(null)}
+                                />
                             )}
                         </span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
