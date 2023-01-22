@@ -4,6 +4,7 @@ import { router, protectedProcedure } from "../trpc";
 import { prisma, redis } from "../../db/client";
 import { z } from "zod";
 import { env } from "../../../env/server.mjs";
+import { LinkType } from "@prisma/client";
 
 const BASE_URL = "https://discord.com/api/v10";
 
@@ -106,6 +107,23 @@ const fetchMutualGuilds = async (
 
     return mutualGuilds;
 };
+
+const linkSchema = z.object({
+    id: z.string(),
+    type: z.enum([
+        LinkType.ALL,
+        LinkType.CATEGORY,
+        LinkType.STAGE,
+        LinkType.REGULAR,
+        LinkType.PERMANENT,
+    ]),
+    guildId: z.string(),
+    linkedRoles: z.array(z.string()),
+    reverseLinkedRoles: z.array(z.string()),
+    suffix: z.string().nullable(),
+    speakerRoles: z.array(z.string()),
+    excludeChannels: z.array(z.string()),
+});
 
 export const discordRouter = router({
     getGuilds: protectedProcedure.query(async ({ ctx }) => {
@@ -330,5 +348,59 @@ export const discordRouter = router({
             });
 
             return links;
+        }),
+    deleteLink: protectedProcedure
+        .input(z.object({ dbId: z.string() }))
+        .mutation(async ({ ctx, input }) => {
+            const link = await ctx.prisma.link.delete({
+                where: {
+                    dbId: input.dbId,
+                },
+            });
+
+            return link;
+        }),
+    createLink: protectedProcedure
+        .input(linkSchema)
+        .mutation(async ({ ctx, input }) => {
+            const link = await ctx.prisma.link.create({
+                data: {
+                    id: input.id,
+                    guildId: input.guildId,
+                    type: input.type,
+                    linkedRoles: input.linkedRoles,
+                    reverseLinkedRoles: input.reverseLinkedRoles,
+                    suffix: input.suffix,
+                    speakerRoles: input.speakerRoles,
+                    excludeChannels: input.excludeChannels,
+                },
+            });
+
+            return link;
+        }),
+    updateLink: protectedProcedure
+        .input(
+            linkSchema.extend({
+                dbId: z.string(),
+            })
+        )
+        .mutation(async ({ ctx, input }) => {
+            const link = await ctx.prisma.link.update({
+                where: {
+                    dbId: input.dbId,
+                },
+                data: {
+                    id: input.id,
+                    guildId: input.guildId,
+                    type: input.type,
+                    linkedRoles: input.linkedRoles,
+                    reverseLinkedRoles: input.reverseLinkedRoles,
+                    suffix: input.suffix,
+                    speakerRoles: input.speakerRoles,
+                    excludeChannels: input.excludeChannels,
+                },
+            });
+
+            return link;
         }),
 });

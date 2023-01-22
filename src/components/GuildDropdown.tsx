@@ -12,10 +12,11 @@ import { iconHashToUrl, classNames } from "../utils/utils";
 import Link from "next/link";
 import { SmallLoading } from "./Loading";
 
-const GuildDropdown: React.FC<{ guilds: Guild[]; selectedID: string }> = ({
-    guilds,
-    selectedID,
-}) => {
+const GuildDropdown: React.FC<{
+    guilds: Guild[];
+    selectedID: string;
+    subPage?: string;
+}> = ({ guilds, selectedID, subPage }) => {
     const [selectedGuild, setSelectedGuild] = useState(
         guilds.find((g) => g.id === selectedID)
     );
@@ -88,7 +89,9 @@ const GuildDropdown: React.FC<{ guilds: Guild[]; selectedID: string }> = ({
                                             href={
                                                 selected
                                                     ? "#"
-                                                    : `/dashboard/${guild.id}`
+                                                    : `/dashboard/${guild.id}/${
+                                                          subPage ?? ""
+                                                      }`
                                             }
                                         >
                                             <div className="flex items-center">
