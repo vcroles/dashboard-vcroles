@@ -110,20 +110,16 @@ const DashboardLinksPage: NextPageWithLayout = () => {
         onSettled: () => {
             utils.discord.getLinks.invalidate({ guild: id });
         },
-    });
-
-    useEffect(() => {
-        if (createMutation.isSuccess) {
+        onSuccess(data) {
+            setSelectedLink(data);
             setCreateLinkType(LinkType.REGULAR);
             setCreateLinkChannel(null);
-            setSelectedLink(createMutation.data);
-        }
-    }, [createMutation.isSuccess, createMutation.data]);
+        },
+    });
 
     // every time the ID changes, update the state
     useEffect(() => {
         setLinks(linkData);
-        setSelectedLink(null);
     }, [id, linkData]);
 
     return (
@@ -288,6 +284,21 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                     <button
                                         className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                         onClick={() => {
+                                            const previousLink = links?.find(
+                                                (l) =>
+                                                    l.dbId === selectedLink.dbId
+                                            );
+                                            if (previousLink) {
+                                                // check if the link has changed
+                                                if (
+                                                    JSON.stringify(
+                                                        previousLink
+                                                    ) ===
+                                                    JSON.stringify(selectedLink)
+                                                ) {
+                                                    return;
+                                                }
+                                            }
                                             updateMutation.mutate(selectedLink);
                                             setShowSaved(true);
                                         }}
@@ -363,12 +374,20 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                         </div>
                     ) : null}
 
-                    {/* add a create button */}
                     <div className="flex justify-end">
                         <button
                             className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
-                                // TODO: Check if the link already exists
+                                const link = links?.find(
+                                    (l) =>
+                                        l.type === createLinkType &&
+                                        (l.id === createLinkChannel?.id ||
+                                            l.id === id)
+                                );
+                                if (link) {
+                                    setSelectedLink(link);
+                                    return;
+                                }
                                 if (
                                     !createLinkChannel &&
                                     createLinkType !== LinkType.ALL

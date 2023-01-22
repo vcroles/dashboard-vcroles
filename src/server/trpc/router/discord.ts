@@ -162,7 +162,7 @@ export const discordRouter = router({
         return guildsWithBot;
     }),
     checkUserPermissions: protectedProcedure
-        .input(z.object({ guild: z.string() }))
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
             const account = await ctx.prisma.account.findFirst({
                 where: {
@@ -192,8 +192,12 @@ export const discordRouter = router({
             return false;
         }),
     getGuildChannels: protectedProcedure
-        .input(z.object({ guild: z.string() }))
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
+            if (!input.guild) {
+                return [];
+            }
+
             const account = await ctx.prisma.account.findFirst({
                 where: {
                     userId: ctx.session.user.id,
@@ -248,8 +252,12 @@ export const discordRouter = router({
             return channels;
         }),
     getGuildRoles: protectedProcedure
-        .input(z.object({ guild: z.string() }))
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
+            if (!input.guild) {
+                return [];
+            }
+
             const account = await ctx.prisma.account.findFirst({
                 where: {
                     userId: ctx.session.user.id,
@@ -289,8 +297,12 @@ export const discordRouter = router({
             return roles;
         }),
     getGuildData: protectedProcedure
-        .input(z.object({ guild: z.string() }))
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
+            if (!input.guild) {
+                return null;
+            }
+
             const guild = await ctx.prisma.guild.findUnique({
                 where: {
                     id: input.guild,
@@ -321,7 +333,6 @@ export const discordRouter = router({
             })
         )
         .mutation(async ({ ctx, input }) => {
-            // TODO: update the database
             const logging = input.data.loggingEnabled
                 ? input.data.loggingChannel
                 : null;
@@ -341,8 +352,12 @@ export const discordRouter = router({
             return guild;
         }),
     getLinks: protectedProcedure
-        .input(z.object({ guild: z.string() }))
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
+            if (!input.guild) {
+                return [];
+            }
+
             const links = await ctx.prisma.link.findMany({
                 where: {
                     guildId: input.guild,
