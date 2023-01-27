@@ -1,10 +1,9 @@
+import { LinkType } from "@prisma/client";
 import axios from "axios";
-
-import { router, protectedProcedure } from "../trpc";
-import { prisma, redis } from "../../db/client";
 import { z } from "zod";
 import { env } from "../../../env/server.mjs";
-import { LinkType } from "@prisma/client";
+import { prisma, redis } from "../../db/client";
+import { protectedProcedure, router } from "../trpc";
 
 const BASE_URL = "https://discord.com/api/v10";
 
@@ -17,7 +16,6 @@ export type GuildResponse = {
     icon: string | null;
     owner: boolean;
     permissions: number;
-    features: string[];
 };
 
 export type Guild = {
@@ -26,7 +24,6 @@ export type Guild = {
     icon: string | null;
     owner: boolean;
     permissions: number;
-    features: string[];
     includesBot: boolean;
 };
 
@@ -85,8 +82,18 @@ const fetchUserGuilds = async (
         return [];
     }
 
+    const guilds = response.data.map((guild) => {
+        return {
+            id: guild.id,
+            name: guild.name,
+            icon: guild.icon,
+            owner: guild.owner,
+            permissions: guild.permissions,
+        };
+    });
+
     // cache the response
-    await redis.set(cacheKey, response.data, {
+    await redis.set(cacheKey, guilds, {
         ex: CACHE_DURATION_LONG,
     });
 
@@ -288,7 +295,14 @@ export const discordRouter = router({
                 return [];
             }
 
-            const roles = response.data;
+            const roles: Role[] = response.data.map((role) => {
+                return {
+                    id: role.id,
+                    name: role.name,
+                    color: role.color,
+                    position: role.position,
+                };
+            });
 
             await redis.set(cacheKey, JSON.stringify(roles), {
                 ex: CACHE_DURATION,
@@ -420,5 +434,20 @@ export const discordRouter = router({
             });
 
             return link;
+        }),
+    getGenerators: protectedProcedure
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
+        .query(async ({ ctx, input }) => {
+            if (!input.guild) {
+                return [];
+            }
+
+            const generators = await ctx.prisma.voiceGenerator.findMany({
+                where: {
+                    guildId: input.guild,
+                },
+            });
+
+            return generators;
         }),
 });

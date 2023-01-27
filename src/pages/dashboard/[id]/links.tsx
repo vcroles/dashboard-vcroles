@@ -1,18 +1,17 @@
+import { LinkType, type Link } from "@prisma/client";
 import { useRouter } from "next/router";
-import { type ReactElement, useEffect, useState } from "react";
-
-import type { NextPageWithLayout } from "../../_app";
-import DashboardLayout from "../../../layouts/Dashboard";
-import { trpc } from "../../../utils/trpc";
-import RoleSelectionBox from "../../../components/RoleSelectionBox";
-import { type Link, LinkType } from "@prisma/client";
-import ChannelSelectionBox from "../../../components/ChannelSelectionBox";
-import LinkDropdown from "../../../components/LinkDropdown";
-import DeleteModal from "../../../components/DeleteModal";
-import SavedNotificationContainer from "../../../components/SavedNotification";
-import { type Channel } from "../../../server/trpc/router/discord";
-import LinkTypeDropdown from "../../../components/LinkTypeDropdown";
+import { useEffect, useState, type ReactElement } from "react";
 import ChannelDropdown from "../../../components/ChannelDropdown";
+import ChannelSelectionBox from "../../../components/ChannelSelectionBox";
+import DeleteModal from "../../../components/DeleteModal";
+import LinkDropdown from "../../../components/LinkDropdown";
+import LinkTypeDropdown from "../../../components/LinkTypeDropdown";
+import RoleSelectionBox from "../../../components/RoleSelectionBox";
+import SavedNotificationContainer from "../../../components/SavedNotification";
+import DashboardLayout from "../../../layouts/Dashboard";
+import { type Channel } from "../../../server/trpc/router/discord";
+import { trpc } from "../../../utils/trpc";
+import type { NextPageWithLayout } from "../../_app";
 
 type Query = {
     id: string;
@@ -120,6 +119,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
     // every time the ID changes, update the state
     useEffect(() => {
         setLinks(linkData);
+        setSelectedLink(null);
     }, [id, linkData]);
 
     return (

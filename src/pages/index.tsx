@@ -1,13 +1,12 @@
 import React from "react";
 
-import FeatureSection from "../components/FeatureSection";
-import PricingSection from "../components/Pricing";
-import Footer from "../components/Footer";
-
-import { features, pricing } from "../constants";
-import NavBar from "../components/NavBar";
-import Link from "next/link";
 import Head from "next/head";
+import Link from "next/link";
+import FeatureSection from "../components/FeatureSection";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
+import PricingSection from "../components/Pricing";
+import { features, pricing } from "../constants";
 
 export default function Home() {
     return (
