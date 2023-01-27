@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import DashboardLayout from "../../../layouts/Dashboard";
 import { trpc } from "../../../utils/trpc";
 import type { NextPageWithLayout } from "../../_app";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
 
 type Query = {
     id: string;
@@ -11,7 +12,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
     const router = useRouter();
     const { id } = router.query as Query;
 
-    const { data: channels } = trpc.discord.getGenerators.useQuery({
+    const { data: channels } = trpc.discord.getGuildChannels.useQuery({
         guild: id,
     });
 
@@ -25,94 +26,207 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
 
     return (
         <>
-            <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-4">
-                    <h1 className="text-2xl font-bold">Generators</h1>
-                    <p className="text-gray-500">
-                        Create a generator to automatically create voice
-                        channels when a user joins a voice channel.
-                    </p>
+            <div className="mt-6 space-y-8 divide-y divide-gray-200">
+                <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                    <div className="space-y-6 sm:space-y-5">
+                        <div>
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">
+                                Generators
+                            </h3>
+                            <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                                View the voice channel generators in this
+                                server.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-4">
-                    <h1 className="text-xl font-bold">Create a Generator</h1>
-                    <div className="flex flex-col gap-4">
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name">Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                className="rounded-md border border-gray-300 px-2 py-1"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name">Channel</label>
-                            <select
-                                name="channel"
-                                id="channel"
-                                className="rounded-md border border-gray-300 px-2 py-1"
-                            >
-                                {channels?.map((channel) => (
-                                    <option key={channel.id} value={channel.id}>
-                                        {channel.name}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name">Role</label>
-                            <select
-                                name="role"
-                                id="role"
-                                className="rounded-md border border-gray-300 px-2 py-1"
-                            >
-                                {roles?.map((role) => (
-                                    <option key={role.id} value={role.id}>
-                                        {role.name}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name">Limit</label>
-                            <input
-                                type="number"
-                                name="limit"
-                                id="limit"
-                                className="rounded-md border border-gray-300 px-2 py-1"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name">Bitrate</label>
-                            <input
-                                type="number"
-                                name="bitrate"
-                                id="bitrate"
-                                className="rounded-md border border-gray-300 px-2 py-1"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name">User Limit</label>
-                            <input
-                                type="number"
-                                name="userLimit"
-                                id="userLimit"
-                                className="rounded-md border border-gray-300 px-2 py-1"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name">Category</label>
-                            <select
-                                name="category"
-                                id="category"
-                                className="rounded-md border border-gray-300 px-2 py-1"
-                            >
-                                {channels?.map((channel) => (
-                                    <option key={channel.id} value={channel.id}>
-                                        {channel.name}
-                                    </option>
-                                ))}
-                            </select>
+
+                <div className="pt-8">
+                    <div className="mt-8 flex flex-col">
+                        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                    <table className="min-w-full divide-y divide-gray-300">
+                                        <thead className="bg-gray-50">
+                                            <tr>
+                                                <th
+                                                    scope="col"
+                                                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                                                >
+                                                    Channel
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Category
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Interface Channel
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Type
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Default Options
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Default User Limit
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Channel Limit
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Default Role
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Generated Name Template
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Restrict Role
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                                                >
+                                                    Hide at Limit
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-200 bg-white">
+                                            {generators?.length ? (
+                                                generators?.map((generator) => (
+                                                    <tr key={generator.id}>
+                                                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                            {
+                                                                channels?.find(
+                                                                    (channel) =>
+                                                                        channel.id ===
+                                                                        generator.generatorId
+                                                                )?.name
+                                                            }
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {
+                                                                channels?.find(
+                                                                    (channel) =>
+                                                                        channel.id ===
+                                                                        generator.categoryId
+                                                                )?.name
+                                                            }
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {channels?.find(
+                                                                (channel) =>
+                                                                    channel.id ===
+                                                                    generator.interfaceChannel
+                                                            )?.name ?? "None"}
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {generator.type}
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {generator.defaultOptions
+                                                                ? generator.defaultOptions.map(
+                                                                      (
+                                                                          option
+                                                                      ) => (
+                                                                          <span
+                                                                              key={
+                                                                                  option
+                                                                              }
+                                                                              className="mr-1 inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800"
+                                                                          >
+                                                                              {
+                                                                                  option
+                                                                              }
+                                                                          </span>
+                                                                      )
+                                                                  )
+                                                                : "None"}
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {
+                                                                generator.defaultUserLimit
+                                                            }
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {
+                                                                generator.channelLimit
+                                                            }
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {roles?.find(
+                                                                (role) =>
+                                                                    role.id ===
+                                                                    generator.defaultRole
+                                                            )?.name ?? "None"}
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {generator.channelName ??
+                                                                "None"}
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {roles?.find(
+                                                                (role) =>
+                                                                    role.id ===
+                                                                    generator.restrictRole
+                                                            )?.name ?? "None"}
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            {generator.hideAtLimit ? (
+                                                                <CheckIcon className="h-5 w-5 text-green-500" />
+                                                            ) : (
+                                                                <XMarkIcon className="h-5 w-5 text-red-500" />
+                                                            )}
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            ) : (
+                                                <tr>
+                                                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                        No Generators
+                                                    </td>
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                    <td />
+                                                </tr>
+                                            )}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
