@@ -1,0 +1,20 @@
+# Welcome to docs
+
+This is the documentation for VC Roles.
+
+import { useState } from "react";
+
+export function Counter({ children }) {
+    const [count, setCount] = useState(0);
+    return (
+        <div>
+            <button onClick={() => setCount(count + 1)}>+</button>
+            <button onClick={() => setCount(count - 1)}>-</button>
+            <div>{children(count)}</div>
+        </div>
+    );
+}
+
+<Counter>{(count) => <div>{count}</div>}</Counter>
+
+You can do something like this: `let x = 1;{:tsx}`
