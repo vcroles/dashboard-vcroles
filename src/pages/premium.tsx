@@ -1,17 +1,17 @@
+import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import CTASection from "../components/CTASection";
-import FeatureSection from "../components/FeatureSection";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
+import PremiumFeatures from "../components/PremiumFeatures";
 import PricingSection from "../components/Pricing";
-import { features, pricing } from "../constants";
+import { pricing } from "../constants";
 
-export default function Home() {
+const PremiumPage: NextPage = () => {
     return (
         <>
             <Head>
-                <title>VC Roles | Home</title>
+                <title>VC Roles | Premium</title>
             </Head>
             <div className="isolate bg-white">
                 <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
@@ -44,47 +44,8 @@ export default function Home() {
                 <NavBar />
                 <main>
                     <div className="relative px-6 lg:px-8">
-                        <div className="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
+                        <div className="mx-auto max-w-3xl pt-10 pb-16 sm:pt-24 sm:pb-20">
                             <div>
-                                <div>
-                                    <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
-                                        VC Roles Discord Bot
-                                    </h1>
-                                    <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-                                        VC Roles will enhance your Discord
-                                        server by enriching voice channels with
-                                        much needed features such as role
-                                        assignment, channel generators, and
-                                        more! It&apos;s easy to use and will
-                                        help you manage your server with ease.
-                                    </p>
-                                    <div className="mt-8 flex gap-x-4 sm:justify-center">
-                                        <Link
-                                            href="/dashboard"
-                                            className="inline-block rounded-lg bg-highlight-light px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-highlight-light hover:bg-highlight hover:ring-highlight"
-                                        >
-                                            Get started
-                                            <span
-                                                className="text-indigo-200"
-                                                aria-hidden="true"
-                                            >
-                                                &rarr;
-                                            </span>
-                                        </Link>
-                                        <Link
-                                            href="/docs"
-                                            className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
-                                        >
-                                            Documentation
-                                            <span
-                                                className="text-gray-400"
-                                                aria-hidden="true"
-                                            >
-                                                &rarr;
-                                            </span>
-                                        </Link>
-                                    </div>
-                                </div>
                                 <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
                                     <svg
                                         className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
@@ -118,24 +79,30 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <FeatureSection features={features} />
-                    <div className="mx-auto max-w-7xl bg-white px-4 pb-24 sm:px-6 lg:px-8">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-none lg:text-6xl">
-                            Premium plans everyone will love.
-                        </h2>
-                        <p className="mt-6 max-w-2xl text-xl text-gray-500">
-                            Ready to{" "}
-                            <span className="font-semibold">upgrade </span>
-                            your experience? Choose an affordable premium plan
-                            packed with all the features you need to manage your
-                            server.
-                        </p>
+                    <div className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+                        <div className="mx-auto max-w-4xl">
+                            <h2 className="text-3xl font-bold tracking-tight sm:text-center sm:text-6xl">
+                                Premium plans for everyone
+                            </h2>
+                            <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
+                                Ready to{" "}
+                                <span className="font-semibold">upgrade </span>
+                                your experience? Choose an affordable premium
+                                plan packed with all the features you need to
+                                manage your server.
+                            </p>
+                        </div>
                         <PricingSection tiers={pricing.tiers} />
                     </div>
-                    <CTASection />
+                    {/* Testimonials */}
+                    <PremiumFeatures />
+                    {/* FAQs */}
+                    <CTASection /> {/* make this premium specific */}
                     <Footer />
                 </main>
             </div>
         </>
     );
-}
+};
+
+export default PremiumPage;

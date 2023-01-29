@@ -15,16 +15,7 @@ export type Tier = {
 
 const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
     return (
-        <div className="mx-auto max-w-7xl bg-white px-4 pb-24 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-none lg:text-6xl">
-                Premium plans everyone will love.
-            </h2>
-            <p className="mt-6 max-w-2xl text-xl text-gray-500">
-                Ready to <span className="font-semibold">upgrade </span>
-                your experience? Choose an affordable premium plan packed with
-                all the features you need to manage your server.
-            </p>
-
+        <div>
             {/* Tiers */}
             <div className="mt-24 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
                 {tiers.map((tier) => (
