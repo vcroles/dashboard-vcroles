@@ -5,13 +5,6 @@
  */
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs")); // skipcq: JS-0093
 
-import nextra from "nextra";
-
-const withNextra = nextra({
-    theme: "nextra-theme-docs",
-    themeConfig: "./theme.config.tsx",
-});
-
 /** @type {import("next").NextConfig} */
 const config = {
     reactStrictMode: true,
@@ -33,4 +26,4 @@ const config = {
         ];
     },
 };
-export default withNextra(config);
+export default config;
