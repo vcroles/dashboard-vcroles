@@ -23,6 +23,11 @@ const config = {
                 destination: "/api/invite",
                 permanent: true,
             },
+            {
+                source: "/support",
+                destination: "/api/support",
+                permanent: true,
+            },
         ];
     },
 };

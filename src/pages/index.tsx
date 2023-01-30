@@ -123,13 +123,30 @@ export default function Home() {
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-none lg:text-6xl">
                             Premium plans everyone will love.
                         </h2>
-                        <p className="mt-6 max-w-2xl text-xl text-gray-500">
-                            Ready to{" "}
-                            <span className="font-semibold">upgrade </span>
-                            your experience? Choose an affordable premium plan
-                            packed with all the features you need to manage your
-                            server.
-                        </p>
+                        <div className="flex flex-col lg:flex-row">
+                            <p className="mt-6 max-w-2xl text-xl text-gray-500">
+                                Ready to{" "}
+                                <span className="font-semibold">upgrade </span>
+                                your experience? Choose an affordable premium
+                                plan packed with all the features you need to
+                                manage your server.
+                            </p>
+                            {/* add a button to learn more on the premium page */}
+                            <div className="mt-8 flex items-center gap-x-4 sm:ml-auto sm:justify-center">
+                                <Link
+                                    href="/premium"
+                                    className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
+                                >
+                                    Learn more
+                                    <span
+                                        className="text-gray-400"
+                                        aria-hidden="true"
+                                    >
+                                        &rarr;
+                                    </span>
+                                </Link>
+                            </div>
+                        </div>
                         <PricingSection tiers={pricing.tiers} />
                     </div>
                     <CTASection />

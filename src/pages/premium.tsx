@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import CTASection from "../components/CTASection";
+import { PremiumCTASection } from "../components/CTASection";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
+import PremiumFAQs from "../components/PremiumFAQs";
 import PremiumFeatures from "../components/PremiumFeatures";
 import PricingSection from "../components/Pricing";
 import { pricing } from "../constants";
@@ -92,12 +93,14 @@ const PremiumPage: NextPage = () => {
                                 manage your server.
                             </p>
                         </div>
+                        <div id="pricing" />
                         <PricingSection tiers={pricing.tiers} />
                     </div>
                     {/* Testimonials */}
                     <PremiumFeatures />
                     {/* FAQs */}
-                    <CTASection /> {/* make this premium specific */}
+                    <PremiumFAQs />
+                    <PremiumCTASection /> {/* make this premium specific */}
                     <Footer />
                 </main>
             </div>

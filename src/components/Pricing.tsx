@@ -82,7 +82,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                     </div>
                 ))}
             </div>
-            <p className="mt-6 max-w-2xl text-sm text-gray-500">
+            <p className="mt-6 max-w-2xl text-xs italic text-gray-500">
                 All prices shown are in GBP, and may exclude applicable taxes.
             </p>
         </div>
