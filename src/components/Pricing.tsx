@@ -1,4 +1,5 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/solid";
 
 import { classNames } from "../utils/utils";
 
@@ -11,6 +12,7 @@ export type Tier = {
     cta: string;
     mostPopular: boolean;
     url: string;
+    serverCount: number;
 };
 
 const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
@@ -51,6 +53,32 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                             <p className="mt-6 text-gray-500">
                                 {tier.description}
                             </p>
+
+                            <div className="mt-4 flex items-center">
+                                <p className="text-lg font-semibold text-gray-900">
+                                    {tier.serverCount} server
+                                    {tier.serverCount > 1 ? "s" : ""}
+                                </p>
+                                <div className="ml-auto flex items-center">
+                                    {[
+                                        ...Array(
+                                            tier.serverCount === 10
+                                                ? 3
+                                                : tier.serverCount === 3
+                                                ? 2
+                                                : 1
+                                        ),
+                                    ].map((_, i) => (
+                                        <StarIcon
+                                            key={i}
+                                            className={
+                                                "h-6 w-6 flex-shrink-0 text-yellow-400"
+                                            }
+                                            aria-hidden="true"
+                                        />
+                                    ))}
+                                </div>
+                            </div>
 
                             {/* Feature list */}
                             <ul className="mt-6 space-y-6">

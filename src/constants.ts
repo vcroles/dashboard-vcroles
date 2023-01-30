@@ -41,7 +41,11 @@ export const features = [
     },
 ];
 
-export const pricing = {
+interface Pricing {
+    tiers: Tier[];
+}
+
+export const pricing: Pricing = {
     tiers: [
         {
             title: "Premium",
@@ -49,7 +53,6 @@ export const pricing = {
             yearly: 39.99,
             description: "Our most basic plan.",
             features: [
-                "1 server",
                 "Unlimited users",
                 "All features included",
                 "24-hour support response time",
@@ -57,6 +60,7 @@ export const pricing = {
             cta: "Subscribe now!",
             mostPopular: false,
             url: "https://cde90.gumroad.com/l/vcroles?option=Ypy6i23Wsp9LXur51GNQIA%3D%3D&wanted=true",
+            serverCount: 1,
         },
         {
             title: "Premium Plus",
@@ -65,7 +69,6 @@ export const pricing = {
             description:
                 "A step up from Premium, with more servers upgradable.",
             features: [
-                "3 servers",
                 "Unlimited users",
                 "All features included",
                 "24-hour support response time",
@@ -73,6 +76,7 @@ export const pricing = {
             cta: "Subscribe now!",
             mostPopular: true,
             url: "https://cde90.gumroad.com/l/vcroles?option=RmRNbhZ7ixse_w7gH3J2-w%3D%3D&wanted=true",
+            serverCount: 3,
         },
         {
             title: "Premium Pro",
@@ -80,7 +84,6 @@ export const pricing = {
             yearly: 149.99,
             description: "Our most powerful plan, for those who need the best.",
             features: [
-                "10 servers",
                 "Unlimited users",
                 "All features included",
                 "24-hour support response time",
@@ -88,6 +91,7 @@ export const pricing = {
             cta: "Subscribe now!",
             mostPopular: false,
             url: "https://cde90.gumroad.com/l/vcroles?option=lGHZQh6McZGSzEhz98xSfw%3D%3D&wanted=true",
+            serverCount: 10,
         },
-    ] as Tier[],
+    ],
 };
