@@ -7,10 +7,11 @@ import {
 } from "@heroicons/react/24/outline";
 
 export const navigation = [
-    { name: "Invite", href: "/invite" },
+    { name: "Home", href: "/" },
+    { name: "Premium", href: "/premium" },
     { name: "Dashboard", href: "/dashboard" },
     { name: "Documentation", href: "/docs" },
-    { name: "Premium", href: "/premium" },
+    { name: "Invite", href: "/invite" },
 ];
 
 export const features = [

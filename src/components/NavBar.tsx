@@ -2,15 +2,20 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 import Logo from "../components/Logo";
 
 import { navigation } from "../constants";
+import { classNames } from "../utils/utils";
 
 const NavBar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { data: session } = useSession();
+
+    const router = useRouter();
+    const currentPage = router.pathname;
 
     return (
         <div className="px-6 pt-6 lg:px-8">
@@ -38,15 +43,20 @@ const NavBar = () => {
                             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                         </button>
                     </div>
-                    <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
+                    <div className="z-10 hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
                         {navigation.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
-                                className="font-semibold text-gray-900 hover:text-gray-900"
+                                className={classNames(
+                                    "font-semibold text-gray-900 hover:text-gray-900",
+                                    currentPage === item.href
+                                        ? "font-extrabold"
+                                        : ""
+                                )}
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                     <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
@@ -95,13 +105,18 @@ const NavBar = () => {
                             <div className="-my-6 divide-y divide-gray-500/10">
                                 <div className="space-y-2 py-6">
                                     {navigation.map((item) => (
-                                        <a
+                                        <Link
                                             key={item.name}
                                             href={item.href}
-                                            className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10"
+                                            className={classNames(
+                                                "-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10",
+                                                currentPage === item.href
+                                                    ? "font-extrabold"
+                                                    : ""
+                                            )}
                                         >
                                             {item.name}
-                                        </a>
+                                        </Link>
                                     ))}
                                 </div>
                                 <div className="py-6">
