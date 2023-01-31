@@ -26,9 +26,30 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                         className="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
                     >
                         <div className="flex-1">
-                            <h3 className="text-xl font-semibold text-gray-900">
-                                {tier.title}
-                            </h3>
+                            <div className="flex flex-row">
+                                <h3 className="text-xl font-semibold text-gray-900">
+                                    {tier.title}
+                                </h3>
+                                <div className="ml-auto flex items-center">
+                                    {[
+                                        ...Array(
+                                            tier.serverCount === 10
+                                                ? 3
+                                                : tier.serverCount === 3
+                                                ? 2
+                                                : 1
+                                        ),
+                                    ].map((_, i) => (
+                                        <StarIcon
+                                            key={i}
+                                            className={
+                                                "h-6 w-6 flex-shrink-0 text-highlight"
+                                            }
+                                            aria-hidden="true"
+                                        />
+                                    ))}
+                                </div>
+                            </div>
                             {tier.mostPopular ? (
                                 <p className="absolute top-0 -translate-y-1/2 transform rounded-full bg-highlight-light py-1.5 px-4 text-sm font-semibold text-white">
                                     Most popular
@@ -55,29 +76,13 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                             </p>
 
                             <div className="mt-4 flex items-center">
-                                <p className="text-lg font-semibold text-gray-900">
-                                    {tier.serverCount} server
+                                <p className="font-medium text-gray-900">
+                                    <span className="font-lg font-bold">
+                                        {tier.serverCount}
+                                    </span>{" "}
+                                    server
                                     {tier.serverCount > 1 ? "s" : ""}
                                 </p>
-                                <div className="ml-auto flex items-center">
-                                    {[
-                                        ...Array(
-                                            tier.serverCount === 10
-                                                ? 3
-                                                : tier.serverCount === 3
-                                                ? 2
-                                                : 1
-                                        ),
-                                    ].map((_, i) => (
-                                        <StarIcon
-                                            key={i}
-                                            className={
-                                                "h-6 w-6 flex-shrink-0 text-yellow-400"
-                                            }
-                                            aria-hidden="true"
-                                        />
-                                    ))}
-                                </div>
                             </div>
 
                             {/* Feature list */}

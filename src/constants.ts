@@ -51,7 +51,7 @@ export const pricing: Pricing = {
             title: "Premium",
             monthly: 3.99,
             yearly: 39.99,
-            description: "Our most basic plan.",
+            description: "Our most basic plan, perfect for a single server.",
             features: [
                 "Unlimited users",
                 "All features included",
