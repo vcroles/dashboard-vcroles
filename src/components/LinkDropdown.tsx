@@ -10,7 +10,7 @@ import {
     ListBulletIcon,
     LockClosedIcon,
 } from "@heroicons/react/20/solid";
-import { type Link, LinkType } from "@prisma/client";
+import { type Link, LinkType } from "~/client";
 import type { Channel } from "../server/trpc/router/discord";
 
 import { classNames } from "../utils/utils";

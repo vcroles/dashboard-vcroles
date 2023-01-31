@@ -48,7 +48,7 @@ const GuildDropdown: React.FC<{
                                         height={24}
                                     />
                                     <span className="ml-3 block truncate">
-                                        {selectedGuild?.name}
+                                        {selectedGuild.name}
                                     </span>
                                 </>
                             ) : (

@@ -1,4 +1,4 @@
-import { LinkType } from "@prisma/client";
+import { LinkType } from "~/client";
 import axios from "axios";
 import { z } from "zod";
 import { env } from "../../../env/server.mjs";
@@ -135,7 +135,7 @@ const linkSchema = z.object({
 
 export const discordRouter = router({
     getGuilds: protectedProcedure.query(async ({ ctx }) => {
-        const account = await ctx.prisma.account.findFirst({
+        const account = await ctx.authClient.account.findFirst({
             where: {
                 userId: ctx.session.user.id,
             },
@@ -170,7 +170,7 @@ export const discordRouter = router({
     checkUserPermissions: protectedProcedure
         .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
-            const account = await ctx.prisma.account.findFirst({
+            const account = await ctx.authClient.account.findFirst({
                 where: {
                     userId: ctx.session.user.id,
                 },
@@ -204,7 +204,7 @@ export const discordRouter = router({
                 return [];
             }
 
-            const account = await ctx.prisma.account.findFirst({
+            const account = await ctx.authClient.account.findFirst({
                 where: {
                     userId: ctx.session.user.id,
                 },
@@ -264,7 +264,7 @@ export const discordRouter = router({
                 return [];
             }
 
-            const account = await ctx.prisma.account.findFirst({
+            const account = await ctx.authClient.account.findFirst({
                 where: {
                     userId: ctx.session.user.id,
                 },

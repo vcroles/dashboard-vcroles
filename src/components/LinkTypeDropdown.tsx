@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/20/solid";
 
 import { classNames } from "../utils/utils";
-import { LinkType } from "@prisma/client";
+import { LinkType } from "~/client";
 
 const LinkTypeIcon: React.FC<{ type: LinkType }> = ({ type }) => {
     switch (type) {

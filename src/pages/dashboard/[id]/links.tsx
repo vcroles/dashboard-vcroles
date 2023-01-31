@@ -1,4 +1,4 @@
-import { LinkType, type Link } from "@prisma/client";
+import { LinkType, type Link } from "~/client";
 import { useRouter } from "next/router";
 import { useEffect, useState, type ReactElement } from "react";
 import ChannelDropdown from "../../../components/ChannelDropdown";
