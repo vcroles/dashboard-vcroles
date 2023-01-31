@@ -1,5 +1,7 @@
-export const iconHashToUrl = (hash: string, guildID: string) => {
-    return `https://cdn.discordapp.com/icons/${guildID}/${hash}.png`;
+export const iconHashToUrl = (hash: string, guildID: string, size?: number) => {
+    return `https://cdn.discordapp.com/icons/${guildID}/${hash}.png?size=${
+        size || 128
+    }`;
 };
 
 export const classNames = (...classes: string[]) => {
