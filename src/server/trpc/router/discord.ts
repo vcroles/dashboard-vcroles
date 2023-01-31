@@ -8,7 +8,6 @@ import { protectedProcedure, router } from "../trpc";
 const BASE_URL = "https://discord.com/api/v10";
 
 const CACHE_DURATION = 60 * 5; // 5 minutes
-const CACHE_DURATION_LONG = 60 * 60 * 2; // 2 hours
 
 export type GuildResponse = {
     id: string;
@@ -94,7 +93,7 @@ const fetchUserGuilds = async (
 
     // cache the response
     await redis.set(cacheKey, guilds, {
-        ex: CACHE_DURATION_LONG,
+        ex: CACHE_DURATION,
     });
 
     return response.data;
