@@ -14,7 +14,13 @@ export const navigation = [
     { name: "Invite", href: "/invite" },
 ];
 
-export const features = [
+export type Feature = {
+    name: string;
+    description: string;
+    icon: React.ComponentType<{ className: string | undefined }>;
+};
+
+export const features: Feature[] = [
     {
         name: "Channel - Role Linking",
         description:

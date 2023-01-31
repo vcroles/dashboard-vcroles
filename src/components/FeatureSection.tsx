@@ -1,8 +1,4 @@
-type Feature = {
-    name: string;
-    description: string;
-    icon: React.ComponentType<{ className: string }>;
-};
+import type { Feature } from "src/constants";
 
 const FeatureSection: React.FC<{ features: Feature[] }> = ({ features }) => {
     return (
