@@ -28,6 +28,11 @@ const config = {
                 destination: "/api/support",
                 permanent: true,
             },
+            {
+                source: "/docs",
+                destination: "/api/docs",
+                permanent: true,
+            },
         ];
     },
 };
