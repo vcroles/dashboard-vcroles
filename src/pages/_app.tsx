@@ -1,7 +1,8 @@
-import type { AppType, AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
+import type { NextPage } from "next";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import type { NextPage } from "next";
+import type { AppProps, AppType } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 
 import { trpc } from "../utils/trpc";
@@ -24,7 +25,12 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
     return (
         <SessionProvider session={session}>
-            {getLayout(<Component {...pageProps} />)}
+            {getLayout(
+                <>
+                    <Component {...pageProps} />
+                    <Analytics />
+                </>
+            )}
         </SessionProvider>
     );
 };
