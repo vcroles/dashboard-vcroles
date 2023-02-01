@@ -40,7 +40,7 @@ export const ChannelType = {
     GUILD_STAGE_VOICE: 13,
 } as const;
 
-export type ChannelType = typeof ChannelType[keyof typeof ChannelType];
+export type ChannelType = (typeof ChannelType)[keyof typeof ChannelType];
 
 export type Role = {
     id: string;
@@ -357,7 +357,7 @@ export const discordRouter = router({
                 data: {
                     logging,
                     ttsEnabled: input.data.ttsEnabled,
-                    ttsRole: input.data.ttsRole,
+                    ttsRole: input.data.ttsRole ?? null,
                     ttsLeave: input.data.ttsLeave,
                 },
             });
