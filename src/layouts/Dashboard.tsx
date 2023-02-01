@@ -40,9 +40,6 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
             guild: id,
         });
 
-    const { data: guilds } = trpc.discord.getGuilds.useQuery();
-    const filteredGuilds = guilds?.filter((g) => g.includesBot);
-
     const navigation = [
         {
             name: "Server Settings",
@@ -66,17 +63,24 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
 
     useEffect(() => {
         setSidebarOpen(false);
-    }, [id]);
+    }, [path, id]);
 
     if (!session && status === "unauthenticated") {
-        router.push("/api/auth/signin");
+        if (typeof window !== "undefined") {
+            router.push("/api/auth/signin");
+        }
         return null;
     }
 
     if (!allowed && !loading) {
-        router.push("/dashboard");
+        if (typeof window !== "undefined") {
+            router.push("/dashboard");
+        }
         return null;
     }
+
+    const { data: guilds } = trpc.discord.getGuilds.useQuery();
+    const filteredGuilds = guilds?.filter((g) => g.includesBot);
 
     return (
         <>
@@ -163,9 +167,6 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                                             : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                                                         "group flex items-center rounded-md px-2 py-2 text-base font-medium"
                                                     )}
-                                                    onClick={() =>
-                                                        setSidebarOpen(false)
-                                                    }
                                                 >
                                                     <item.icon
                                                         className={classNames(
