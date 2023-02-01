@@ -8,7 +8,7 @@ import {
 
 export const navigation = [
     { name: "Home", href: "/" },
-    { name: "Premium", href: "/premium" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Dashboard", href: "/dashboard" },
     { name: "Documentation", href: "/docs" },
     { name: "Invite", href: "/invite" },

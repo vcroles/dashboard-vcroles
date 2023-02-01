@@ -63,14 +63,25 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                     /month
                                 </span>
                             </p>
-                            <p className="mt-2 flex items-baseline text-gray-900">
-                                <span className="text-2xl font-bold tracking-tight">
-                                    £{tier.yearly}
+                            <p className="mt-2 flex flex-col text-gray-900 sm:flex-row">
+                                <span className="items-baseline">
+                                    <span className="text-2xl font-bold tracking-tight">
+                                        £{tier.yearly}
+                                    </span>
+                                    <span className="ml-1 font-semibold">
+                                        /year
+                                    </span>
                                 </span>
-                                <span className="ml-1 font-semibold">
-                                    /year
+                                <span className="w-fit rounded-full bg-yellow-200 px-4 py-1 sm:ml-2">
+                                    Save 16%
                                 </span>
                             </p>
+                            {/* add a x% off tag */}
+                            {/* <span className="ml-1 text-sm font-semibold text-gray-500">
+                                {tier.mostPopular
+                                    ? "Save 20% by paying yearly"
+                                    : "Save 10% by paying yearly"}
+                            </span> */}
                             <p className="mt-6 text-gray-500">
                                 {tier.description}
                             </p>

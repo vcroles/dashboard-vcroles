@@ -41,9 +41,8 @@ const PremiumPage: NextPage = () => {
                     </div>
                     {/* Testimonials */}
                     <PremiumFeatures />
-                    {/* FAQs */}
                     <PremiumFAQs />
-                    <PremiumCTASection /> {/* make this premium specific */}
+                    <PremiumCTASection />
                     <Footer />
                 </main>
             </div>

@@ -119,7 +119,7 @@ export default function Home() {
                         </div>
                     </div>
                     <FeatureSection features={features} />
-                    <div className="mx-auto max-w-7xl bg-white px-4 pb-24 sm:px-6 lg:px-8">
+                    <div className="mx-auto max-w-7xl bg-white px-4 pb-24 pt-12 sm:px-6 lg:px-8">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-none lg:text-6xl">
                             Premium plans everyone will love.
                         </h2>
@@ -134,7 +134,7 @@ export default function Home() {
                             {/* add a button to learn more on the premium page */}
                             <div className="mt-8 flex items-center gap-x-4 sm:ml-auto sm:justify-center">
                                 <Link
-                                    href="/premium"
+                                    href="/pricing"
                                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                                 >
                                     Learn more
