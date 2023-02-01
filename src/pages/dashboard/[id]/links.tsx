@@ -1,4 +1,4 @@
-import { LinkType, type Link } from "~/client";
+import type { LinkType, Link } from "~/client";
 import { useRouter } from "next/router";
 import { useEffect, useState, type ReactElement } from "react";
 import ChannelDropdown from "../../../components/ChannelDropdown";
@@ -46,20 +46,18 @@ const DashboardLinksPage: NextPageWithLayout = () => {
 
     const [showSaved, setShowSaved] = useState(false);
 
-    const [createLinkType, setCreateLinkType] = useState<LinkType>(
-        LinkType.REGULAR
-    );
+    const [createLinkType, setCreateLinkType] = useState<LinkType>("REGULAR");
     const [createLinkChannel, setCreateLinkChannel] = useState<Channel | null>(
         null
     );
     const allowedChannelTypes =
-        createLinkType === LinkType.REGULAR
+        createLinkType === "REGULAR"
             ? [2]
-            : createLinkType === LinkType.CATEGORY
+            : createLinkType === "CATEGORY"
             ? [4]
-            : createLinkType === LinkType.STAGE
+            : createLinkType === "STAGE"
             ? [13]
-            : createLinkType === LinkType.PERMANENT
+            : createLinkType === "PERMANENT"
             ? [2, 4, 13]
             : [];
 
@@ -111,7 +109,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
         },
         onSuccess(data) {
             setSelectedLink(data);
-            setCreateLinkType(LinkType.REGULAR);
+            setCreateLinkType("REGULAR");
             setCreateLinkChannel(null);
         },
     });
@@ -252,8 +250,8 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                 ) : null}
                                 {/* conditional channel select for exclude channels if channel type is category or link type is all */}
                                 {selectedChannel?.type === 4 ||
-                                selectedLink.type === LinkType.ALL ||
-                                selectedLink.type === LinkType.CATEGORY ? (
+                                selectedLink.type === "ALL" ||
+                                selectedLink.type === "CATEGORY" ? (
                                     <ChannelSelectionBox
                                         title="Exclude Channels"
                                         channels={
@@ -346,7 +344,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                         </div>
                     </div>
 
-                    {createLinkType !== LinkType.ALL ? (
+                    {createLinkType !== "ALL" ? (
                         <div className="space-y-6 sm:space-y-5">
                             <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label
@@ -390,20 +388,17 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                 }
                                 if (
                                     !createLinkChannel &&
-                                    createLinkType !== LinkType.ALL
+                                    createLinkType !== "ALL"
                                 ) {
                                     return;
-                                } else if (
-                                    createLinkType === LinkType.ALL &&
-                                    !id
-                                ) {
+                                } else if (createLinkType === "ALL" && !id) {
                                     return;
                                 }
                                 createMutation.mutate({
                                     type: createLinkType,
                                     guildId: id,
                                     id:
-                                        createLinkType === LinkType.ALL
+                                        createLinkType === "ALL"
                                             ? id
                                             : createLinkChannel?.id ?? "",
                                 });

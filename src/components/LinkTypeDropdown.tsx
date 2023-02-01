@@ -12,7 +12,15 @@ import {
 } from "@heroicons/react/20/solid";
 
 import { classNames } from "../utils/utils";
-import { LinkType } from "~/client";
+import type { LinkType } from "~/client";
+
+const linkTypes: LinkType[] = [
+    "ALL",
+    "PERMANENT",
+    "REGULAR",
+    "STAGE",
+    "CATEGORY",
+];
 
 const LinkTypeIcon: React.FC<{ type: LinkType }> = ({ type }) => {
     switch (type) {
@@ -93,7 +101,7 @@ const LinkTypeDropdown: React.FC<{
                         leaveTo="opacity-0"
                     >
                         <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                            {Object.values(LinkType).map((linkType) => (
+                            {linkTypes.map((linkType) => (
                                 <Listbox.Option
                                     key={linkType}
                                     className={({ active }) =>
