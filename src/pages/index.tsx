@@ -121,7 +121,7 @@ export default function Home() {
                     <FeatureSection features={features} />
                     <div className="mx-auto max-w-7xl bg-white px-4 pb-24 pt-12 sm:px-6 lg:px-8">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-none lg:text-6xl">
-                            Premium plans everyone will love.
+                            There&apos;s a plan for everyone
                         </h2>
                         <div className="flex flex-col lg:flex-row">
                             <p className="mt-6 max-w-2xl text-xl text-gray-500">

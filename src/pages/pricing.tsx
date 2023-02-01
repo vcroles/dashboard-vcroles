@@ -13,7 +13,7 @@ const PremiumPage: NextPage = () => {
     return (
         <>
             <Head>
-                <title>VC Roles | Premium</title>
+                <title>VC Roles | Pricing</title>
             </Head>
             <div className="isolate bg-white">
                 <TopBackground />

@@ -76,12 +76,6 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                     Save 16%
                                 </span>
                             </p>
-                            {/* add a x% off tag */}
-                            {/* <span className="ml-1 text-sm font-semibold text-gray-500">
-                                {tier.mostPopular
-                                    ? "Save 20% by paying yearly"
-                                    : "Save 10% by paying yearly"}
-                            </span> */}
                             <p className="mt-6 text-gray-500">
                                 {tier.description}
                             </p>
