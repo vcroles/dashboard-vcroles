@@ -117,8 +117,11 @@ const DashboardLinksPage: NextPageWithLayout = () => {
     // every time the ID changes, update the state
     useEffect(() => {
         setLinks(linkData);
-        setSelectedLink(null);
     }, [id, linkData]);
+
+    useEffect(() => {
+        setSelectedLink(null);
+    }, [id]);
 
     return (
         <>

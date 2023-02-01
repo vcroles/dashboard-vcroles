@@ -103,7 +103,7 @@ const LinkDropdown: React.FC<{
                                 );
                                 return (
                                     <Listbox.Option
-                                        key={link.id}
+                                        key={link.id + link.type}
                                         className={({ active }) =>
                                             classNames(
                                                 active
