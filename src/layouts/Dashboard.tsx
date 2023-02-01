@@ -143,7 +143,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                     </Transition.Child>
                                     <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                                         <div className="flex flex-shrink-0 items-center px-4">
-                                            <Link href="/">
+                                            <Link href="/dashboard">
                                                 <Logo size={40} />
                                             </Link>
                                         </div>
@@ -223,7 +223,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                     <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
                         <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
                             <div className="flex flex-shrink-0 items-center px-4">
-                                <Link href="/">
+                                <Link href="/dashboard">
                                     <Logo size={40} />
                                 </Link>
                             </div>

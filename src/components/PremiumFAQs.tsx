@@ -113,7 +113,7 @@ const faqs = [
 
 const PremiumFAQs = () => {
     return (
-        <div className="bg-white">
+        <div>
             <div className="mx-auto max-w-7xl px-6 pb-24 sm:pt-32 lg:px-8 lg:pb-40">
                 <div className="lg:grid lg:grid-cols-12 lg:gap-8">
                     <div className="lg:col-span-5">
