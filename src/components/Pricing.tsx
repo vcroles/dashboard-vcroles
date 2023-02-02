@@ -72,7 +72,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                         /year
                                     </span>
                                 </span>
-                                <span className="w-fit rounded-full bg-yellow-200 px-4 py-1 sm:ml-2">
+                                <span className="w-fit rounded-full bg-yellow-300 px-4 py-1 font-semibold sm:ml-2">
                                     Save 16%
                                 </span>
                             </p>
