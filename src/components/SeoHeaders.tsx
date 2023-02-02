@@ -15,11 +15,7 @@ export const SeoHeaders = ({
     twitterAuthor?: string;
     twitterSite?: string;
 }) => {
-    const imageUrl = `${
-        process.env.VERCEL_URL
-            ? `https://${process.env.VERCEL_URL}`
-            : "http://localhost:3000"
-    }/api/og?title=${title}`;
+    const imageUrl = `https://dashboard-vcroles.vercel.app/api/og?title=${title}`;
     return (
         <Head>
             <title>{title}</title>
