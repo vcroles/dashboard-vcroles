@@ -5,6 +5,9 @@
  */
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs")); // skipcq: JS-0093
 
+// const withMarkdoc = require("@markdoc/next.js");
+import withMarkdoc from "@markdoc/next.js";
+
 /** @type {import("next").NextConfig} */
 const config = {
     reactStrictMode: true,
@@ -28,12 +31,15 @@ const config = {
                 destination: "/api/support",
                 permanent: true,
             },
-            {
-                source: "/docs",
-                destination: "/api/docs",
-                permanent: true,
-            },
+            // {
+            //     source: "/docs",
+            //     destination: "/api/docs",
+            //     permanent: true,
+            // },
         ];
     },
+    pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 };
-export default config;
+// export default config;
+// @ts-ignore
+export default withMarkdoc()(config);
