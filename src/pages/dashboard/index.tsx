@@ -6,15 +6,17 @@ import { trpc } from "../../utils/trpc";
 import NavBar from "../../components/NavBar";
 import Loading from "../../components/Loading";
 import { iconHashToUrl } from "../../utils/utils";
-import Head from "next/head";
 import Link from "next/link";
 import { BottomBackground, TopBackground } from "src/components/Background";
+import { SeoHeaders } from "src/components/SeoHeaders";
 
 const Title: React.FC = () => {
     return (
-        <Head>
-            <title>VC Roles | Dashboard</title>
-        </Head>
+        <SeoHeaders
+            title="VC Roles | Dashboard"
+            description="Select a server to view its dashboard."
+            url="https://vcroles.com/dashboard"
+        />
     );
 };
 

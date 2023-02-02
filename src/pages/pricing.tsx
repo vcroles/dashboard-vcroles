@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import { BottomBackground, TopBackground } from "src/components/Background";
+import { SeoHeaders } from "src/components/SeoHeaders";
 import { PremiumCTASection } from "../components/CTASection";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
@@ -12,9 +12,12 @@ import { pricing } from "../constants";
 const PremiumPage: NextPage = () => {
     return (
         <>
-            <Head>
-                <title>VC Roles | Pricing</title>
-            </Head>
+            <SeoHeaders
+                title="VC Roles | Pricing"
+                description="VC Roles is a Discord bot that allows you to manage your voice channels with ease. It's free to use, but if you want to support us, you can upgrade to a premium plan."
+                url="https://vcroles.com/pricing"
+            />
+
             <div className="isolate bg-white">
                 <TopBackground />
                 <NavBar />

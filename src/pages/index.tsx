@@ -1,5 +1,5 @@
-import Head from "next/head";
 import Link from "next/link";
+import { SeoHeaders } from "src/components/SeoHeaders";
 import CTASection from "../components/CTASection";
 import FeatureSection from "../components/FeatureSection";
 import Footer from "../components/Footer";
@@ -10,9 +10,12 @@ import { features, pricing } from "../constants";
 export default function Home() {
     return (
         <>
-            <Head>
-                <title>VC Roles | Home</title>
-            </Head>
+            <SeoHeaders
+                title="VC Roles | Home"
+                description="VC Roles will enhance your Discord server by enriching voice channels with much needed features such as role assignment, channel generators, and more! It's easy to use and will help you manage your server with ease."
+                url="https://vcroles.com/"
+            />
+
             <div className="isolate bg-white">
                 <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
                     <svg
