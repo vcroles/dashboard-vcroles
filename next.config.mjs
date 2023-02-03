@@ -41,5 +41,5 @@ const config = {
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 };
 // export default config;
-// @ts-ignore
+// @ts-expect-error - `withMarkdoc` is not typed
 export default withMarkdoc()(config);
