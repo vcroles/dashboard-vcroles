@@ -89,22 +89,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
     return (
         <SessionProvider session={session}>
             {getLayout(
-                // only show docs layout on /docs pages
-                router.pathname.startsWith("/docs") ? (
-                    <DocsLayout
-                        title={title}
-                        tableOfContents={tableOfContents}
-                        pageTitle={pageTitle}
-                        description={description}
-                    >
-                        <Component {...pageProps} />
-                    </DocsLayout>
-                ) : (
-                    <>
-                        <Component {...pageProps} />
-                        <Analytics />
-                    </>
-                )
+                <>
+                    <Component {...pageProps} />
+                    <Analytics />
+                </>
                 // <Component {...pageProps} />
                 // <Analytics />
             )}

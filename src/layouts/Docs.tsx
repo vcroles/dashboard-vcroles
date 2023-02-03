@@ -243,14 +243,17 @@ export function DocsLayout({
     );
     const currentSection = useTableOfContents(tableOfContents);
 
+    console.log(currentSection);
+    console.log(tableOfContents);
+
     function isActive(section: TableOfContents[number]) {
         if (section.id === currentSection) {
             return true;
         }
-        if (!section.children) {
+        if ("children" in section && !section.children) {
             return false;
         }
-        return section.children.findIndex(isActive) > -1;
+        return (section.children ?? []).findIndex(isActive) > -1;
     }
 
     return (
