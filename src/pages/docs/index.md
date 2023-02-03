@@ -1,79 +1,64 @@
 ---
-title: Architecture guide
-description: Quidem magni aut exercitationem maxime rerum eos.
+title: VC Roles Documentation
+description: The official documentation for VC Roles.
+pageTitle: VC Roles | Documentation
 ---
 
-Quasi sapiente voluptates aut minima non doloribus similique quisquam. In quo expedita ipsum nostrum corrupti incidunt. Et aut eligendi ea perferendis.
+## [Add to your Discord Server!](/invite) | [Upgrade to Premium](/pricing)
 
----
+[Discord Support Server](/support) | [View GitHub](https://github.com/CDE90/VCRoles) | [Top.gg Page](https://top.gg/bot/775025797034541107)
 
-## Quis vel iste dicta
+## Introduction
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.
+Welcome to the VC Roles documentation! Here you'll find everything you need to get up and running with the bot!
 
-### Et pariatur ab quas
+If you want to report a bug or request a feature, head over to our [GitHub page](https://github.com/CDE90/VCRoles), and make a new issue!
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
+### Ready to start?
 
-```js
-/** @type {import('@tailwindlabs/lorem').ipsum} */
-export default {
-  lorem: 'ipsum',
-  dolor: ['sit', 'amet', 'consectetur'],
-  adipiscing: {
-    elit: true,
-  },
-}
-```
+{% quick-links %}
 
-Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
+{% quick-link title="Get Started" icon="installation" href="/docs/get-started" description="Get started with the bot" /%}
 
-### Natus aspernatur iste
+{% quick-link title="Basic Setup" icon="presets" href="/docs/basic-setup" description="Get the bot up and running" /%}
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
+{% quick-link title="Commands" icon="theming" href="/docs/commands" description="All the commands the bot has to offer" /%}
 
-Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.
+{% quick-link title="FAQ" icon="plugins" href="/docs/faq" description="Frequently asked questions" /%}
 
----
+{% /quick-links %}
 
-## Quos porro ut molestiae
+## Features
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.
+VC Roles is a bot that will make your server and its voice channels much more interactive, enabling features such as: giving members roles when they join a voice channel, removing it on leave or the reverse of that, reading TTS messages in voice channels, for those without a mic, creating and managing voice channels, and much more!&#x20;
 
-### Voluptatem quas possimus
+This is the bot you need to make your server more interactive, and bring your community together!
 
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
-
-### Id vitae minima
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.
-
----
-
-## Vitae laborum maiores
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur.
-
-### Corporis exercitationem
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod.
-
-### Reprehenderit magni
-
-Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus.
-
-Voluptas beatae omnis omnis voluptas. Cum architecto ab sit ad eaque quas quia distinctio. Molestiae aperiam qui quis deleniti soluta quia qui. Dolores nostrum blanditiis libero optio id. Mollitia ad et asperiores quas saepe alias.
-
-{% callout title="You should know!" %}
-This is what a disclaimer message looks like. You might want to include inline `code` in it. Or maybe you’ll want to include a [link](/) in it. I don’t think we should get too carried away with other scenarios like lists or tables — that would be silly.
-{% /callout %}
-
-{% callout type="warning" title="Oh no! Something bad happened!" %}
-This is what a disclaimer message looks like. You might want to include inline `code` in it. Or maybe you’ll want to include a [link](/) in it. I don’t think we should get too carried away with other scenarios like lists or tables — that would be silly.
-{% /callout %}
+* [Channel - Role linking](commands/commands/linking-and-unlinking.md)
+  * Normal linking - A role(s) can be given to a member when they join a channel, and removed when they leave
+  * Reverse Linking - A role(s) can be removed from a member when they join a channel, and added when they leave
+  * Great for hiding voice reply channels, or music bot command channels when they aren't needed
+* [All channel - Role linking](commands/commands/all-linking.md)
+  * A role(s) will be given to a member when they join any voice channel, and removed when they leave
+  * Option to add exception channels (members aren't given the 'all' role(s) when they join/leave)
+  * Normal & Reverse Linking supported
+* [Permanent Role Links](commands/commands/permanent-linking.md)
+  * A role(s) will be given to a member when they join the voice channel, and will remain after they leave.
+  * Normal & Reverse Linking supported
+  * Great for easy user verification
+* [Voice Channel Generators](commands/commands/voice-channel-generators.md)
+  * When a member joins the generator channel a new voice channel is made just for them, and is deleted when there are no more members in the channel.
+  * Generators also come with an interface channel, which contains additional configuration for users' private channels.
+  * This is highly configurable, dive in and see what you can make!
+* [Voice Channel TTS commands](commands/commands/tts-commands.md)
+  * TTS commands are used to make the bot read a message in a voice channel
+  * Options for multiple languages.
+  * Great for users who have no mic and still want to be heard
+* Analytics Commands
+  * See insights on what's happening in your voice channels.
+  * How much time is being spent in them? How many times do people join? How many commands are being used? and more!
+  * See beautiful graphs with per-day data or per-hour visualisations, or prefer to analyse yourself? Download an export of the data as a csv.
+* [Voice Admin Commands](commands/commands/voice-admin-commands.md)
+  * Used to _(un)_mute/_(un)_deafen all members in a voice channel
+* [Audit logging (for voice channels)](commands/commands/audit-logging.md)
+  * See when members join, leave or change channels, and the roles that are given/removed by the bot.
