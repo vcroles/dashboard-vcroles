@@ -4,6 +4,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ["./src/**/*.{js,ts,jsx,tsx}"],
+    darkMode: "class",
     theme: {
         extend: {
             fontFamily: {
@@ -19,7 +20,13 @@ module.exports = {
                 "highlight-lightest": "#9B97FF",
                 "highlight-transparent": "rgba(63, 72, 204, 0.1)",
             },
+            maxWidth: {
+                "8xl": "88rem",
+            },
         },
     },
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [
+        require("@tailwindcss/forms"),
+        require("@tailwindcss/typography"),
+    ],
 };

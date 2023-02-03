@@ -13,6 +13,7 @@ import "../styles/globals.css";
 import "focus-visible";
 import { useRouter } from "next/router";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getNodeText(node: any) {
     let text = "";
     for (const child of node.children ?? []) {
@@ -89,12 +90,22 @@ const MyApp: AppType<{ session: Session | null }> = ({
     return (
         <SessionProvider session={session}>
             {getLayout(
-                <>
-                    <Component {...pageProps} />
-                    <Analytics />
-                </>
-                // <Component {...pageProps} />
-                // <Analytics />
+                router.pathname.startsWith("/docs") ? (
+                    <DocsLayout
+                        title={title}
+                        pageTitle={pageTitle}
+                        description={description}
+                        tableOfContents={tableOfContents}
+                    >
+                        <Component {...pageProps} />
+                        <Analytics />
+                    </DocsLayout>
+                ) : (
+                    <>
+                        <Component {...pageProps} />
+                        <Analytics />
+                    </>
+                )
             )}
         </SessionProvider>
     );

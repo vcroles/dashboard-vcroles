@@ -298,7 +298,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                         </button>
                     </div>
-                    <main className="flex-1 bg-gray-50">
+                    <main className="h-full min-h-screen flex-1 bg-gray-50">
                         <div className="py-6">
                             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
                                 <h1 className="text-2xl font-semibold text-gray-900">

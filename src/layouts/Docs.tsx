@@ -3,13 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { classNames } from "src/utils/utils";
 
-import { Hero } from "@/components/docs/Hero";
-import { Logo, Logomark } from "@/components/docs/Logo";
 import { MobileNavigation } from "@/components/docs/MobileNavigation";
 import { Navigation } from "@/components/docs/Navigation";
 import { Prose } from "@/components/docs/Prose";
 import { ThemeSelector } from "@/components/docs/ThemeSelector";
 import { SeoHeaders } from "@/components/SeoHeaders";
+import Logo from "@/components/Logo";
 
 export type NavigationItem = {
     title: string;
@@ -125,7 +124,7 @@ function Header({ navigation }: { navigation: NavigationItem[] }) {
     return (
         <header
             className={classNames(
-                "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8",
+                "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:bg-slate-900 dark:shadow-none sm:px-6 lg:px-8",
                 isScrolled
                     ? "dark:bg-slate-900/95 dark:backdrop-blur dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75"
                     : "dark:bg-transparent"
@@ -136,13 +135,16 @@ function Header({ navigation }: { navigation: NavigationItem[] }) {
             </div>
             <div className="relative flex flex-grow basis-0 items-center">
                 <Link href="/" aria-label="Home page">
-                    <Logomark className="h-9 w-9 lg:hidden" />
-                    <Logo className="hidden h-9 w-auto fill-slate-700 dark:fill-sky-100 lg:block" />
+                    <div className="bg-white">
+                        <Logo size={36} />
+                    </div>
+                </Link>
+                <Link href="/docs" className="ml-6">
+                    <h1 className="text-2xl font-bold leading-7 text-slate-900 dark:text-sky-100">
+                        Documentation
+                    </h1>
                 </Link>
             </div>
-            {/* <div className="-my-5 mr-6 sm:mr-8 md:mr-0">
-                <Search />
-            </div> */}
             <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
                 <ThemeSelector className="relative z-10" />
                 <Link
@@ -231,7 +233,6 @@ export function DocsLayout({
     description: string;
 }) {
     const router = useRouter();
-    const isHomePage = router.pathname === "/";
     const allLinks = navigation.flatMap((section) => section.links);
     const linkIndex = allLinks.findIndex(
         (link) => link.href === router.pathname
@@ -242,9 +243,6 @@ export function DocsLayout({
         section.links.find((link) => link.href === router.pathname)
     );
     const currentSection = useTableOfContents(tableOfContents);
-
-    console.log(currentSection);
-    console.log(tableOfContents);
 
     function isActive(section: TableOfContents[number]) {
         if (section.id === currentSection) {
@@ -257,7 +255,7 @@ export function DocsLayout({
     }
 
     return (
-        <>
+        <div className="h-full w-full bg-white dark:bg-slate-900">
             <SeoHeaders
                 title={pageTitle}
                 description={description}
@@ -265,9 +263,7 @@ export function DocsLayout({
             />
             <Header navigation={navigation} />
 
-            {isHomePage && <Hero />}
-
-            <div className="max-w-8xl relative mx-auto flex justify-center sm:px-2 lg:px-8 xl:px-12">
+            <div className="relative mx-auto flex max-w-8xl justify-center bg-white dark:bg-slate-900 sm:px-2 lg:px-8 xl:px-12">
                 <div className="hidden lg:relative lg:block lg:flex-none">
                     <div className="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden" />
                     <div className="absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block" />
@@ -399,6 +395,6 @@ export function DocsLayout({
                     </nav>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

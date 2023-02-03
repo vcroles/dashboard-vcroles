@@ -75,7 +75,7 @@ const Document = () => {
                     id="theme-script"
                 />
             </Head>
-            <body className="bg-white dark:bg-slate-900">
+            <body>
                 <Main />
                 <NextScript />
             </body>
