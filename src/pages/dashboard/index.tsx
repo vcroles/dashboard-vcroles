@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Image from "next/image";
 import { useSession, signIn } from "next-auth/react";
 
@@ -9,7 +9,6 @@ import { iconHashToUrl } from "../../utils/utils";
 import Link from "next/link";
 import { BottomBackground, TopBackground } from "src/components/Background";
 import { SeoHeaders } from "src/components/SeoHeaders";
-import { createSSGHelpers } from "src/server/trpc/context";
 
 const Title: React.FC = () => {
     return (
@@ -173,17 +172,3 @@ const Dashboard: NextPage = () => {
 };
 
 export default Dashboard;
-
-const getServerSideProps: GetServerSideProps = async (context) => {
-    const ssg = await createSSGHelpers(context, { useSession: true });
-
-    await ssg.discord.getGuilds.prefetch();
-
-    return {
-        props: {
-            trpcState: ssg.dehydrate(),
-        },
-    };
-};
-
-export { getServerSideProps };
