@@ -90,17 +90,45 @@ const navigation: NavigationItem[] = [
         title: "Commands",
         links: [
             {
-                title: "CacheAdvance.predict()",
-                href: "/docs/cacheadvance-predict",
+                title: "Linking and Unlinking",
+                href: "/docs/commands/linking-and-unlinking",
             },
-            { title: "CacheAdvance.flush()", href: "/docs/cacheadvance-flush" },
+            { title: "Linked", href: "/docs/commands/linked" },
             {
-                title: "CacheAdvance.revert()",
-                href: "/docs/cacheadvance-revert",
+                title: "All Linking and Unlinking",
+                href: "/docs/commands/all-linking",
             },
             {
-                title: "CacheAdvance.regret()",
-                href: "/docs/cacheadvance-regret",
+                title: "Permanent Linking",
+                href: "/docs/commands/permanent-links",
+            },
+            {
+                title: "Voice Channel Generators",
+                href: "/docs/commands/generators",
+            },
+            {
+                title: "Interface Commands",
+                href: "/docs/commands/interface-commands",
+            },
+            {
+                title: "TTS",
+                href: "/docs/commands/tts",
+            },
+            {
+                title: "Analytics",
+                href: "/docs/commands/analytics",
+            },
+            {
+                title: "Audit Logging",
+                href: "/docs/commands/audit-logging",
+            },
+            {
+                title: "Voice Admin",
+                href: "/docs/commands/voice-admin",
+            },
+            {
+                title: "Premium",
+                href: "/docs/commands/premium",
             },
         ],
     },
