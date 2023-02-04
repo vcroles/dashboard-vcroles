@@ -29,52 +29,65 @@ const navigation: NavigationItem[] = [
         ],
     },
     {
-        title: "Core concepts",
+        title: "Features",
         links: [
             {
-                title: "Understanding caching",
-                href: "/docs/understanding-caching",
+                title: "Linking",
+                href: "/docs/features/linking",
             },
             {
-                title: "Predicting user behavior",
-                href: "/docs/predicting-user-behavior",
+                title: "All Linking",
+                href: "/docs/features/all-linking",
             },
             {
-                title: "Basics of time-travel",
-                href: "/docs/basics-of-time-travel",
+                title: "Permanent Links",
+                href: "/docs/features/permanent-links",
             },
             {
-                title: "Introduction to string theory",
-                href: "/docs/introduction-to-string-theory",
+                title: "Voice Channel Generators",
+                href: "/docs/features/voice-channel-generators",
             },
             {
-                title: "The butterfly effect",
-                href: "/docs/the-butterfly-effect",
+                title: "TTS",
+                href: "/docs/features/tts",
+            },
+            {
+                title: "Analytics",
+                href: "/docs/features/analytics",
+            },
+            {
+                title: "Audit Logs",
+                href: "/docs/features/audit-logs",
+            },
+            {
+                title: "Voice Admin",
+                href: "/docs/features/voice-admin",
             },
         ],
     },
     {
-        title: "Advanced guides",
+        title: "Dashboard",
         links: [
-            { title: "Writing plugins", href: "/docs/writing-plugins" },
             {
-                title: "Neuralink integration",
-                href: "/docs/neuralink-integration",
-            },
-            { title: "Temporal paradoxes", href: "/docs/temporal-paradoxes" },
-            { title: "Testing", href: "/docs/testing" },
-            {
-                title: "Compile-time caching",
-                href: "/docs/compile-time-caching",
+                title: "Server List",
+                href: "/docs/dashboard/server-list",
             },
             {
-                title: "Predictive data generation",
-                href: "/docs/predictive-data-generation",
+                title: "Server Settings",
+                href: "/docs/dashboard/server-settings",
+            },
+            {
+                title: "Linked Channels",
+                href: "/docs/dashboard/linked-channels",
+            },
+            {
+                title: "Voice Generators",
+                href: "/docs/dashboard/voice-generators",
             },
         ],
     },
     {
-        title: "API reference",
+        title: "Commands",
         links: [
             {
                 title: "CacheAdvance.predict()",
