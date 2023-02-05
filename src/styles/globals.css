@@ -1,3 +1,4 @@
+@import "./prism.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,5 +8,6 @@ body,
 body > div:first-child,
 div#__next,
 div#__next > div {
-    height: 100%;
+    /* height: 100%; */
+    height: auto;
 }

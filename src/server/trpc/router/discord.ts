@@ -4,6 +4,7 @@ import { z } from "zod";
 import { env } from "../../../env/server.mjs";
 import { prisma, redis } from "../../db/client";
 import { protectedProcedure, router } from "../trpc";
+import { TRPCError } from "@trpc/server";
 
 const BASE_URL = "https://discord.com/api/v10";
 
@@ -133,6 +134,24 @@ const linkSchema = z.object({
     excludeChannels: z.array(z.string()),
 });
 
+const checkUserPermissions = async (
+    accessToken: string | null,
+    accountId: string,
+    guildId: string
+) => {
+    if (!accessToken) {
+        return false;
+    }
+
+    const mutualGuilds = await fetchMutualGuilds(accessToken, accountId);
+
+    return mutualGuilds.some(
+        (guild) =>
+            guild.id === guildId &&
+            (guild.owner === true || guild.permissions & (1 << 3))
+    );
+};
+
 export const discordRouter = router({
     getGuilds: protectedProcedure.query(async ({ ctx }) => {
         const account = await ctx.authClient.account.findFirst({
@@ -180,22 +199,15 @@ export const discordRouter = router({
                 return false;
             }
 
-            const mutualGuilds = await fetchMutualGuilds(
-                account.access_token,
-                account.providerAccountId
-            );
-
-            const guild = mutualGuilds.find((g) => g.id === input.guild);
-
-            if (!guild) {
-                return false;
-            }
-
-            if (guild.owner === true || guild.permissions & (1 << 3)) {
+            if (!input.guild) {
                 return true;
             }
 
-            return false;
+            return await checkUserPermissions(
+                account.access_token,
+                account.providerAccountId,
+                input.guild
+            );
         }),
     getGuildChannels: protectedProcedure
         .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
@@ -332,6 +344,36 @@ export const discordRouter = router({
 
             return guild;
         }),
+    getLinks: protectedProcedure
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
+        .query(async ({ ctx, input }) => {
+            if (!input.guild) {
+                return [];
+            }
+
+            const links = await ctx.prisma.link.findMany({
+                where: {
+                    guildId: input.guild,
+                },
+            });
+
+            return links;
+        }),
+    getGenerators: protectedProcedure
+        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
+        .query(async ({ ctx, input }) => {
+            if (!input.guild) {
+                return [];
+            }
+
+            const generators = await ctx.prisma.voiceGenerator.findMany({
+                where: {
+                    guildId: input.guild,
+                },
+            });
+
+            return generators;
+        }),
     updateGuildData: protectedProcedure
         .input(
             z.object({
@@ -346,6 +388,32 @@ export const discordRouter = router({
             })
         )
         .mutation(async ({ ctx, input }) => {
+            const account = await ctx.authClient.account.findFirst({
+                where: {
+                    userId: ctx.session.user.id,
+                },
+            });
+
+            if (!account) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
+            if (
+                !(await checkUserPermissions(
+                    account.access_token,
+                    account.providerAccountId,
+                    input.guild
+                ))
+            ) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
             const logging = input.data.loggingEnabled
                 ? input.data.loggingChannel
                 : null;
@@ -364,24 +432,54 @@ export const discordRouter = router({
 
             return guild;
         }),
-    getLinks: protectedProcedure
-        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
-        .query(async ({ ctx, input }) => {
-            if (!input.guild) {
-                return [];
-            }
 
-            const links = await ctx.prisma.link.findMany({
+    deleteLink: protectedProcedure
+        .input(z.object({ dbId: z.string(), guild: z.string() }))
+        .mutation(async ({ ctx, input }) => {
+            const account = await ctx.authClient.account.findFirst({
                 where: {
-                    guildId: input.guild,
+                    userId: ctx.session.user.id,
                 },
             });
 
-            return links;
-        }),
-    deleteLink: protectedProcedure
-        .input(z.object({ dbId: z.string() }))
-        .mutation(async ({ ctx, input }) => {
+            if (!account) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
+            if (
+                !(await checkUserPermissions(
+                    account.access_token,
+                    account.providerAccountId,
+                    input.guild
+                ))
+            ) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
+            const prevLink = await ctx.prisma.link.findUnique({
+                where: {
+                    dbId: input.dbId,
+                },
+            });
+
+            if (!prevLink) {
+                throw new TRPCError({
+                    code: "NOT_FOUND",
+                    message: "Link not found",
+                });
+            } else if (prevLink.guildId !== input.guild) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
             const link = await ctx.prisma.link.delete({
                 where: {
                     dbId: input.dbId,
@@ -399,6 +497,32 @@ export const discordRouter = router({
             })
         )
         .mutation(async ({ ctx, input }) => {
+            const account = await ctx.authClient.account.findFirst({
+                where: {
+                    userId: ctx.session.user.id,
+                },
+            });
+
+            if (!account) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
+            if (
+                !(await checkUserPermissions(
+                    account.access_token,
+                    account.providerAccountId,
+                    input.guildId
+                ))
+            ) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
             const link = await ctx.prisma.link.create({
                 data: {
                     id: input.id,
@@ -416,6 +540,50 @@ export const discordRouter = router({
             })
         )
         .mutation(async ({ ctx, input }) => {
+            const account = await ctx.authClient.account.findFirst({
+                where: {
+                    userId: ctx.session.user.id,
+                },
+            });
+
+            if (!account) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
+            if (
+                !(await checkUserPermissions(
+                    account.access_token,
+                    account.providerAccountId,
+                    input.guildId
+                ))
+            ) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
+            const prevLink = await ctx.prisma.link.findUnique({
+                where: {
+                    dbId: input.dbId,
+                },
+            });
+
+            if (!prevLink) {
+                throw new TRPCError({
+                    code: "NOT_FOUND",
+                    message: "Link not found",
+                });
+            } else if (prevLink.guildId !== input.guildId) {
+                throw new TRPCError({
+                    code: "UNAUTHORIZED",
+                    message: "You are not authorized to perform this action",
+                });
+            }
+
             const link = await ctx.prisma.link.update({
                 where: {
                     dbId: input.dbId,
@@ -433,20 +601,5 @@ export const discordRouter = router({
             });
 
             return link;
-        }),
-    getGenerators: protectedProcedure
-        .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
-        .query(async ({ ctx, input }) => {
-            if (!input.guild) {
-                return [];
-            }
-
-            const generators = await ctx.prisma.voiceGenerator.findMany({
-                where: {
-                    guildId: input.guild,
-                },
-            });
-
-            return generators;
         }),
 });

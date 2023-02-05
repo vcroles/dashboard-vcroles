@@ -1,9 +1,13 @@
 import { type inferAsyncReturnType } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
+import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import superjson from "superjson";
 
 import { getServerAuthSession } from "../common/get-server-auth-session";
 import { prisma, authClient } from "../db/client";
+import { appRouter } from "./router/_app";
+import type { GetServerSidePropsContext } from "next";
 
 type CreateContextOptions = {
     session: Session | null;
@@ -38,3 +42,27 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 };
 
 export type Context = inferAsyncReturnType<typeof createContext>;
+
+export const createSSGHelpers = async (
+    context: GetServerSidePropsContext,
+    opts: { useSession: boolean }
+) => {
+    if (opts.useSession) {
+        const session = await getServerAuthSession({
+            req: context.req,
+            res: context.res,
+        });
+
+        return createProxySSGHelpers({
+            router: appRouter,
+            ctx: createContextInner({ session }),
+            transformer: superjson,
+        });
+    }
+
+    return createProxySSGHelpers({
+        router: appRouter,
+        ctx: createContextInner({ session: null }),
+        transformer: superjson,
+    });
+};

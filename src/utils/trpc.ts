@@ -12,7 +12,7 @@ const getBaseUrl = () => {
 };
 
 export const trpc = createTRPCNext<AppRouter>({
-    config({ ctx }) {
+    config() {
         if (typeof window !== "undefined") {
             return {
                 transformer: superjson,
@@ -40,25 +40,11 @@ export const trpc = createTRPCNext<AppRouter>({
                 }),
                 httpBatchLink({
                     url: `${getBaseUrl()}/api/trpc`,
-                    headers() {
-                        if (ctx?.req) {
-                            const {
-                                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                                connection: _connection,
-                                ...headers
-                            } = ctx.req.headers;
-                            return {
-                                ...headers,
-                                "x-ssr": "1",
-                            };
-                        }
-                        return {};
-                    },
                 }),
             ],
         };
     },
-    ssr: true,
+    ssr: false,
 });
 
 /**

@@ -17,9 +17,18 @@
         "noUncheckedIndexedAccess": true,
         "baseUrl": ".",
         "paths": {
-            "~/*": ["prisma/generated/*"]
+            "~/*": ["prisma/generated/*"],
+            "@/components/*": ["src/components/*"],
+            "@/images/*": ["src/images/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.cjs",
+        "**/*.mjs",
+        "next.config.mjs"
+    ],
     "exclude": ["node_modules"]
 }
