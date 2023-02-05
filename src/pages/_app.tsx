@@ -13,6 +13,9 @@ import "../styles/globals.css";
 import "focus-visible";
 import { useRouter } from "next/router";
 
+// I could probably have typed this better, but the types for the
+// entire markdoc library seem a bit strange...
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getNodeText(node: any) {
     let text = "";
