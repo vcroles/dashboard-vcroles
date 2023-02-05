@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import GuildDropdown from "../components/GuildDropdown";
 import { classNames } from "../utils/utils";
-import Head from "next/head";
+import { SeoHeaders } from "@/components/SeoHeaders";
 
 type Query = {
     id: string;
@@ -84,9 +84,11 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
 
     return (
         <>
-            <Head>
-                <title>VC Roles | Dashboard</title>
-            </Head>
+            <SeoHeaders
+                title="VC Roles | Dashboard"
+                description="Select a server to view its dashboard."
+                url="https://vcroles.com/dashboard"
+            />
             <div className="h-full">
                 {/* Collapsible Sidebar */}
                 <Transition.Root show={sidebarOpen} as={Fragment}>
