@@ -17,11 +17,11 @@ The easiest way to create an all link, is using our [dashboard](/dashboard), whi
 ### Using the dashboard
 
 1. Navigate to your server's [dashboard](/dashboard) and click on the "Linked Channels" tab.
-![Linked Channels Tab](</assets/dashboard-sidebar-links.png>)
+   ![Linked Channels Tab](/assets/dashboard-sidebar-links.png)
 2. To create an all link, set the link type to "All" and click "Create".
-![Create Channel](</assets/dashboard-link-create-all.png>)
+   ![Create Channel](/assets/dashboard-link-create-all.png)
 3. Select a role to link to all channels and click "Save".
-![Edit Channel](</assets/dashboard-link-edit-all.png>)
+   ![Edit Channel](/assets/dashboard-link-edit-all.png)
 4. That's it! You have linked all channels in your server. You can now unlink them at any time.
 
 ### Using the commands

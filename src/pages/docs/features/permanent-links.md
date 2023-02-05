@@ -20,9 +20,9 @@ The easiest way to create a permanent link, is using our [dashboard](/dashboard)
 
 1. Navigate to your server's [dashboard](/dashboard) and click on the "Linked Channels" tab.
 2. To create a permanent link, set the link type to "Permanent" and click "Create".
-![Create Channel](</assets/dashboard-link-create-permanent.png>)
+   ![Create Channel](/assets/dashboard-link-create-permanent.png)
 3. Select a role to link to the channel and click "Save".
-![Edit Channel](</assets/dashboard-link-edit.png>)
+   ![Edit Channel](/assets/dashboard-link-edit.png)
 4. That's it! You have linked your first permanent channel. You can now link as many channels as you like, and you can unlink them at any time.
 
 ### Using the commands

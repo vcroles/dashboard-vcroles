@@ -41,7 +41,7 @@ export const ChannelType = {
     GUILD_STAGE_VOICE: 13,
 } as const;
 
-export type ChannelType = (typeof ChannelType)[keyof typeof ChannelType];
+export type ChannelType = typeof ChannelType[keyof typeof ChannelType];
 
 export type Role = {
     id: string;

@@ -20,8 +20,8 @@ The `/link` command allows you to link a channel to a role. [Learn more about li
 
 ### Link Options
 
-- `channel` - The channel to link
-- `role` - The role to link to the channel
+-   `channel` - The channel to link
+-   `role` - The role to link to the channel
 
 ## /unlink
 
@@ -35,8 +35,8 @@ The `/unlink` command allows you to unlink a channel from a role. [Learn more ab
 
 ### Unlink Options
 
-- `channel` - The channel to unlink
-- `role` - The role to unlink from the channel
+-   `channel` - The channel to unlink
+-   `role` - The role to unlink from the channel
 
 ## /suffix add
 
@@ -50,8 +50,8 @@ The `/suffix add` command allows you to link a suffix with a role. [Learn more a
 
 ### Suffix Add Options
 
-- `channel` - The channel to add the suffix to
-- `suffix` - The suffix to add
+-   `channel` - The channel to add the suffix to
+-   `suffix` - The suffix to add
 
 ## /suffix remove
 
@@ -65,7 +65,7 @@ The `/suffix remove` command allows you to unlink a suffix from a role. [Learn m
 
 ### Suffix Remove Options
 
-- `channel` - The channel to remove the suffix from
+-   `channel` - The channel to remove the suffix from
 
 ## /reverse link
 
@@ -79,8 +79,8 @@ The `/reverse link` command allows you to link a role to a channel. [Learn more 
 
 ### Reverse Link Options
 
-- `channel` - The channel to reverse link
-- `role` - The role to reverse link to the channel
+-   `channel` - The channel to reverse link
+-   `role` - The role to reverse link to the channel
 
 ## /reverse unlink
 
@@ -94,8 +94,8 @@ The `/reverse unlink` command allows you to unlink a role from a channel. [Learn
 
 ### Reverse Unlink Options
 
-- `channel` - The channel to reverse unlink
-- `role` - The role to reverse unlink from the channel
+-   `channel` - The channel to reverse unlink
+-   `role` - The role to reverse unlink from the channel
 
 ## /forceunlink
 
@@ -109,4 +109,4 @@ The `/forceunlink` command allows you to force unlink a channel from a role.
 
 ### Force Unlink Options
 
-- `channel_id` - The channel ID to force unlink
+-   `channel_id` - The channel ID to force unlink

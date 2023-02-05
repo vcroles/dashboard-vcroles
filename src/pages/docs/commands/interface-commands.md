@@ -84,7 +84,7 @@ The `/interface limit` command allows you to set the user limit in a voice chann
 
 ### Interface Limit Options
 
-- `limit` - The new user limit
+-   `limit` - The new user limit
 
 ## /interface rename
 
@@ -98,7 +98,7 @@ The `/interface rename` command allows you to rename a voice channel.
 
 ### Interface Rename Options
 
-- `name` - The new name for the channel
+-   `name` - The new name for the channel
 
 ## /interface claim
 
@@ -128,8 +128,8 @@ This command is only available in [premium](/pricing) servers.
 
 ### Interface Invite Options
 
-- `user` - The user to invite
-- `message` - The message to send to the user
+-   `user` - The user to invite
+-   `message` - The message to send to the user
 
 ## /interface permit
 

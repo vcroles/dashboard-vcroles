@@ -26,7 +26,7 @@ The `/analytics toggle` command allows you to toggle analytics on or off.
 
 ### Analytics Toggle Options
 
-- `enabled` - Whether to enable analytics collection
+-   `enabled` - Whether to enable analytics collection
 
 ## /analytics view
 
@@ -50,7 +50,7 @@ The `/analytics graph` command allows you to view analytics about your server in
 
 ### Analytics Graph Options
 
-- `timeframe` - The timeframe to view analytics for (options: `day`, `hour`)
+-   `timeframe` - The timeframe to view analytics for (options: `day`, `hour`)
 
 ## /analytics export
 

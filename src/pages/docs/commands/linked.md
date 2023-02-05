@@ -20,7 +20,7 @@ The `/linked` command allows you to see all the links in your server. [Learn mor
 
 ### Linked Options
 
-- `none`
+-   `none`
 
 ## How can I manage linked channels?
 

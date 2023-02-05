@@ -22,5 +22,5 @@ The `/logging` command allows you to enable or disable audit logging. And select
 
 ### Logging Options
 
-- `enabled` - Whether audit logging is enabled
-- `channel` - The channel to send the audit logs to (default: `current channel`)
+-   `enabled` - Whether audit logging is enabled
+-   `channel` - The channel to send the audit logs to (default: `current channel`)

@@ -10,17 +10,17 @@ Server settings allow you to customize VC Roles for your server. You can use the
 
 The settings you can manage are:
 
-- [TTS](/docs/features/tts)
-- [Audit Log](/docs/features/audit-logs)
+-   [TTS](/docs/features/tts)
+-   [Audit Log](/docs/features/audit-logs)
 
 ## How can I manage server settings?
 
 1. Navigate to your server's [dashboard](/dashboard)
 2. Select your server from the list
 3. Click on the "Server Settings" tab
-![Server Settings](/assets/dashboard-sidebar-settings.png)
+   ![Server Settings](/assets/dashboard-sidebar-settings.png)
 4. You should see a page with a list of settings
-![Server Settings Page](/assets/dashboard-settings.png)
+   ![Server Settings Page](/assets/dashboard-settings.png)
 
 ## How can I manage TTS settings?
 

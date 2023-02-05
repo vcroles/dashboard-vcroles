@@ -20,8 +20,8 @@ The `/permanent link` command allows you to link a channel to a role. [Learn mor
 
 ### Permanent Link Options
 
-- `channel` - The channel to link
-- `role` - The role to link to the channel
+-   `channel` - The channel to link
+-   `role` - The role to link to the channel
 
 ## /permanent unlink
 
@@ -35,8 +35,8 @@ The `/permanent unlink` command allows you to unlink a channel from a role. [Lea
 
 ### Permanent Unlink Options
 
-- `channel` - The channel to unlink
-- `role` - The role to unlink from the channel
+-   `channel` - The channel to unlink
+-   `role` - The role to unlink from the channel
 
 ## /permanent suffix add
 
@@ -50,8 +50,8 @@ The `/permanent suffix add` command allows you to link a suffix with a role. [Le
 
 ### Permanent Suffix Add Options
 
-- `channel` - The channel to add the suffix to
-- `suffix` - The suffix to add
+-   `channel` - The channel to add the suffix to
+-   `suffix` - The suffix to add
 
 ## /permanent suffix remove
 
@@ -65,7 +65,7 @@ The `/permanent suffix remove` command allows you to unlink a suffix from a role
 
 ### Permanent Suffix Remove Options
 
-- `channel` - The channel to remove the suffix from
+-   `channel` - The channel to remove the suffix from
 
 ## /permanent reverse link
 
@@ -79,8 +79,8 @@ The `/permanent reverse link` command allows you to link a role to a channel. [L
 
 ### Permanent Reverse Link Options
 
-- `channel` - The channel to link
-- `role` - The role to link to the channel
+-   `channel` - The channel to link
+-   `role` - The role to link to the channel
 
 ## /permanent reverse unlink
 
@@ -94,5 +94,5 @@ The `/permanent reverse unlink` command allows you to unlink a role from a chann
 
 ### Permanent Reverse Unlink Options
 
-- `channel` - The channel to unlink
-- `role` - The role to unlink from the channel
+-   `channel` - The channel to unlink
+-   `role` - The role to unlink from the channel

@@ -23,11 +23,11 @@ The dashboard is a web interface that allows you to manage your server's setting
 1. Navigate to your server's [dashboard](/dashboard)
 2. Select your server from the list
 3. Click on the "Linked Channels" tab
-![Linked Channels Tab](</assets/dashboard-sidebar-links.png>)
+   ![Linked Channels Tab](/assets/dashboard-sidebar-links.png)
 4. Select a channel to link from the dropdown menu and click "Create"
-![Create Channel](</assets/dashboard-link-create.png>)
+   ![Create Channel](/assets/dashboard-link-create.png)
 5. Select a role to link to the channel and click "Save"
-![Edit Channel](</assets/dashboard-link-edit.png>)
+   ![Edit Channel](/assets/dashboard-link-edit.png)
 
 As you can see above, there are also options for [reverse links](#what-is-a-reverse-link) and [suffixes](#what-is-a-suffix). You may also notice [speaker roles](#what-are-speaker-roles) or [exclude channels](#what-are-excluded-channels). These are explained below.
 
