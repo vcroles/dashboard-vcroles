@@ -55,7 +55,7 @@ The command to add a reverse link is [/reverse link](/docs/commands/linking-and-
 
 A "speaker role" is a type of role specific to stage channels. When a member begins speaking in the linked stage channel, they will be given the linked role. When they stop speaking, the role will be removed.
 
-The command to add a speaker role is [/stage speaker link](/docs/commands/linking-and-unlinking#stage-speaker-link). The command to remove a speaker role is [/stage speaker unlink](/docs/commands/linking-and-unlinking#stage-speaker-unlink).
+The command to add a speaker role is [/stage speaker link](/docs/commands/stage-speaker#stage-speaker-link). The command to remove a speaker role is [/stage speaker unlink](/docs/commands/stage-speaker#stage-speaker-unlink).
 
 ## What are excluded channels?
 

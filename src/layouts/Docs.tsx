@@ -103,6 +103,10 @@ const navigation: NavigationItem[] = [
                 href: "/docs/commands/permanent-links",
             },
             {
+                title: "Stage Speaker",
+                href: "/docs/commands/stage-speaker",
+            },
+            {
                 title: "Voice Channel Generators",
                 href: "/docs/commands/generators",
             },
