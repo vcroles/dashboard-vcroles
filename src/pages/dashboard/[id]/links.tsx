@@ -161,6 +161,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                             if (selectedLink) {
                                 deleteMutation.mutate({
                                     dbId: selectedLink.dbId,
+                                    guild: id,
                                 });
                             }
                             setSelectedLink(null);
