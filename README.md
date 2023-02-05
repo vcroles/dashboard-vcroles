@@ -8,31 +8,31 @@ This is based off the [T3 Stack](https://create.t3.gg/).
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-- [Markdoc](https://markdoc.dev)
-- [Upstash Redis](https://upstash.com)
+-   [Next.js](https://nextjs.org)
+-   [NextAuth.js](https://next-auth.js.org)
+-   [Prisma](https://prisma.io)
+-   [Tailwind CSS](https://tailwindcss.com)
+-   [tRPC](https://trpc.io)
+-   [Markdoc](https://markdoc.dev)
+-   [Upstash Redis](https://upstash.com)
 
 Deployed on [Vercel](https://vercel.com).
 
 ### Databases
 
-- Self-hosted [PostgreSQL](https://www.postgresql.org) database for storing bot data --> uses the `prisma/schema.prisma` schema
-- Upstash [Redis](https://redis.io) database for caching discord data
-- Planetscale [MySQL](https://www.mysql.com) database for storing authentication data --> uses the `prisma/auth.prisma` schema
+-   Self-hosted [PostgreSQL](https://www.postgresql.org) database for storing bot data --> uses the `prisma/schema.prisma` schema
+-   Upstash [Redis](https://redis.io) database for caching discord data
+-   Planetscale [MySQL](https://www.mysql.com) database for storing authentication data --> uses the `prisma/auth.prisma` schema
 
 ## Development
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/)
-- [PNPM](https://pnpm.io)
-- [PostgreSQL](https://www.postgresql.org)
-- [Upstash Redis](https://upstash.com)
-- [MySQL](https://www.mysql.com)
+-   [Node.js](https://nodejs.org/en/)
+-   [PNPM](https://pnpm.io)
+-   [PostgreSQL](https://www.postgresql.org)
+-   [Upstash Redis](https://upstash.com)
+-   [MySQL](https://www.mysql.com)
 
 ### Setup
 
