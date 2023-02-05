@@ -56,8 +56,11 @@ const PremiumFeatures = () => {
                             All the tools you need to upgrade your server
                         </p>
                         <p className="mt-6 text-base leading-7 text-gray-600">
-                            Unlock the full potential of your server with our
-                            premium features.
+                            Unlock the full potential of your server with our{" "}
+                            <span className="font-semibold">
+                                premium features
+                            </span>
+                            .
                         </p>
                     </div>
                     <dl className="col-span-2 grid grid-cols-1 gap-x-8 gap-y-10 text-base leading-7 text-gray-600 sm:grid-cols-2 lg:gap-y-16">

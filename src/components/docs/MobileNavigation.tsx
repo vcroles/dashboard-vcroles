@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dialog } from "@headlessui/react";
 
-import { Logomark } from "@/components/docs/Logo";
+import Logo from "../Logo";
 import { Navigation } from "@/components/docs/Navigation";
 import type { NavigationItem } from "src/layouts/Docs";
 
@@ -86,8 +86,12 @@ export function MobileNavigation({
                         >
                             <CloseIcon className="h-6 w-6 stroke-slate-500" />
                         </button>
-                        <Link href="/" className="ml-6" aria-label="Home page">
-                            <Logomark className="h-9 w-9" />
+                        <Link
+                            href="/"
+                            className="ml-6 bg-white"
+                            aria-label="Home page"
+                        >
+                            <Logo size={36} />
                         </Link>
                     </div>
                     <Navigation navigation={navigation} className="mt-5 px-1" />
