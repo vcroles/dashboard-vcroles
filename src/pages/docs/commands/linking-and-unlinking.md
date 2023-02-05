@@ -96,3 +96,17 @@ The `/reverse unlink` command allows you to unlink a role from a channel. [Learn
 
 - `channel` - The channel to reverse unlink
 - `role` - The role to reverse unlink from the channel
+
+## /forceunlink
+
+The `/forceunlink` command allows you to force unlink a channel from a role.
+
+### Force Unlink Usage
+
+`/forceunlink <channel_id>`
+
+![Force unlinking a channel](/assets/forceunlink-command.png)
+
+### Force Unlink Options
+
+- `channel_id` - The channel ID to force unlink

@@ -23,3 +23,5 @@ This guide will give you an overview of how to quickly get started with the bot.
 ![Edit Channel](</assets/dashboard-link-edit.png>)
 
 **5.** That's it! You have linked your first channel. You can now link as many channels as you like, and you can unlink them at any time.
+
+[Learn more about linking channels](/docs/features/linking)

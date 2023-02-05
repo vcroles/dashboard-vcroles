@@ -38,10 +38,10 @@ Whenever a member joins, leaves, or changes voice channels, a message will be se
 
 ![Example logs](</assets/log-messages.png>)
 
-**6.** As well as audit logging, you can set up TTS in your server now, using the [`/tts setup`](/docs/commands/tts-commands#ttssetup) command. You can choose to enable or disable TTS with this command, and whether or not to lock it to a certain role.
+**6.** As well as audit logging, you can set up TTS in your server now, using the [/tts setup](/docs/commands/tts-commands#ttssetup) command. You can choose to enable or disable TTS with this command, and whether or not to lock it to a certain role.
 
 ![tts setup command](/assets/tts-setup-command.png)
 
 ## That's it! You have completed the basic server setup
 
-To see what else the bot can do, view the [Commands page](/docs/commands/)
+To see what else the bot can do, view the [Features page](/docs/features/linking).

@@ -140,14 +140,14 @@ const navigation: NavigationItem[] = [
             },
         ],
     },
-    {
-        title: "Contributing",
-        links: [
-            { title: "How to contribute", href: "/docs/how-to-contribute" },
-            { title: "Architecture guide", href: "/docs/architecture-guide" },
-            { title: "Design principles", href: "/docs/design-principles" },
-        ],
-    },
+    // {
+    //     title: "Contributing",
+    //     links: [
+    //         { title: "How to contribute", href: "/docs/how-to-contribute" },
+    //         { title: "Architecture guide", href: "/docs/architecture-guide" },
+    //         { title: "Design principles", href: "/docs/design-principles" },
+    //     ],
+    // },
 ];
 
 function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {

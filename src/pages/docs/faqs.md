@@ -16,7 +16,7 @@ For a list of the premium features offered, visit the [pricing page](/pricing).
 
 ## Why does it say 'You must be the channel owner to edit?'
 
-Since our voice generator update, we have added the ability to limit command usage to the owner of the voice channel. If the previous owner has left, you can use the [/interface claim](commands/commands/interface-commands.md#interface-claim) command to become the owner, and get access to the editing commands.
+Since our voice generator update, we have added the ability to limit command usage to the owner of the voice channel. If the previous owner has left, you can use the [/interface claim](/docs/commands/interface-commands#interface-claim) command to become the owner, and get access to the editing commands.
 
 ****
 
@@ -84,7 +84,7 @@ If the bot is offline in the members list, this could be for a few reasons:
 
 ## When I try to use TTS it says _TTS not enabled_
 
-This is likely because you haven't enabled TTS in your server, to do this, use the command `/tts setup`. More info can be found [here](/docs/commands/tts#ttssetup)
+This is likely because you haven't enabled TTS in your server, to do this, use the command `/tts setup`. More info can be found [here](/docs/commands/tts#tts-setup)
 
 ****
 
@@ -92,4 +92,4 @@ This is likely because you haven't enabled TTS in your server, to do this, use t
 
 Whenever you delete a voice, stage, or category channel, all role links will be removed from the database immediately.
 
-If you think this hasn't happened, you can use the [Linked](/docs/commands/linked#linked) command to see all links, and any channels which have been deleted will be shown there. You can then use the [Force Unlink](/docs/commands/force-unlinkingforceunlink) command to remove the ID.
+If you think this hasn't happened, you can use the [Linked](/docs/commands/linked#linked) command to see all links, and any channels which have been deleted will be shown there. You can then use the [Force Unlink](/docs/commands/linking-and-unlinking#forceunlink) command to remove the ID.
