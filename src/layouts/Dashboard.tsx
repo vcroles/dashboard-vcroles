@@ -86,7 +86,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
         <>
             <SeoHeaders
                 title="VC Roles | Dashboard"
-                description="Select a server to view its dashboard."
+                description="View the dashboard for your server"
                 url="https://vcroles.com/dashboard"
             />
             <div className="h-full">
