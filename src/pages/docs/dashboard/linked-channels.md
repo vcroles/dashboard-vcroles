@@ -15,10 +15,10 @@ The dashboard allows you to easily view and manage all your linked channels.
 1. Navigate to your server's [dashboard](/dashboard)
 2. Select your server from the list
 3. Click on the "Linked Channels" tab
-![Linked Channels](/assets/dashboard-sidebar-links.png)
+   ![Linked Channels](/assets/dashboard-sidebar-links.png)
 4. You can now view and manage your linked channels
-![Linked Channels edit](/assets/dashboard-link-edit.png)
-![Linked Channels create](/assets/dashboard-link-create.png)
+   ![Linked Channels edit](/assets/dashboard-link-edit.png)
+   ![Linked Channels create](/assets/dashboard-link-create.png)
 
 ## How can I manage linked channels with commands?
 

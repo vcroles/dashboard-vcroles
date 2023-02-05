@@ -12,15 +12,15 @@ This guide will give you an overview of how to quickly get started with the bot.
 
 **2.** Navigate to your server's dashboard and click on the "Linked Channels" tab.
 
-![Linked Channels Tab](</assets/dashboard-sidebar-links.png>)
+![Linked Channels Tab](/assets/dashboard-sidebar-links.png)
 
 **3.** Select a channel to link from the dropdown menu and click "Create".
 
-![Create Channel](</assets/dashboard-link-create.png>)
+![Create Channel](/assets/dashboard-link-create.png)
 
 **4.** Select a role to link to the channel and click "Save".
 
-![Edit Channel](</assets/dashboard-link-edit.png>)
+![Edit Channel](/assets/dashboard-link-edit.png)
 
 **5.** That's it! You have linked your first channel. You can now link as many channels as you like, and you can unlink them at any time.
 

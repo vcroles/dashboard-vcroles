@@ -20,9 +20,9 @@ The `/tts setup` command allows you to enable or disable TTS, whether to lock it
 
 ### TTS Setup Options
 
-- `enabled` - Whether TTS is enabled
-- `role` - The role that is required to use TTS
-- `leave` - Whether the bot should leave the voice channel after reading the message
+-   `enabled` - Whether TTS is enabled
+-   `role` - The role that is required to use TTS
+-   `leave` - Whether the bot should leave the voice channel after reading the message
 
 ## /tts play
 
@@ -38,9 +38,9 @@ You need to be in a voice channel for this command to work.
 
 ### TTS Play Options
 
-- `message` - The message to read out
-- `language` - The language to read the message in
-- `leave` - Whether the bot should leave the voice channel after reading the message
+-   `message` - The message to read out
+-   `language` - The language to read the message in
+-   `leave` - Whether the bot should leave the voice channel after reading the message
 
 ## /tts stop
 

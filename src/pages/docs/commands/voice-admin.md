@@ -20,7 +20,7 @@ The `/vc mute` command allows you to mute all users in a voice channel.
 
 ### Mute Options
 
-- `who` - The voice channel to mute all users in (default: `everyone but me`)
+-   `who` - The voice channel to mute all users in (default: `everyone but me`)
 
 ## /vc unmute
 
@@ -44,7 +44,7 @@ The `/vc deafen` command allows you to deafen all users in a voice channel.
 
 ### Deafen Options
 
-- `who` - The voice channel to deafen all users in (default: `everyone but me`)
+-   `who` - The voice channel to deafen all users in (default: `everyone but me`)
 
 ## /vc undeafen
 

@@ -16,10 +16,10 @@ You can use voice admin tools by using the [voice admin commands](/docs/commands
 
 You can use any of the following commands to manage voice admin settings:
 
-- [/vc mute](/docs/commands/voice-admin#vc-mute)
-- [/vc unmute](/docs/commands/voice-admin#vc-unmute)
-- [/vc deafen](/docs/commands/voice-admin#vc-deafen)
-- [/vc undeafen](/docs/commands/voice-admin#vc-undeafen)
+-   [/vc mute](/docs/commands/voice-admin#vc-mute)
+-   [/vc unmute](/docs/commands/voice-admin#vc-unmute)
+-   [/vc deafen](/docs/commands/voice-admin#vc-deafen)
+-   [/vc undeafen](/docs/commands/voice-admin#vc-undeafen)
 
 ## How can I mute all users in a voice channel?
 

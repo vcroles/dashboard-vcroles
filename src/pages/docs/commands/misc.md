@@ -20,7 +20,7 @@ The `/update_channel` command allows you to set the channel to receive bot updat
 
 ### Update Channel Options
 
-- `channel` - The channel to receive bot update messages
+-   `channel` - The channel to receive bot update messages
 
 ## /mention
 
@@ -34,8 +34,8 @@ The `/mention` command allows you to mention a channel in chat.
 
 ### Mention Options
 
-- `channel` - The channel to mention
-- `message` - The message to send with the mention. You can use the placeholders `$mention`, `$name` and `$channel` in the message.
+-   `channel` - The channel to mention
+-   `message` - The message to send with the mention. You can use the placeholders `$mention`, `$name` and `$channel` in the message.
 
 ## /about
 

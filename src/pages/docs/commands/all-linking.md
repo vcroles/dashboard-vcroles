@@ -20,7 +20,7 @@ The `/all link` command allows you to link all channels to a role. [Learn more a
 
 ### All Link Options
 
-- `role` - The role to link to all channels
+-   `role` - The role to link to all channels
 
 ## /all unlink
 
@@ -34,7 +34,7 @@ The `/all unlink` command allows you to unlink all channels from a role. [Learn 
 
 ### All Unlink Options
 
-- `role` - The role to unlink from all channels
+-   `role` - The role to unlink from all channels
 
 ## /all suffix add
 
@@ -48,7 +48,7 @@ The `/all suffix add` command allows you to link a suffix with a channel. [Learn
 
 ### All Suffix Add Options
 
-- `suffix` - The suffix to add
+-   `suffix` - The suffix to add
 
 ## /all suffix remove
 
@@ -62,7 +62,7 @@ The `/all suffix remove` command allows you to unlink a suffix from a channel. [
 
 ### All Suffix Remove Options
 
-- `none`
+-   `none`
 
 ## /all reverse link
 
@@ -76,7 +76,7 @@ The `/all reverse link` command allows you to link a role to all channels. [Lear
 
 ### All Reverse Link Options
 
-- `role` - The role to link to all channels
+-   `role` - The role to link to all channels
 
 ## /all reverse unlink
 
@@ -90,7 +90,7 @@ The `/all reverse unlink` command allows you to unlink a role from all channels.
 
 ### All Reverse Unlink Options
 
-- `role` - The role to unlink from all channels
+-   `role` - The role to unlink from all channels
 
 ## /all exclude add
 
@@ -104,7 +104,7 @@ The `/all exclude add` command allows you to exclude a channel from all linking.
 
 ### All Exclude Add Options
 
-- `channel` - The channel to exclude
+-   `channel` - The channel to exclude
 
 ## /all exclude remove
 
@@ -118,4 +118,4 @@ The `/all exclude remove` command allows you to include a channel in all linking
 
 ### All Exclude Remove Options
 
-- `channel` - The channel to include
+-   `channel` - The channel to include

@@ -24,9 +24,9 @@ To enable analytics collection in your server, use the [/analytics toggle](/docs
 
 There are 3 ways to view analytics:
 
-- [/analytics view](/docs/commands/analytics#analytics-view)
-- [/analytics graph](/docs/commands/analytics#analytics-graph)
-- [/analytics export](/docs/commands/analytics#analytics-export)
+-   [/analytics view](/docs/commands/analytics#analytics-view)
+-   [/analytics graph](/docs/commands/analytics#analytics-graph)
+-   [/analytics export](/docs/commands/analytics#analytics-export)
 
 ### Viewing analytics with the `/analytics view` command
 

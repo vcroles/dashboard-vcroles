@@ -15,9 +15,9 @@ Currently you can only view the voice generators, you cannot edit them from the 
 1. Navigate to your server's [dashboard](/dashboard)
 2. Select your server from the list
 3. Click on the "Voice Generators" tab
-![Voice Generators](/assets/dashboard-sidebar-generator.png)
+   ![Voice Generators](/assets/dashboard-sidebar-generator.png)
 4. You should see a page with a list of voice generators
-![Voice Generators Page](/assets/dashboard-voice-generators.png)
+   ![Voice Generators Page](/assets/dashboard-voice-generators.png)
 
 ## How can I manage voice generators?
 

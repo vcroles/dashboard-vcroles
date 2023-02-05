@@ -20,13 +20,13 @@ The `/generator create default` command allows you to create a default voice gen
 
 ### Default Generator Create Options
 
-- `user_editable` - Whether users can edit their generated voice channel
-- `channel_limit` - The maximum number of voice channels that can be generated
-- `category_name` - The name of the category to create the voice channels in
-- `voice_channel_name` - The name of the generator voice channel
-- `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
-- `interface_channel_name` - The name of the interface channel
-- `default_user_limit` - The default user limit for the generated voice channels
+-   `user_editable` - Whether users can edit their generated voice channel
+-   `channel_limit` - The maximum number of voice channels that can be generated
+-   `category_name` - The name of the category to create the voice channels in
+-   `voice_channel_name` - The name of the generator voice channel
+-   `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
+-   `interface_channel_name` - The name of the interface channel
+-   `default_user_limit` - The default user limit for the generated voice channels
 
 ## /generator create numbered
 
@@ -40,14 +40,14 @@ The `/generator create numbered` command allows you to create a numbered voice g
 
 ### Numbered Generator Create Options
 
-- `user_editable` - Whether users can edit their generated voice channel
-- `generated_channel_name` - The name of the generated voice channels
-- `channel_limit` - The maximum number of voice channels that can be generated
-- `category_name` - The name of the category to create the voice channels in
-- `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
-- `interface_channel_name` - The name of the interface channel
-- `voice_channel_name` - The name of the generator voice channel
-- `default_user_limit` - The default user limit for the generated voice channels
+-   `user_editable` - Whether users can edit their generated voice channel
+-   `generated_channel_name` - The name of the generated voice channels
+-   `channel_limit` - The maximum number of voice channels that can be generated
+-   `category_name` - The name of the category to create the voice channels in
+-   `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
+-   `interface_channel_name` - The name of the interface channel
+-   `voice_channel_name` - The name of the generator voice channel
+-   `default_user_limit` - The default user limit for the generated voice channels
 
 ## /generator create clone
 
@@ -61,12 +61,12 @@ The `/generator create clone` command allows you to create a clone voice generat
 
 ### Clone Generator Create Options
 
-- `user_editable` - Whether users can edit their generated voice channel
-- `voice_channel_name` - The name of the generator voice channel
-- `channel_limit` - The maximum number of voice channels that can be generated
-- `category_name` - The name of the category to create the voice channels in
-- `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
-- `interface_channel_name` - The name of the interface channel
+-   `user_editable` - Whether users can edit their generated voice channel
+-   `voice_channel_name` - The name of the generator voice channel
+-   `channel_limit` - The maximum number of voice channels that can be generated
+-   `category_name` - The name of the category to create the voice channels in
+-   `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
+-   `interface_channel_name` - The name of the interface channel
 
 ## /generator create custom_name
 
@@ -80,14 +80,14 @@ The `/generator create custom_name` command allows you to create a custom name v
 
 ### Custom Name Generator Create Options
 
-- `user_editable` - Whether users can edit their generated voice channel
-- `generated_channel_name` - The name of the generated voice channels
-- `channel_limit` - The maximum number of voice channels that can be generated
-- `category_name` - The name of the category to create the voice channels in
-- `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
-- `interface_channel_name` - The name of the interface channel
-- `voice_channel_name` - The name of the generator voice channel
-- `default_user_limit` - The default user limit for the generated voice channels
+-   `user_editable` - Whether users can edit their generated voice channel
+-   `generated_channel_name` - The name of the generated voice channels
+-   `channel_limit` - The maximum number of voice channels that can be generated
+-   `category_name` - The name of the category to create the voice channels in
+-   `create_interface_channel` - Whether to create an interface channel (default: `user_editable`)
+-   `interface_channel_name` - The name of the interface channel
+-   `voice_channel_name` - The name of the generator voice channel
+-   `default_user_limit` - The default user limit for the generated voice channels
 
 ## /generator remove
 
@@ -101,7 +101,7 @@ The `/generator remove` command allows you to remove a voice generator.
 
 ### Generator Remove Options
 
-- `generator` - The generator channel to remove
+-   `generator` - The generator channel to remove
 
 ## /generator force_remove
 
@@ -115,7 +115,7 @@ The `/generator force_remove` command allows you to force remove a voice generat
 
 ### Generator Force Remove Options
 
-- `none`
+-   `none`
 
 ## /generator toggle
 
@@ -129,9 +129,9 @@ The `/generator toggle` command allows you to toggle a default option for a voic
 
 ### Generator Toggle Options
 
-- `generator` - The generator channel to toggle the option for
-- `option` - The option to toggle. [Learn more about generator options](/docs/features/voice-channel-generators#what-other-options-are-available)
-- `state` - The state to toggle the option to
+-   `generator` - The generator channel to toggle the option for
+-   `option` - The option to toggle. [Learn more about generator options](/docs/features/voice-channel-generators#what-other-options-are-available)
+-   `state` - The state to toggle the option to
 
 ## /generator options
 
@@ -145,7 +145,7 @@ The `/generator options` command allows you to view the options for a voice gene
 
 ### Generator Options Options
 
-- `generator` - The generator channel to view the options for
+-   `generator` - The generator channel to view the options for
 
 ## /generator role
 
@@ -159,8 +159,8 @@ Sets the default role the bot edits permissions for e.g. when locking a channel 
 
 ### Generator Role Options
 
-- `generator` - The generator channel to set the role for
-- `default_role` - The role to set as the default role
+-   `generator` - The generator channel to set the role for
+-   `default_role` - The role to set as the default role
 
 ## /generator restrict_role
 
@@ -174,8 +174,8 @@ Sets a role which cannot use the voice channel generator - when a user with that
 
 ### Generator Restrict Role Options
 
-- `generator` - The generator channel to set the restrict role for
-- `role` - The role to set as the restrict role
+-   `generator` - The generator channel to set the restrict role for
+-   `role` - The role to set as the restrict role
 
 ## /generator hide_at_limit
 
@@ -193,5 +193,5 @@ This feature is only available to [Premium](/pricing) users.
 
 ### Generator Hide At Limit Options
 
-- `generator` - The generator channel to set the hide at limit for
-- `enabled` - Whether to enable or disable hiding the generator channel at limit
+-   `generator` - The generator channel to set the hide at limit for
+-   `enabled` - Whether to enable or disable hiding the generator channel at limit

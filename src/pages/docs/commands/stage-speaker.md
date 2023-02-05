@@ -20,8 +20,8 @@ The `/stage speaker link` command allows you to link a stage speaker role to a c
 
 ### Stage Speaker Link Options
 
-- `channel` - The channel to link
-- `role` - The role to link to the channel
+-   `channel` - The channel to link
+-   `role` - The role to link to the channel
 
 ## /stage speaker unlink
 
@@ -35,5 +35,5 @@ The `/stage speaker unlink` command allows you to unlink a stage speaker role fr
 
 ### Stage Speaker Unlink Options
 
-- `channel` - The channel to unlink
-- `role` - The role to unlink from the channel
+-   `channel` - The channel to unlink
+-   `role` - The role to unlink from the channel

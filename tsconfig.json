@@ -19,9 +19,16 @@
         "paths": {
             "~/*": ["prisma/generated/*"],
             "@/components/*": ["src/components/*"],
-            "@/images/*": ["src/images/*"],
+            "@/images/*": ["src/images/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", "next.config.mjs"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.cjs",
+        "**/*.mjs",
+        "next.config.mjs"
+    ],
     "exclude": ["node_modules"]
 }

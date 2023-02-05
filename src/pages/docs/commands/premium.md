@@ -24,7 +24,7 @@ The `/premium activate` command allows you to activate your premium subscription
 
 ### Premium Activate Options
 
-- `license_key` - Your premium license key from gumroad
+-   `license_key` - Your premium license key from gumroad
 
 ## /premium add
 
