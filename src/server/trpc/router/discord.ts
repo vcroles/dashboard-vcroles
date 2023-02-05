@@ -41,7 +41,7 @@ export const ChannelType = {
     GUILD_STAGE_VOICE: 13,
 } as const;
 
-export type ChannelType = typeof ChannelType[keyof typeof ChannelType];
+export type ChannelType = (typeof ChannelType)[keyof typeof ChannelType];
 
 export type Role = {
     id: string;
@@ -203,7 +203,7 @@ export const discordRouter = router({
                 return true;
             }
 
-            return checkUserPermissions(
+            return await checkUserPermissions(
                 account.access_token,
                 account.providerAccountId,
                 input.guild
@@ -402,11 +402,11 @@ export const discordRouter = router({
             }
 
             if (
-                !checkUserPermissions(
+                !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
                     input.guild
-                )
+                ))
             ) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
@@ -450,11 +450,11 @@ export const discordRouter = router({
             }
 
             if (
-                !checkUserPermissions(
+                !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
                     input.guild
-                )
+                ))
             ) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
@@ -511,11 +511,11 @@ export const discordRouter = router({
             }
 
             if (
-                !checkUserPermissions(
+                !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
                     input.guildId
-                )
+                ))
             ) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
@@ -554,11 +554,11 @@ export const discordRouter = router({
             }
 
             if (
-                !checkUserPermissions(
+                !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
                     input.guildId
-                )
+                ))
             ) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
