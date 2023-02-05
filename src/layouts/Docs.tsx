@@ -134,6 +134,10 @@ const navigation: NavigationItem[] = [
                 title: "Premium",
                 href: "/docs/commands/premium",
             },
+            {
+                title: "Miscellaneous",
+                href: "/docs/commands/misc",
+            },
         ],
     },
     {
