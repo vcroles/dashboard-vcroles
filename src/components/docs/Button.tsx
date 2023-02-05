@@ -24,6 +24,6 @@ export function Button({
     return href ? (
         <Link href={href} className={className} {...props} />
     ) : (
-        <button className={className} {...props} />
+        <button className={className} {...props} type="button" />
     );
 }
