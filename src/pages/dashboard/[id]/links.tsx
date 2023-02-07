@@ -12,6 +12,7 @@ import DashboardLayout from "../../../layouts/Dashboard";
 import { type Channel } from "../../../server/trpc/router/discord";
 import { trpc } from "../../../utils/trpc";
 import type { NextPageWithLayout } from "../../_app";
+import { default as NextLink } from "next/link";
 
 type Query = {
     id: string;
@@ -131,13 +132,21 @@ const DashboardLinksPage: NextPageWithLayout = () => {
             >
                 <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                     <div className="space-y-6 sm:space-y-5">
-                        <div>
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">
-                                Links
-                            </h3>
-                            <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                                Edit the links for this server.
-                            </p>
+                        <div className="flex flex-col sm:flex-row sm:items-center">
+                            <div>
+                                <h3 className="text-lg font-medium leading-6 text-gray-900">
+                                    Links
+                                </h3>
+                                <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                                    Edit the links for this server.
+                                </p>
+                            </div>
+                            <NextLink
+                                href="/docs/features/linking"
+                                className="mt-2 text-base leading-7 text-indigo-600 sm:ml-auto sm:mt-0"
+                            >
+                                Learn More &rarr;
+                            </NextLink>
                         </div>
                     </div>
                 </div>

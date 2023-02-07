@@ -3,6 +3,7 @@ import DashboardLayout from "../../../layouts/Dashboard";
 import { trpc } from "../../../utils/trpc";
 import type { NextPageWithLayout } from "../../_app";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 type Query = {
     id: string;
@@ -28,13 +29,22 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
         <div className="mt-6 space-y-8 divide-y divide-gray-200">
             <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                 <div className="space-y-6 sm:space-y-5">
-                    <div>
-                        <h3 className="text-lg font-medium leading-6 text-gray-900">
-                            Generators
-                        </h3>
-                        <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                            View the voice channel generators in this server.
-                        </p>
+                    <div className="flex flex-col sm:flex-row sm:items-center">
+                        <div>
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">
+                                Generators
+                            </h3>
+                            <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                                View the voice channel generators in this
+                                server.
+                            </p>
+                        </div>
+                        <Link
+                            href="/docs/features/voice-channel-generators"
+                            className="mt-2 text-base leading-7 text-indigo-600 sm:ml-auto sm:mt-0"
+                        >
+                            Learn More &rarr;
+                        </Link>
                     </div>
                 </div>
             </div>

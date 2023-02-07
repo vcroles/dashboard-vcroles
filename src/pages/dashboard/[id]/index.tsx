@@ -10,6 +10,7 @@ import ChannelDropdown from "../../../components/ChannelDropdown";
 import type { Channel, Role } from "../../../server/trpc/router/discord";
 import RoleDropdown from "../../../components/RoleDropdown";
 import SavedNotificationContainer from "../../../components/SavedNotification";
+import Link from "next/link";
 
 type Query = {
     id: string;
@@ -108,13 +109,22 @@ const DashboardPage: NextPageWithLayout = () => {
             >
                 <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                     <div className="space-y-6 sm:space-y-5">
-                        <div>
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">
-                                Audit Logging
-                            </h3>
-                            <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                                Edit the audit logging settings for this server.
-                            </p>
+                        <div className="flex flex-col sm:flex-row sm:items-center">
+                            <div>
+                                <h3 className="text-lg font-medium leading-6 text-gray-900">
+                                    Audit Logging
+                                </h3>
+                                <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                                    Edit the audit logging settings for this
+                                    server.
+                                </p>
+                            </div>
+                            <Link
+                                href="/docs/features/audit-logs"
+                                className="mt-2 text-base leading-7 text-indigo-600 sm:ml-auto sm:mt-0"
+                            >
+                                Learn More &rarr;
+                            </Link>
                         </div>
 
                         <div className="space-y-6 sm:space-y-5">
@@ -177,13 +187,21 @@ const DashboardPage: NextPageWithLayout = () => {
                     </div>
 
                     <div className="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
-                        <div>
-                            <h3 className="text-lg font-medium leading-6 text-gray-900">
-                                TTS Settings
-                            </h3>
-                            <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                                Edit the TTS settings for this server.
-                            </p>
+                        <div className="flex flex-col sm:flex-row sm:items-center">
+                            <div>
+                                <h3 className="text-lg font-medium leading-6 text-gray-900">
+                                    TTS Settings
+                                </h3>
+                                <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                                    Edit the TTS settings for this server.
+                                </p>
+                            </div>
+                            <Link
+                                href="/docs/features/tts"
+                                className="mt-2 text-base leading-7 text-indigo-600 sm:ml-auto sm:mt-0"
+                            >
+                                Learn More &rarr;
+                            </Link>
                         </div>
 
                         <div className="space-y-6 sm:space-y-5">
