@@ -64,9 +64,9 @@ export default function Home() {
                                     <div className="mt-8 flex gap-x-4 sm:justify-center">
                                         <Link
                                             href="/dashboard"
-                                            className="inline-block rounded-lg bg-highlight-light px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-highlight-light hover:bg-highlight hover:ring-highlight"
+                                            className="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-500 hover:ring-indigo-500"
                                         >
-                                            Get started
+                                            Get started{" "}
                                             <span
                                                 className="text-indigo-200"
                                                 aria-hidden="true"
@@ -78,7 +78,7 @@ export default function Home() {
                                             href="/docs"
                                             className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                                         >
-                                            Documentation
+                                            Documentation{" "}
                                             <span
                                                 className="text-gray-400"
                                                 aria-hidden="true"
@@ -140,7 +140,7 @@ export default function Home() {
                                     href="/pricing"
                                     className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                                 >
-                                    Learn more
+                                    Learn more{" "}
                                     <span
                                         className="text-gray-400"
                                         aria-hidden="true"

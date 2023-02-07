@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Feature } from "src/constants";
 
 const FeatureSection: React.FC<{ features: Feature[] }> = ({ features }) => {
@@ -48,7 +49,7 @@ const FeatureSection: React.FC<{ features: Feature[] }> = ({ features }) => {
                         {features.map((feature) => (
                             <div key={feature.name}>
                                 <dt>
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-highlight-light text-white">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600 text-white">
                                         <feature.icon
                                             className="h-8 w-8"
                                             aria-hidden="true"
@@ -60,6 +61,12 @@ const FeatureSection: React.FC<{ features: Feature[] }> = ({ features }) => {
                                 </dt>
                                 <dd className="mt-2 text-base text-gray-600">
                                     {feature.description}
+                                </dd>
+                                <dd className="mt-2 text-base font-semibold leading-7 text-indigo-600">
+                                    <Link href={feature.link}>
+                                        Learn more{" "}
+                                        <span aria-hidden="true">→</span>
+                                    </Link>
                                 </dd>
                             </div>
                         ))}
