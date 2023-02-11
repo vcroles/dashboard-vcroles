@@ -1,5 +1,9 @@
-User-agent: *
-Disallow: /dashboard/
-
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://www.vcroles.com
+
+# Sitemaps
+Sitemap: https://www.vcroles.com/sitemap.xml
