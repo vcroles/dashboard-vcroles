@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Image from "next/image";
 import { useSession, signIn } from "next-auth/react";
 
 import { trpc } from "../../utils/trpc";
