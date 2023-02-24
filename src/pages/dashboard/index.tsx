@@ -90,7 +90,8 @@ const Dashboard: NextPage = () => {
                                         className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
                                     >
                                         <div className="flex flex-1 flex-col p-8">
-                                            <Image
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img
                                                 className="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
                                                 src={
                                                     guild.icon
