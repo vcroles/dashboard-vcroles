@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useSession } from "next-auth/react";
 
 import { trpc } from "../utils/trpc";
@@ -14,7 +15,6 @@ import {
 import Logo from "../components/Logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import GuildDropdown from "../components/GuildDropdown";
 import { classNames } from "../utils/utils";
 import { SeoHeaders } from "@/components/SeoHeaders";
@@ -188,7 +188,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                         <div className="group block flex-shrink-0">
                                             <div className="flex items-center">
                                                 <div>
-                                                    <Image
+                                                    <img
                                                         className="inline-block h-10 w-10 rounded-full"
                                                         src={
                                                             session?.user
@@ -265,7 +265,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                             <div className="group block w-full flex-shrink-0">
                                 <div className="flex items-center">
                                     <div>
-                                        <Image
+                                        <img
                                             className="inline-block h-10 w-10 rounded-full"
                                             src={
                                                 session?.user?.image ??
