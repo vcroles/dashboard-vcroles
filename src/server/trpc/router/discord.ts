@@ -41,7 +41,7 @@ export const ChannelType = {
     GUILD_STAGE_VOICE: 13,
 } as const;
 
-export type ChannelType = typeof ChannelType[keyof typeof ChannelType];
+export type ChannelType = (typeof ChannelType)[keyof typeof ChannelType];
 
 export type Role = {
     id: string;
@@ -137,8 +137,13 @@ const linkSchema = z.object({
 const checkUserPermissions = async (
     accessToken: string | null,
     accountId: string,
-    guildId: string
+    guildId: string,
+    userId: string
 ) => {
+    if (userId === env.DISCORD_DEV_USER) {
+        return true;
+    }
+
     if (!accessToken) {
         return false;
     }
@@ -206,7 +211,8 @@ export const discordRouter = router({
             return await checkUserPermissions(
                 account.access_token,
                 account.providerAccountId,
-                input.guild
+                input.guild,
+                account.providerAccountId
             );
         }),
     getGuildChannels: protectedProcedure
@@ -405,7 +411,8 @@ export const discordRouter = router({
                 !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
-                    input.guild
+                    input.guild,
+                    account.providerAccountId
                 ))
             ) {
                 throw new TRPCError({
@@ -453,7 +460,8 @@ export const discordRouter = router({
                 !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
-                    input.guild
+                    input.guild,
+                    account.providerAccountId
                 ))
             ) {
                 throw new TRPCError({
@@ -514,7 +522,8 @@ export const discordRouter = router({
                 !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
-                    input.guildId
+                    input.guildId,
+                    account.providerAccountId
                 ))
             ) {
                 throw new TRPCError({
@@ -557,7 +566,8 @@ export const discordRouter = router({
                 !(await checkUserPermissions(
                     account.access_token,
                     account.providerAccountId,
-                    input.guildId
+                    input.guildId,
+                    account.providerAccountId
                 ))
             ) {
                 throw new TRPCError({

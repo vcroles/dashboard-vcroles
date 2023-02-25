@@ -40,6 +40,9 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
             guild: id,
         });
 
+    const { data: guilds } = trpc.discord.getGuilds.useQuery();
+    const filteredGuilds = guilds?.filter((g) => g.includesBot);
+
     const navigation = [
         {
             name: "Server Settings",
@@ -69,18 +72,27 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
         if (typeof window !== "undefined") {
             router.push("/api/auth/signin");
         }
-        return null;
+        return (
+            <SeoHeaders
+                title="VC Roles | Dashboard"
+                description="View the dashboard for your server"
+                url="https://vcroles.com/dashboard"
+            />
+        );
     }
 
     if (!allowed && !loading) {
         if (typeof window !== "undefined") {
             router.push("/dashboard");
         }
-        return null;
+        return (
+            <SeoHeaders
+                title="VC Roles | Dashboard"
+                description="View the dashboard for your server"
+                url="https://vcroles.com/dashboard"
+            />
+        );
     }
-
-    const { data: guilds } = trpc.discord.getGuilds.useQuery();
-    const filteredGuilds = guilds?.filter((g) => g.includesBot);
 
     return (
         <>

@@ -27,6 +27,7 @@ export const serverSchema = z.object({
     UPSTASH_REDIS_REST_URL: z.string().url(),
     UPSTASH_REDIS_REST_TOKEN: z.string(),
     SUPPORT_SERVER_INVITE: z.string().url(),
+    DISCORD_DEV_USER: z.string(),
 });
 
 /**
