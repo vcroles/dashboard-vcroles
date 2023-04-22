@@ -1,7 +1,7 @@
 import { type inferAsyncReturnType } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
-import { createProxySSGHelpers } from "@trpc/react-query/ssg";
+import { createServerSideHelpers } from "@trpc/react-query/server";
 import superjson from "superjson";
 
 import { getServerAuthSession } from "../common/get-server-auth-session";
@@ -53,14 +53,14 @@ export const createSSGHelpers = async (
             res: context.res,
         });
 
-        return createProxySSGHelpers({
+        return createServerSideHelpers({
             router: appRouter,
             ctx: createContextInner({ session }),
             transformer: superjson,
         });
     }
 
-    return createProxySSGHelpers({
+    return createServerSideHelpers({
         router: appRouter,
         ctx: createContextInner({ session: null }),
         transformer: superjson,
