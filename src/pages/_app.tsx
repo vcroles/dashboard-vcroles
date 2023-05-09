@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
 import type { NextPage } from "next";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
@@ -101,13 +100,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
                         tableOfContents={tableOfContents}
                     >
                         <Component {...pageProps} />
-                        <Analytics />
                     </DocsLayout>
                 ) : (
-                    <>
-                        <Component {...pageProps} />
-                        <Analytics />
-                    </>
+                    <Component {...pageProps} />
                 )
             )}
         </SessionProvider>
