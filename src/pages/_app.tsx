@@ -9,7 +9,6 @@ import { DocsLayout } from "src/layouts/Docs";
 
 import "../styles/globals.css";
 
-import "focus-visible";
 import { useRouter } from "next/router";
 
 // I could probably have typed this better, but the types for the
@@ -42,7 +41,7 @@ function collectHeadings(nodes: any, slugify = slugifyWithCounter()) {
                 if (node.name === "h3") {
                     if (!sections[sections.length - 1]) {
                         throw new Error(
-                            "Cannot add `h3` to table of contents without a preceding `h2`"
+                            "Cannot add `h3` to table of contents without a preceding `h2`",
                         );
                     }
                     sections[sections.length - 1].children.push({
@@ -103,7 +102,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
                     </DocsLayout>
                 ) : (
                     <Component {...pageProps} />
-                )
+                ),
             )}
         </SessionProvider>
     );

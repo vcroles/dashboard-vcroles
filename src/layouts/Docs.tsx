@@ -1,14 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { classNames } from "src/utils/utils";
 
-import { MobileNavigation } from "@/components/docs/MobileNavigation";
 import { Navigation } from "@/components/docs/Navigation";
 import { Prose } from "@/components/docs/Prose";
 import { ThemeSelector } from "@/components/docs/ThemeSelector";
 import { SeoHeaders } from "@/components/SeoHeaders";
 import Logo from "@/components/Logo";
+
+const MobileNavigation = dynamic<{ navigation: NavigationItem[] }>(() =>
+    import("../components/docs/MobileNavigation").then(
+        (mod) => mod.MobileNavigation,
+    ),
+);
 
 export type NavigationItem = {
     title: string;
@@ -140,14 +146,6 @@ const navigation: NavigationItem[] = [
             },
         ],
     },
-    // {
-    //     title: "Contributing",
-    //     links: [
-    //         { title: "How to contribute", href: "/docs/how-to-contribute" },
-    //         { title: "Architecture guide", href: "/docs/architecture-guide" },
-    //         { title: "Design principles", href: "/docs/design-principles" },
-    //     ],
-    // },
 ];
 
 function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -178,7 +176,7 @@ function Header({ navigation }: { navigation: NavigationItem[] }) {
                 "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:bg-slate-900 dark:shadow-none sm:px-6 lg:px-8",
                 isScrolled
                     ? "dark:bg-slate-900/95 dark:backdrop-blur dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75"
-                    : "dark:bg-transparent"
+                    : "dark:bg-transparent",
             )}
         >
             <div className="mr-6 flex lg:hidden">
@@ -218,7 +216,7 @@ export type TableOfContents = {
 
 function useTableOfContents(tableOfContents: TableOfContents) {
     const [currentSection, setCurrentSection] = useState(
-        tableOfContents[0]?.id
+        tableOfContents[0]?.id,
     );
 
     const getHeadings = useCallback(
@@ -242,7 +240,7 @@ function useTableOfContents(tableOfContents: TableOfContents) {
                     return { id, top };
                 });
         },
-        []
+        [],
     );
 
     useEffect(() => {
@@ -284,14 +282,15 @@ export function DocsLayout({
     description: string;
 }) {
     const router = useRouter();
+
     const allLinks = navigation.flatMap((section) => section.links);
     const linkIndex = allLinks.findIndex(
-        (link) => link.href === router.pathname
+        (link) => link.href === router.pathname,
     );
     const previousPage = allLinks[linkIndex - 1];
     const nextPage = allLinks[linkIndex + 1];
     const section = navigation.find((section) =>
-        section.links.find((link) => link.href === router.pathname)
+        section.links.find((link) => link.href === router.pathname),
     );
     const currentSection = useTableOfContents(tableOfContents);
 
@@ -317,8 +316,8 @@ export function DocsLayout({
             <div className="relative mx-auto flex max-w-8xl justify-center bg-white dark:bg-slate-900 sm:px-2 lg:px-8 xl:px-12">
                 <div className="hidden lg:relative lg:block lg:flex-none">
                     <div className="absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden" />
-                    <div className="absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block" />
-                    <div className="absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block" />
+                    <div className="absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block" />
+                    <div className="absolute bottom-0 right-0 top-28 hidden w-px bg-slate-800 dark:block" />
                     <div className="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto overflow-x-hidden py-16 pl-0.5">
                         <Navigation
                             navigation={navigation}
@@ -326,7 +325,7 @@ export function DocsLayout({
                         />
                     </div>
                 </div>
-                <div className="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16">
+                <div className="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pl-8 lg:pr-0 xl:px-16">
                     <article>
                         {(title || section) && (
                             <header className="mb-9 space-y-1">
@@ -398,7 +397,7 @@ export function DocsLayout({
                                                     className={classNames(
                                                         isActive(section)
                                                             ? "text-sky-500"
-                                                            : "font-normal text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+                                                            : "font-normal text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300",
                                                     )}
                                                 >
                                                     {section.title}
@@ -417,7 +416,7 @@ export function DocsLayout({
                                                                     href={`#${subSection.id}`}
                                                                     className={
                                                                         isActive(
-                                                                            subSection
+                                                                            subSection,
                                                                         )
                                                                             ? "text-sky-500"
                                                                             : "hover:text-slate-600 dark:hover:text-slate-300"
@@ -428,7 +427,7 @@ export function DocsLayout({
                                                                     }
                                                                 </Link>
                                                             </li>
-                                                        )
+                                                        ),
                                                     )}
                                                 </ol>
                                             )}
