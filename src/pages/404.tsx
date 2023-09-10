@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SeoHeaders } from "src/components/SeoHeaders";
+import { SeoHeaders } from "../components/SeoHeaders";
 
 export default function NotFound() {
     return (

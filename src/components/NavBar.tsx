@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-import Logo from "../components/Logo";
+import Logo from "./Logo";
 
 import { navigation } from "../constants";
 import { classNames } from "../utils/utils";
@@ -52,7 +52,7 @@ const NavBar = () => {
                                     "font-semibold text-gray-900 hover:text-gray-900",
                                     currentPage === item.href
                                         ? "font-extrabold"
-                                        : ""
+                                        : "",
                                 )}
                             >
                                 {item.name}
@@ -67,7 +67,7 @@ const NavBar = () => {
                             className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                             type="button"
                         >
-                            {session ? `Log out` : `Log in`}
+                            {session ? "Log out" : "Log in"}
                         </button>
                     </div>
                 </nav>
@@ -109,10 +109,10 @@ const NavBar = () => {
                                             key={item.name}
                                             href={item.href}
                                             className={classNames(
-                                                "-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10",
+                                                "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10",
                                                 currentPage === item.href
                                                     ? "font-extrabold"
-                                                    : ""
+                                                    : "",
                                             )}
                                         >
                                             {item.name}
@@ -126,10 +126,10 @@ const NavBar = () => {
                                                 ? signOut()
                                                 : signIn("discord")
                                         }
-                                        className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
                                         type="button"
                                     >
-                                        {session ? `Log out` : `Log in`}
+                                        {session ? "Log out" : "Log in"}
                                     </button>
                                 </div>
                             </div>
