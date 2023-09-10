@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-import Logo from "../components/Logo";
+import Logo from "./Logo";
 
 import { navigation } from "../constants";
 import { classNames } from "../utils/utils";
@@ -67,7 +67,7 @@ const NavBar = () => {
                             className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                             type="button"
                         >
-                            {session ? `Log out` : `Log in`}
+                            {session ? "Log out" : "Log in"}
                         </button>
                     </div>
                 </nav>
@@ -129,7 +129,7 @@ const NavBar = () => {
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
                                         type="button"
                                     >
-                                        {session ? `Log out` : `Log in`}
+                                        {session ? "Log out" : "Log in"}
                                     </button>
                                 </div>
                             </div>
