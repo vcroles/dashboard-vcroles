@@ -15,8 +15,8 @@ dependencies:
     specifier: ^0.3.0
     version: 0.3.0(@types/react@18.0.38)(react@18.2.0)
   '@markdoc/next.js':
-    specifier: ^0.2.2
-    version: 0.2.2(@markdoc/markdoc@0.3.0)(next@13.4.19)(react@18.2.0)
+    specifier: ^0.3.0
+    version: 0.3.3(@markdoc/markdoc@0.3.0)(next@13.4.19)(react@18.2.0)
   '@next-auth/prisma-adapter':
     specifier: ^1.0.6
     version: 1.0.6(@prisma/client@5.0.0)(next-auth@4.22.1)
@@ -64,7 +64,7 @@ dependencies:
     version: 4.22.1(next@13.4.19)(react-dom@18.2.0)(react@18.2.0)
   next-sitemap:
     specifier: ^4.0.7
-    version: 4.0.7(@next/env@13.4.17)(next@13.4.19)
+    version: 4.0.7(@next/env@13.4.19)(next@13.4.19)
   postcss-focus-visible:
     specifier: ^9.0.0
     version: 9.0.0(postcss@8.4.23)
@@ -272,8 +272,8 @@ packages:
       '@types/markdown-it': 12.2.3
     dev: false
 
-  /@markdoc/next.js@0.2.2(@markdoc/markdoc@0.3.0)(next@13.4.19)(react@18.2.0):
-    resolution: {integrity: sha512-qHCwcTwyHOHrvxmUcueL+RREhHJxef9p6MS45CxHIChV9JHBcWOJt9v++T8HCf4iCbCdnIVCcR9OYzOj3Kq7XQ==}
+  /@markdoc/next.js@0.3.3(@markdoc/markdoc@0.3.0)(next@13.4.19)(react@18.2.0):
+    resolution: {integrity: sha512-BmrEv76DiGpybTUzDNl6cQNZq7n4rQ+G4AWmpd/+2VlwVTgpT0M165No+Rl4Z3TEeaM66c54n4TdyRh/yY2YwA==}
     peerDependencies:
       '@markdoc/markdoc': '*'
       next: '*'
@@ -293,10 +293,6 @@ packages:
     dependencies:
       '@prisma/client': 5.0.0(prisma@5.0.0)
       next-auth: 4.22.1(next@13.4.19)(react-dom@18.2.0)(react@18.2.0)
-    dev: false
-
-  /@next/env@13.4.17:
-    resolution: {integrity: sha512-rSGmt25Wxk0vGzZxDWBLE8jVW/C/JN20P3IhHc2tKVajEGy/oxStD9PbqcbCz6yOub82jYAWLqnoMITnssB+3g==}
     dev: false
 
   /@next/env@13.4.19:
@@ -2310,7 +2306,7 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-sitemap@4.0.7(@next/env@13.4.17)(next@13.4.19):
+  /next-sitemap@4.0.7(@next/env@13.4.19)(next@13.4.19):
     resolution: {integrity: sha512-S2g5IwJeO0+ecmFq981fb+Mw9YWmntOuN/qTCxclSkUibOJ8qKIOye0vn6NEJ1S4tKhbY+MTYKgJpNdFZYxLoA==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -2319,7 +2315,7 @@ packages:
       next: '*'
     dependencies:
       '@corex/deepmerge': 4.0.43
-      '@next/env': 13.4.17
+      '@next/env': 13.4.19
       minimist: 1.2.8
       next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
     dev: false
