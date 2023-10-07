@@ -47,7 +47,7 @@
         "autoprefixer": "^10.4.14",
         "eslint": "^8.39.0",
         "eslint-config-next": "13.4.19",
-        "postcss": "^8.4.23",
+        "postcss": "^8.4.31",
         "prettier": "^3.0.0",
         "prettier-plugin-tailwindcss": "^0.5.0",
         "prisma": "^5.0.0",
