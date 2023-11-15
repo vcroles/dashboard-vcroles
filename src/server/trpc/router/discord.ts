@@ -56,7 +56,7 @@ const fetchBotGuilds = async () => {
 
 const fetchUserGuilds = async (
     access_token: string | null,
-    discordID: string
+    discordID: string,
 ) => {
     if (!access_token) {
         return [];
@@ -102,14 +102,14 @@ const fetchUserGuilds = async (
 
 const fetchMutualGuilds = async (
     access_token: string | null,
-    discordID: string
+    discordID: string,
 ) => {
     const userGuilds = await fetchUserGuilds(access_token, discordID);
 
     const botGuilds = await fetchBotGuilds();
 
     const mutualGuilds = userGuilds.filter((guild) =>
-        botGuilds.some((botGuild) => botGuild.id === guild.id)
+        botGuilds.some((botGuild) => botGuild.id === guild.id),
     );
 
     return mutualGuilds;
@@ -138,7 +138,7 @@ const checkUserPermissions = async (
     accessToken: string | null,
     accountId: string,
     guildId: string,
-    userId: string
+    userId: string,
 ) => {
     if (userId === env.DISCORD_DEV_USER) {
         return true;
@@ -153,7 +153,7 @@ const checkUserPermissions = async (
     return mutualGuilds.some(
         (guild) =>
             guild.id === guildId &&
-            (guild.owner === true || guild.permissions & (1 << 3))
+            (guild.owner === true || guild.permissions & (1 << 3)),
     );
 };
 
@@ -171,11 +171,11 @@ export const discordRouter = router({
 
         const userGuilds = await fetchUserGuilds(
             account.access_token,
-            account.providerAccountId
+            account.providerAccountId,
         );
 
         const guilds = userGuilds.filter(
-            (guild) => guild.owner === true || guild.permissions & (1 << 3)
+            (guild) => guild.owner === true || guild.permissions & (1 << 3),
         );
 
         const botGuilds = await fetchBotGuilds();
@@ -184,7 +184,7 @@ export const discordRouter = router({
             return {
                 ...guild,
                 includesBot: botGuilds.some(
-                    (botGuild) => botGuild.id === guild.id
+                    (botGuild) => botGuild.id === guild.id,
                 ),
             };
         });
@@ -212,7 +212,7 @@ export const discordRouter = router({
                 account.access_token,
                 account.providerAccountId,
                 input.guild,
-                account.providerAccountId
+                account.providerAccountId,
             );
         }),
     getGuildChannels: protectedProcedure
@@ -266,7 +266,7 @@ export const discordRouter = router({
                         channel.type === 0 ||
                         channel.type === 2 ||
                         channel.type === 4 ||
-                        channel.type === 13
+                        channel.type === 13,
                 );
 
             await redis.set(cacheKey, JSON.stringify(channels), {
@@ -391,7 +391,7 @@ export const discordRouter = router({
                     ttsRole: z.string().optional(),
                     ttsLeave: z.boolean(),
                 }),
-            })
+            }),
         )
         .mutation(async ({ ctx, input }) => {
             const account = await ctx.authClient.account.findFirst({
@@ -412,7 +412,7 @@ export const discordRouter = router({
                     account.access_token,
                     account.providerAccountId,
                     input.guild,
-                    account.providerAccountId
+                    account.providerAccountId,
                 ))
             ) {
                 throw new TRPCError({
@@ -461,7 +461,7 @@ export const discordRouter = router({
                     account.access_token,
                     account.providerAccountId,
                     input.guild,
-                    account.providerAccountId
+                    account.providerAccountId,
                 ))
             ) {
                 throw new TRPCError({
@@ -502,7 +502,7 @@ export const discordRouter = router({
                 guildId: z.string(),
                 id: z.string(),
                 type: linkTypeSchema,
-            })
+            }),
         )
         .mutation(async ({ ctx, input }) => {
             const account = await ctx.authClient.account.findFirst({
@@ -523,7 +523,7 @@ export const discordRouter = router({
                     account.access_token,
                     account.providerAccountId,
                     input.guildId,
-                    account.providerAccountId
+                    account.providerAccountId,
                 ))
             ) {
                 throw new TRPCError({
@@ -546,7 +546,7 @@ export const discordRouter = router({
         .input(
             linkSchema.extend({
                 dbId: z.string(),
-            })
+            }),
         )
         .mutation(async ({ ctx, input }) => {
             const account = await ctx.authClient.account.findFirst({
@@ -567,7 +567,7 @@ export const discordRouter = router({
                     account.access_token,
                     account.providerAccountId,
                     input.guildId,
-                    account.providerAccountId
+                    account.providerAccountId,
                 ))
             ) {
                 throw new TRPCError({

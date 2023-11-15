@@ -45,7 +45,7 @@ const ChannelSelectionBox: React.FC<{
                             onClick={(e) => {
                                 e.preventDefault();
                                 setSelected(
-                                    selected.filter((r) => r.id !== channel.id)
+                                    selected.filter((r) => r.id !== channel.id),
                                 );
                             }}
                             className="ml-2"

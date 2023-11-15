@@ -39,7 +39,7 @@ export function Callout({
         <div
             className={classNames(
                 "my-8 flex rounded-3xl p-6",
-                styles[type].container
+                styles[type].container,
             )}
         >
             <IconComponent className="h-8 w-8 flex-none" />
@@ -47,7 +47,7 @@ export function Callout({
                 <p
                     className={classNames(
                         "font-display m-0 text-xl",
-                        styles[type].title
+                        styles[type].title,
                     )}
                 >
                     {title}

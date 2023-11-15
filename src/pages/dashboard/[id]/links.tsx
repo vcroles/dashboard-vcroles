@@ -40,7 +40,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
     const [selectedLink, setSelectedLink] = useState<Link | null>(null);
 
     const selectedChannel = channels?.find(
-        (channel) => channel.id === selectedLink?.id
+        (channel) => channel.id === selectedLink?.id,
     );
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -49,7 +49,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
 
     const [createLinkType, setCreateLinkType] = useState<LinkType>("REGULAR");
     const [createLinkChannel, setCreateLinkChannel] = useState<Channel | null>(
-        null
+        null,
     );
     const allowedChannelTypes =
         createLinkType === "REGULAR"
@@ -187,15 +187,15 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                     selected={
                                         roles?.filter((r) =>
                                             selectedLink.linkedRoles.includes(
-                                                r.id
-                                            )
+                                                r.id,
+                                            ),
                                         ) ?? []
                                     }
                                     setSelected={(selected) => {
                                         setSelectedLink({
                                             ...selectedLink,
                                             linkedRoles: selected.map(
-                                                (r) => r.id
+                                                (r) => r.id,
                                             ),
                                         });
                                     }}
@@ -206,15 +206,15 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                     selected={
                                         roles?.filter((r) =>
                                             selectedLink.reverseLinkedRoles.includes(
-                                                r.id
-                                            )
+                                                r.id,
+                                            ),
                                         ) ?? []
                                     }
                                     setSelected={(selected) => {
                                         setSelectedLink({
                                             ...selectedLink,
                                             reverseLinkedRoles: selected.map(
-                                                (r) => r.id
+                                                (r) => r.id,
                                             ),
                                         });
                                     }}
@@ -247,15 +247,15 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                         selected={
                                             roles?.filter((r) =>
                                                 selectedLink.speakerRoles.includes(
-                                                    r.id
-                                                )
+                                                    r.id,
+                                                ),
                                             ) ?? []
                                         }
                                         setSelected={(selected) => {
                                             setSelectedLink({
                                                 ...selectedLink,
                                                 speakerRoles: selected.map(
-                                                    (r) => r.id
+                                                    (r) => r.id,
                                                 ),
                                             });
                                         }}
@@ -271,21 +271,21 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                             channels?.filter(
                                                 (c) =>
                                                     c.type === 2 ||
-                                                    c.type === 13
+                                                    c.type === 13,
                                             ) ?? []
                                         }
                                         selected={
                                             channels?.filter((c) =>
                                                 selectedLink.excludeChannels.includes(
-                                                    c.id
-                                                )
+                                                    c.id,
+                                                ),
                                             ) ?? []
                                         }
                                         setSelected={(selected) => {
                                             setSelectedLink({
                                                 ...selectedLink,
                                                 excludeChannels: selected.map(
-                                                    (c) => c.id
+                                                    (c) => c.id,
                                                 ),
                                             });
                                         }}
@@ -298,13 +298,14 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                         onClick={() => {
                                             const previousLink = links?.find(
                                                 (l) =>
-                                                    l.dbId === selectedLink.dbId
+                                                    l.dbId ===
+                                                    selectedLink.dbId,
                                             );
                                             if (previousLink) {
                                                 // check if the link has changed
                                                 if (
                                                     JSON.stringify(
-                                                        previousLink
+                                                        previousLink,
                                                     ) ===
                                                     JSON.stringify(selectedLink)
                                                 ) {
@@ -372,8 +373,8 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                         channels={
                                             channels?.filter((c) =>
                                                 allowedChannelTypes.includes(
-                                                    c.type
-                                                )
+                                                    c.type,
+                                                ),
                                             ) ?? []
                                         }
                                         selectedChannel={createLinkChannel}
@@ -395,7 +396,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                     (l) =>
                                         l.type === createLinkType &&
                                         (l.id === createLinkChannel?.id ||
-                                            l.id === id)
+                                            l.id === id),
                                 );
                                 if (link) {
                                     setSelectedLink(link);

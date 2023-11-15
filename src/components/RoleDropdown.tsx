@@ -27,7 +27,7 @@ const RoleDropdown: React.FC<{
                     <Listbox.Button
                         className={classNames(
                             disabled ? "cursor-default" : "cursor-pointer",
-                            "relative w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                            "relative w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm",
                         )}
                     >
                         <span className="flex items-center">
@@ -38,11 +38,11 @@ const RoleDropdown: React.FC<{
                                         style={{
                                             backgroundColor:
                                                 `#${selectedRole.color.toString(
-                                                    16
+                                                    16,
                                                 )}` === "#0"
                                                     ? "#99AAb5"
                                                     : `#${selectedRole.color.toString(
-                                                          16
+                                                          16,
                                                       )}`,
                                         }}
                                     />
@@ -85,7 +85,7 @@ const RoleDropdown: React.FC<{
                                             active
                                                 ? "bg-indigo-600 text-white"
                                                 : "text-gray-900",
-                                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                                            "relative cursor-default select-none py-2 pl-3 pr-9",
                                         )
                                     }
                                     value={role}
@@ -98,11 +98,11 @@ const RoleDropdown: React.FC<{
                                                     style={{
                                                         backgroundColor:
                                                             `#${role.color.toString(
-                                                                16
+                                                                16,
                                                             )}` === "#0"
                                                                 ? "#99AAb5"
                                                                 : `#${role.color.toString(
-                                                                      16
+                                                                      16,
                                                                   )}`,
                                                     }}
                                                 />
@@ -111,7 +111,7 @@ const RoleDropdown: React.FC<{
                                                         selected
                                                             ? "font-semibold"
                                                             : "font-normal",
-                                                        "ml-3 block truncate"
+                                                        "ml-3 block truncate",
                                                     )}
                                                 >
                                                     {role.name}
@@ -124,7 +124,7 @@ const RoleDropdown: React.FC<{
                                                         active
                                                             ? "text-white"
                                                             : "text-indigo-600",
-                                                        "absolute inset-y-0 right-0 flex items-center pr-4"
+                                                        "absolute inset-y-0 right-0 flex items-center pr-4",
                                                     )}
                                                 >
                                                     <CheckIcon
