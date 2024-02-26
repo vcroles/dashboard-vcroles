@@ -49,7 +49,7 @@ dependencies:
     version: 1.23.4
   '@vercel/og':
     specifier: ^0.6.0
-    version: 0.6.0
+    version: 0.6.2
   axios:
     specifier: ^1.6.0
     version: 1.6.7
@@ -448,8 +448,8 @@ packages:
     resolution: {integrity: sha512-fqeucJ3LH0e1eyFdT0zRx+oETLancu5+n4lhiYECyEz6H2RDskPJHJYHkVc0LhkU4Uv7fuEnppKU3nVKNzMh8g==}
     requiresBuild: true
 
-  /@resvg/resvg-wasm@2.6.0:
-    resolution: {integrity: sha512-iDkBM6Ivex8nULtBu8cX670/lfsGxq8U1cuqE+qS9xFpPQP1enPdVm/33Kq3+B+bAldA+AHNZnCgpmlHo/fZrQ==}
+  /@resvg/resvg-wasm@2.4.0:
+    resolution: {integrity: sha512-C7c51Nn4yTxXFKvgh2txJFNweaVcfUPQxwEUFw4aWsCmfiBDJsTSwviIF8EcwjQ6k8bPyMWCl1vw4BdxE569Cg==}
     engines: {node: '>= 10'}
     dev: false
 
@@ -859,11 +859,11 @@ packages:
       - encoding
     dev: false
 
-  /@vercel/og@0.6.0:
-    resolution: {integrity: sha512-dLHUWTZnMAWJtXZPb6wQHoFwcxd/OaxYPW1HOxL5alT1AphF3ODC4clUoQsofrKdNGRkKfNlYZQh6AvHD6hryA==}
+  /@vercel/og@0.6.2:
+    resolution: {integrity: sha512-OTe0KE37F5Y2eTys6eMnfopC+P4qr2ooXUTFyFPTplYSPwowmFk/HLD1FXtbKLjqsIH0SgekcJWad+C5uX4nkg==}
     engines: {node: '>=16'}
     dependencies:
-      '@resvg/resvg-wasm': 2.6.0
+      '@resvg/resvg-wasm': 2.4.0
       satori: 0.10.9
       yoga-wasm-web: 0.3.3
     dev: false
