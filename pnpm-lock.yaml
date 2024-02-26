@@ -16,7 +16,7 @@ dependencies:
     version: 0.4.0(@types/react@18.2.30)(react@18.2.0)
   '@markdoc/next.js':
     specifier: ^0.3.4
-    version: 0.3.4(@markdoc/markdoc@0.4.0)(next@14.1.0)(react@18.2.0)
+    version: 0.3.7(@markdoc/markdoc@0.4.0)(next@14.1.0)(react@18.2.0)
   '@next-auth/prisma-adapter':
     specifier: ^1.0.7
     version: 1.0.7(@prisma/client@5.4.2)(next-auth@4.24.6)
@@ -279,8 +279,8 @@ packages:
       '@types/markdown-it': 12.2.3
     dev: false
 
-  /@markdoc/next.js@0.3.4(@markdoc/markdoc@0.4.0)(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-HXgrdWem9FZfhQ2jI/o3vlqh8b7vYAgdeNiULIrYsd2qaSwF5e5MXgWkpVmJjslPIrGkdnaWzwAB8G/wTgHMjQ==}
+  /@markdoc/next.js@0.3.7(@markdoc/markdoc@0.4.0)(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-lp/J0Lfx8YPWes82HOMSDvXBfIkJxPKfEwgzGTwfFBJUGBNM1TBvchaaAzDP2X+HRORP4jNcGbJrZoXSdon0BQ==}
     peerDependencies:
       '@markdoc/markdoc': '*'
       next: '*'

@@ -38,7 +38,6 @@ const config = {
     },
 };
 
-// @ts-expect-error - `withMarkdoc` is not typed
 export default withMarkdoc({
     mode: "static",
 })(config);
