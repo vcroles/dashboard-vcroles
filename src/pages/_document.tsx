@@ -79,7 +79,7 @@ const Document = () => {
                     dangerouslySetInnerHTML={{ __html: themeScript }}
                     id="theme-script"
                 />
-                <Script 
+                <script 
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3845073328514279"
                     crossOrigin="anonymous"
