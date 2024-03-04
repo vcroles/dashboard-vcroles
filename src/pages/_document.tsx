@@ -71,12 +71,6 @@ const Document = () => {
                 <meta name="theme-color" content="#ffffff"></meta>
                 <Script
                     defer
-                    data-domain="vcroles.com"
-                    src="https://plausible.io/js/script.js"
-                    strategy="afterInteractive"
-                ></Script>
-                <Script
-                    defer
                     src="https://litics.ecwrd.com/script.js"
                     strategy="afterInteractive"
                 ></Script>
@@ -84,6 +78,11 @@ const Document = () => {
                     strategy="beforeInteractive"
                     dangerouslySetInnerHTML={{ __html: themeScript }}
                     id="theme-script"
+                />
+                <Script 
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3845073328514279"
+                    crossOrigin="anonymous"
                 />
             </Head>
             <body>
