@@ -11,14 +11,14 @@ import Logo from "./Logo";
 
 const NavBar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const { data: session } = useSession();
+    const { data: session, status: authStatus } = useSession();
     const posthog = usePostHog();
 
     const router = useRouter();
     const currentPage = router.pathname;
 
     const newLoginState = router.query.loginState;
-    if (newLoginState) {
+    if (newLoginState && authStatus !== "loading") {
         if (newLoginState === "signedIn" && session && session.user) {
             posthog.identify(session.user.id, {
                 email: session.user.email,

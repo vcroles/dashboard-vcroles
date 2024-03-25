@@ -29,7 +29,7 @@ const Dashboard: NextPage = () => {
     const router = useRouter();
 
     const newLoginState = router.query.loginState;
-    if (newLoginState) {
+    if (newLoginState && status !== "loading") {
         if (newLoginState === "signedIn" && session && session.user) {
             posthog.identify(session.user.id, {
                 email: session.user.email,

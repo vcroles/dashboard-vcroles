@@ -69,7 +69,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
     }, [path, id]);
 
     const newLoginState = router.query.loginState;
-    if (newLoginState) {
+    if (newLoginState && status !== "loading") {
         if (newLoginState === "signedIn" && session && session.user) {
             posthog.identify(session.user.id, {
                 email: session.user.email,
