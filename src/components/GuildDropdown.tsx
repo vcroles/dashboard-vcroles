@@ -18,7 +18,7 @@ const GuildDropdown: React.FC<{
     subPage?: string;
 }> = ({ guilds, selectedID, subPage }) => {
     const [selectedGuild, setSelectedGuild] = useState(
-        guilds.find((g) => g.id === selectedID)
+        guilds.find((g) => g.id === selectedID),
     );
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const GuildDropdown: React.FC<{
                                             selectedGuild?.icon
                                                 ? iconHashToUrl(
                                                       selectedGuild.icon,
-                                                      selectedGuild?.id
+                                                      selectedGuild?.id,
                                                   )
                                                 : "https://cdn.discordapp.com/embed/avatars/0.png"
                                         }
@@ -79,7 +79,7 @@ const GuildDropdown: React.FC<{
                                             active
                                                 ? "bg-indigo-600 text-white"
                                                 : "text-gray-900",
-                                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                                            "relative cursor-default select-none py-2 pl-3 pr-9",
                                         )
                                     }
                                     value={guild}
@@ -100,7 +100,7 @@ const GuildDropdown: React.FC<{
                                                         guild.icon
                                                             ? iconHashToUrl(
                                                                   guild.icon,
-                                                                  guild.id
+                                                                  guild.id,
                                                               )
                                                             : "https://cdn.discordapp.com/embed/avatars/0.png"
                                                     }
@@ -114,7 +114,7 @@ const GuildDropdown: React.FC<{
                                                         selected
                                                             ? "font-semibold"
                                                             : "font-normal",
-                                                        "ml-3 block truncate"
+                                                        "ml-3 block truncate",
                                                     )}
                                                 >
                                                     {guild.name}
@@ -127,7 +127,7 @@ const GuildDropdown: React.FC<{
                                                         active
                                                             ? "text-white"
                                                             : "text-indigo-600",
-                                                        "absolute inset-y-0 right-0 flex items-center pr-4"
+                                                        "absolute inset-y-0 right-0 flex items-center pr-4",
                                                     )}
                                                 >
                                                     <CheckIcon
@@ -148,7 +148,7 @@ const GuildDropdown: React.FC<{
                                         active
                                             ? "bg-indigo-600 text-white"
                                             : "text-gray-900",
-                                        "relative cursor-default select-none border-t-2 border-gray-200 py-2 pl-3 pr-9"
+                                        "relative cursor-default select-none border-t-2 border-gray-200 py-2 pl-3 pr-9",
                                     )
                                 }
                                 value={null}
@@ -165,7 +165,7 @@ const GuildDropdown: React.FC<{
                                                     selected
                                                         ? "font-semibold"
                                                         : "font-normal",
-                                                    "ml-3 block truncate"
+                                                    "ml-3 block truncate",
                                                 )}
                                             >
                                                 Add a server

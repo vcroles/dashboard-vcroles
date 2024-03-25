@@ -6,10 +6,23 @@ import type { ReactElement, ReactNode } from "react";
 import { trpc } from "../utils/trpc";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import { DocsLayout } from "src/layouts/Docs";
+import posthog from "posthog-js";
+import { PostHogProvider } from "posthog-js/react";
+import { env } from "src/env/client.mjs";
 
 import "../styles/globals.css";
 
 import { useRouter } from "next/router";
+
+if (typeof window !== "undefined") {
+    // checks that we are client-side
+    posthog.init(env.NEXT_PUBLIC_POSTHOG_KEY, {
+        api_host: env.NEXT_PUBLIC_POSTHOG_HOST || "https://app.posthog.com",
+        loaded: (posthog) => {
+            if (process.env.NODE_ENV === "development") posthog.debug(); // debug mode in development
+        },
+    });
+}
 
 // I could probably have typed this better, but the types for the
 // entire markdoc library seem a bit strange...
@@ -90,20 +103,22 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
     return (
         <SessionProvider session={session}>
-            {getLayout(
-                router.pathname.startsWith("/docs") ? (
-                    <DocsLayout
-                        title={title}
-                        pageTitle={pageTitle}
-                        description={description}
-                        tableOfContents={tableOfContents}
-                    >
+            <PostHogProvider client={posthog}>
+                {getLayout(
+                    router.pathname.startsWith("/docs") ? (
+                        <DocsLayout
+                            title={title}
+                            pageTitle={pageTitle}
+                            description={description}
+                            tableOfContents={tableOfContents}
+                        >
+                            <Component {...pageProps} />
+                        </DocsLayout>
+                    ) : (
                         <Component {...pageProps} />
-                    </DocsLayout>
-                ) : (
-                    <Component {...pageProps} />
-                ),
-            )}
+                    ),
+                )}
+            </PostHogProvider>
         </SessionProvider>
     );
 };

@@ -35,7 +35,7 @@ const RoleSelectionBox: React.FC<{
                             onClick={(e) => {
                                 e.preventDefault();
                                 setSelected(
-                                    selected.filter((r) => r.id !== role.id)
+                                    selected.filter((r) => r.id !== role.id),
                                 );
                             }}
                             className="ml-2"

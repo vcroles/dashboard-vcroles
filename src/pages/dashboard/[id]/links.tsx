@@ -40,7 +40,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
     const [selectedLink, setSelectedLink] = useState<Link | null>(null);
 
     const selectedChannel = channels?.find(
-        (channel) => channel.id === selectedLink?.id
+        (channel) => channel.id === selectedLink?.id,
     );
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -49,18 +49,18 @@ const DashboardLinksPage: NextPageWithLayout = () => {
 
     const [createLinkType, setCreateLinkType] = useState<LinkType>("REGULAR");
     const [createLinkChannel, setCreateLinkChannel] = useState<Channel | null>(
-        null
+        null,
     );
     const allowedChannelTypes =
         createLinkType === "REGULAR"
             ? [2]
             : createLinkType === "CATEGORY"
-            ? [4]
-            : createLinkType === "STAGE"
-            ? [13]
-            : createLinkType === "PERMANENT"
-            ? [2, 4, 13]
-            : [];
+              ? [4]
+              : createLinkType === "STAGE"
+                ? [13]
+                : createLinkType === "PERMANENT"
+                  ? [2, 4, 13]
+                  : [];
 
     useEffect(() => {
         setCreateLinkChannel(null);
@@ -180,22 +180,22 @@ const DashboardLinksPage: NextPageWithLayout = () => {
 
                     {selectedLink ? (
                         <div className="sm:items-start sm:gap-4 sm:border-b sm:border-gray-200 sm:pt-5">
-                            <div className="mt-1 mb-4 flex flex-col gap-4 sm:mt-0">
+                            <div className="mb-4 mt-1 flex flex-col gap-4 sm:mt-0">
                                 <RoleSelectionBox
                                     title="Linked Roles"
                                     roles={roles ?? []}
                                     selected={
                                         roles?.filter((r) =>
                                             selectedLink.linkedRoles.includes(
-                                                r.id
-                                            )
+                                                r.id,
+                                            ),
                                         ) ?? []
                                     }
                                     setSelected={(selected) => {
                                         setSelectedLink({
                                             ...selectedLink,
                                             linkedRoles: selected.map(
-                                                (r) => r.id
+                                                (r) => r.id,
                                             ),
                                         });
                                     }}
@@ -206,15 +206,15 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                     selected={
                                         roles?.filter((r) =>
                                             selectedLink.reverseLinkedRoles.includes(
-                                                r.id
-                                            )
+                                                r.id,
+                                            ),
                                         ) ?? []
                                     }
                                     setSelected={(selected) => {
                                         setSelectedLink({
                                             ...selectedLink,
                                             reverseLinkedRoles: selected.map(
-                                                (r) => r.id
+                                                (r) => r.id,
                                             ),
                                         });
                                     }}
@@ -247,15 +247,15 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                         selected={
                                             roles?.filter((r) =>
                                                 selectedLink.speakerRoles.includes(
-                                                    r.id
-                                                )
+                                                    r.id,
+                                                ),
                                             ) ?? []
                                         }
                                         setSelected={(selected) => {
                                             setSelectedLink({
                                                 ...selectedLink,
                                                 speakerRoles: selected.map(
-                                                    (r) => r.id
+                                                    (r) => r.id,
                                                 ),
                                             });
                                         }}
@@ -271,21 +271,21 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                             channels?.filter(
                                                 (c) =>
                                                     c.type === 2 ||
-                                                    c.type === 13
+                                                    c.type === 13,
                                             ) ?? []
                                         }
                                         selected={
                                             channels?.filter((c) =>
                                                 selectedLink.excludeChannels.includes(
-                                                    c.id
-                                                )
+                                                    c.id,
+                                                ),
                                             ) ?? []
                                         }
                                         setSelected={(selected) => {
                                             setSelectedLink({
                                                 ...selectedLink,
                                                 excludeChannels: selected.map(
-                                                    (c) => c.id
+                                                    (c) => c.id,
                                                 ),
                                             });
                                         }}
@@ -294,17 +294,18 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                 <div className="flex justify-end">
                                     <button
                                         type="button"
-                                        className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                        className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                         onClick={() => {
                                             const previousLink = links?.find(
                                                 (l) =>
-                                                    l.dbId === selectedLink.dbId
+                                                    l.dbId ===
+                                                    selectedLink.dbId,
                                             );
                                             if (previousLink) {
                                                 // check if the link has changed
                                                 if (
                                                     JSON.stringify(
-                                                        previousLink
+                                                        previousLink,
                                                     ) ===
                                                     JSON.stringify(selectedLink)
                                                 ) {
@@ -372,8 +373,8 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                         channels={
                                             channels?.filter((c) =>
                                                 allowedChannelTypes.includes(
-                                                    c.type
-                                                )
+                                                    c.type,
+                                                ),
                                             ) ?? []
                                         }
                                         selectedChannel={createLinkChannel}
@@ -389,13 +390,13 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                     <div className="flex justify-end">
                         <button
                             type="button"
-                            className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
                                 const link = links?.find(
                                     (l) =>
                                         l.type === createLinkType &&
                                         (l.id === createLinkChannel?.id ||
-                                            l.id === id)
+                                            l.id === id),
                                 );
                                 if (link) {
                                     setSelectedLink(link);

@@ -6,7 +6,7 @@ export const config = {
 };
 
 const font = fetch(
-    new URL("../../../assets/Inter-Bold.ttf", import.meta.url)
+    new URL("../../../assets/Inter-Bold.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const handler = async (req: NextRequest) => {
@@ -112,7 +112,7 @@ const handler = async (req: NextRequest) => {
                 headers: {
                     "Cache-Control": "public, max-age=0, s-maxage=86400",
                 },
-            }
+            },
         );
     } catch (e) {
         return new Response("Failed to generate the image", { status: 500 });

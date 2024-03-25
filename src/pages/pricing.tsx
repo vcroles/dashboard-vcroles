@@ -23,7 +23,7 @@ const PremiumPage: NextPage = () => {
                 <NavBar />
                 <main>
                     <div className="relative px-6 lg:px-8">
-                        <div className="mx-auto max-w-3xl pt-10 pb-16 sm:pt-24 sm:pb-20"></div>
+                        <div className="mx-auto max-w-3xl pb-16 pt-10 sm:pb-20 sm:pt-24"></div>
                     </div>
                     <div className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-4xl">

@@ -68,7 +68,7 @@ const PremiumFeatures = () => {
                             <div key={feature.name} className="relative pl-9">
                                 <dt className="font-semibold text-gray-900">
                                     <CheckIcon
-                                        className="absolute top-1 left-0 h-5 w-5 text-indigo-500"
+                                        className="absolute left-0 top-1 h-5 w-5 text-indigo-500"
                                         aria-hidden="true"
                                     />
                                     {feature.name}

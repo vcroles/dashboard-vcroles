@@ -23,7 +23,7 @@ const LinkDropdown: React.FC<{
     channels: Channel[];
 }> = ({ links, disabled, selectedLink, setSelectedLink, channels }) => {
     const selectedChannel = channels.find(
-        (channel) => channel.id === selectedLink?.id
+        (channel) => channel.id === selectedLink?.id,
     );
     return (
         <Listbox
@@ -36,7 +36,7 @@ const LinkDropdown: React.FC<{
                     <Listbox.Button
                         className={classNames(
                             disabled ? "cursor-default" : "cursor-pointer",
-                            "relative w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                            "relative w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm",
                         )}
                     >
                         <span className="flex items-center">
@@ -64,8 +64,8 @@ const LinkDropdown: React.FC<{
                                         {selectedChannel
                                             ? selectedChannel.name
                                             : selectedLink.type === LinkType.ALL
-                                            ? "All"
-                                            : "Unknown"}
+                                              ? "All"
+                                              : "Unknown"}
                                     </span>
                                 </div>
                             ) : (
@@ -99,7 +99,7 @@ const LinkDropdown: React.FC<{
                         <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                             {links.map((link) => {
                                 const channel = channels.find(
-                                    (channel) => channel.id === link.id
+                                    (channel) => channel.id === link.id,
                                 );
                                 return (
                                     <Listbox.Option
@@ -109,7 +109,7 @@ const LinkDropdown: React.FC<{
                                                 active
                                                     ? "bg-indigo-600 text-white"
                                                     : "text-gray-900",
-                                                "relative cursor-default select-none py-2 pl-3 pr-9"
+                                                "relative cursor-default select-none py-2 pl-3 pr-9",
                                             )
                                         }
                                         value={link}
@@ -142,9 +142,9 @@ const LinkDropdown: React.FC<{
                                                         {channel
                                                             ? channel.name
                                                             : link.type ===
-                                                              LinkType.ALL
-                                                            ? "All"
-                                                            : "Unknown"}
+                                                                LinkType.ALL
+                                                              ? "All"
+                                                              : "Unknown"}
                                                     </span>
                                                 </div>
 
@@ -154,7 +154,7 @@ const LinkDropdown: React.FC<{
                                                             active
                                                                 ? "text-white"
                                                                 : "text-indigo-600",
-                                                            "absolute inset-y-0 right-0 flex items-center pr-4"
+                                                            "absolute inset-y-0 right-0 flex items-center pr-4",
                                                         )}
                                                     >
                                                         <CheckIcon

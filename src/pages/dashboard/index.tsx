@@ -34,7 +34,7 @@ const Dashboard: NextPage = () => {
                     <NavBar />
                     <div className="relative px-6 lg:px-8">
                         <BottomBackground />
-                        <div className="mx-auto max-w-3xl pt-5 pb-8 sm:pt-12 sm:pb-10">
+                        <div className="mx-auto max-w-3xl pb-8 pt-5 sm:pb-10 sm:pt-12">
                             <div>
                                 <div>
                                     <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
@@ -69,7 +69,7 @@ const Dashboard: NextPage = () => {
                 <NavBar />
                 <div className="relative px-6 lg:px-8">
                     <BottomBackground />
-                    <div className="mx-auto max-w-3xl pt-5 pb-8 sm:pt-12 sm:pb-10">
+                    <div className="mx-auto max-w-3xl pb-8 pt-5 sm:pb-10 sm:pt-12">
                         <div>
                             <div>
                                 <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl">
@@ -96,7 +96,7 @@ const Dashboard: NextPage = () => {
                                                     guild.icon
                                                         ? iconHashToUrl(
                                                               guild.icon,
-                                                              guild.id
+                                                              guild.id,
                                                           )
                                                         : "https://cdn.discordapp.com/embed/avatars/0.png"
                                                 }
@@ -122,14 +122,14 @@ const Dashboard: NextPage = () => {
                                             {guild.includesBot ? (
                                                 <Link
                                                     href={`/dashboard/${guild.id}`}
-                                                    className="block w-full rounded-md border border-transparent bg-gray-900 py-2 px-3 text-base font-medium text-white shadow-sm hover:bg-gray-800"
+                                                    className="block w-full rounded-md border border-transparent bg-gray-900 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-800"
                                                 >
                                                     View Dashboard
                                                 </Link>
                                             ) : (
                                                 <Link
                                                     href={`/invite?guild=${guild.id}`}
-                                                    className="block w-full rounded-md border border-transparent bg-gray-900 py-2 px-3 text-base font-medium text-white shadow-sm hover:bg-gray-800"
+                                                    className="block w-full rounded-md border border-transparent bg-gray-900 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-800"
                                                 >
                                                     Add Bot
                                                 </Link>
@@ -156,7 +156,7 @@ const Dashboard: NextPage = () => {
                                     <div className="flex flex-1 flex-col p-8">
                                         <Link
                                             href="/invite"
-                                            className="block w-full rounded-md border border-transparent bg-gray-900 py-2 px-3 text-base font-medium text-white shadow-sm hover:bg-gray-800"
+                                            className="block w-full rounded-md border border-transparent bg-gray-900 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-800"
                                         >
                                             Add Bot
                                         </Link>

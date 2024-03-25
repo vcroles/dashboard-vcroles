@@ -36,8 +36,8 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                             tier.serverCount === 10
                                                 ? 3
                                                 : tier.serverCount === 3
-                                                ? 2
-                                                : 1
+                                                  ? 2
+                                                  : 1,
                                         ),
                                     ].map((_, i) => (
                                         <StarIcon
@@ -51,7 +51,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                 </div>
                             </div>
                             {tier.mostPopular ? (
-                                <p className="absolute top-0 -translate-y-1/2 transform rounded-full bg-indigo-500 py-1.5 px-4 text-sm font-semibold text-white">
+                                <p className="absolute top-0 -translate-y-1/2 transform rounded-full bg-indigo-500 px-4 py-1.5 text-sm font-semibold text-white">
                                     Most popular
                                 </p>
                             ) : null}
@@ -112,7 +112,7 @@ const PricingSection: React.FC<{ tiers: Tier[] }> = ({ tiers }) => {
                                 tier.mostPopular
                                     ? "bg-indigo-500 text-white hover:bg-indigo-600"
                                     : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100",
-                                "mt-8 block w-full rounded-md border border-transparent py-3 px-6 text-center font-medium"
+                                "mt-8 block w-full rounded-md border border-transparent px-6 py-3 text-center font-medium",
                             )}
                         >
                             {tier.cta}

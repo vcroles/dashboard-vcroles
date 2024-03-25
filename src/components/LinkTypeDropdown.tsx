@@ -109,7 +109,7 @@ const LinkTypeDropdown: React.FC<{
                                             active
                                                 ? "bg-indigo-600 text-white"
                                                 : "text-gray-900",
-                                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                                            "relative cursor-default select-none py-2 pl-3 pr-9",
                                         )
                                     }
                                     value={linkType}
@@ -123,7 +123,7 @@ const LinkTypeDropdown: React.FC<{
                                                         selected
                                                             ? "font-semibold"
                                                             : "font-normal",
-                                                        "ml-3 block truncate capitalize"
+                                                        "ml-3 block truncate capitalize",
                                                     )}
                                                 >
                                                     {linkType.toLowerCase()}
@@ -136,7 +136,7 @@ const LinkTypeDropdown: React.FC<{
                                                         active
                                                             ? "text-white"
                                                             : "text-indigo-600",
-                                                        "absolute inset-y-0 right-0 flex items-center pr-4"
+                                                        "absolute inset-y-0 right-0 flex items-center pr-4",
                                                     )}
                                                 >
                                                     <CheckIcon

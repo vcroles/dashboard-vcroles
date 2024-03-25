@@ -141,7 +141,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                         leaveFrom="opacity-100"
                                         leaveTo="opacity-0"
                                     >
-                                        <div className="absolute top-0 right-0 -mr-12 pt-2">
+                                        <div className="absolute right-0 top-0 -mr-12 pt-2">
                                             <button
                                                 type="button"
                                                 className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -159,7 +159,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                             </button>
                                         </div>
                                     </Transition.Child>
-                                    <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
+                                    <div className="h-0 flex-1 overflow-y-auto pb-4 pt-5">
                                         <div className="flex flex-shrink-0 items-center px-4">
                                             <Link href="/dashboard">
                                                 <Logo size={40} />
@@ -179,7 +179,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                                         item.current
                                                             ? "bg-gray-100 text-gray-900"
                                                             : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                                                        "group flex items-center rounded-md px-2 py-2 text-base font-medium"
+                                                        "group flex items-center rounded-md px-2 py-2 text-base font-medium",
                                                     )}
                                                 >
                                                     <item.icon
@@ -187,7 +187,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                                             item.current
                                                                 ? "text-gray-500"
                                                                 : "text-gray-400 group-hover:text-gray-500",
-                                                            "mr-4 h-6 w-6 flex-shrink-0"
+                                                            "mr-4 h-6 w-6 flex-shrink-0",
                                                         )}
                                                         aria-hidden="true"
                                                     />
@@ -236,7 +236,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                 <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
                     {/* Sidebar component, swap this element with another sidebar if you like */}
                     <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
-                        <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
+                        <div className="flex flex-1 flex-col overflow-y-auto pb-4 pt-5">
                             <div className="flex flex-shrink-0 items-center px-4">
                                 <Link href="/dashboard">
                                     <Logo size={40} />
@@ -256,7 +256,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                             item.current
                                                 ? "bg-gray-100 text-gray-900"
                                                 : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                                            "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
+                                            "group flex items-center rounded-md px-2 py-2 text-sm font-medium",
                                         )}
                                     >
                                         <item.icon
@@ -264,7 +264,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                                 item.current
                                                     ? "text-gray-500"
                                                     : "text-gray-400 group-hover:text-gray-500",
-                                                "mr-3 h-6 w-6 flex-shrink-0"
+                                                "mr-3 h-6 w-6 flex-shrink-0",
                                             )}
                                             aria-hidden="true"
                                         />

@@ -51,7 +51,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
 
             <div className="pt-8">
                 <div className="mt-8 flex flex-col">
-                    <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                                 <table className="min-w-full divide-y divide-gray-300">
@@ -134,7 +134,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
                                                             channels?.find(
                                                                 (channel) =>
                                                                     channel.id ===
-                                                                    generator.generatorId
+                                                                    generator.generatorId,
                                                             )?.name
                                                         }
                                                     </td>
@@ -143,7 +143,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
                                                             channels?.find(
                                                                 (channel) =>
                                                                     channel.id ===
-                                                                    generator.categoryId
+                                                                    generator.categoryId,
                                                             )?.name
                                                         }
                                                     </td>
@@ -151,7 +151,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
                                                         {channels?.find(
                                                             (channel) =>
                                                                 channel.id ===
-                                                                generator.interfaceChannel
+                                                                generator.interfaceChannel,
                                                         )?.name ?? "None"}
                                                     </td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -171,7 +171,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
                                                                               option
                                                                           }
                                                                       </span>
-                                                                  )
+                                                                  ),
                                                               )
                                                             : "None"}
                                                     </td>
@@ -187,7 +187,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
                                                         {roles?.find(
                                                             (role) =>
                                                                 role.id ===
-                                                                generator.defaultRole
+                                                                generator.defaultRole,
                                                         )?.name ?? "None"}
                                                     </td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -198,7 +198,7 @@ const DashboardGeneratorsPage: NextPageWithLayout = () => {
                                                         {roles?.find(
                                                             (role) =>
                                                                 role.id ===
-                                                                generator.restrictRole
+                                                                generator.restrictRole,
                                                         )?.name ?? "None"}
                                                     </td>
                                                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">

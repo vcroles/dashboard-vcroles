@@ -45,7 +45,7 @@ export type Context = inferAsyncReturnType<typeof createContext>;
 
 export const createSSGHelpers = async (
     context: GetServerSidePropsContext,
-    opts: { useSession: boolean }
+    opts: { useSession: boolean },
 ) => {
     if (opts.useSession) {
         const session = await getServerAuthSession({
