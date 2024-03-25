@@ -3,19 +3,34 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { usePostHog } from "posthog-js/react";
 import { useState } from "react";
-
-import Logo from "./Logo";
-
 import { navigation } from "../constants";
 import { classNames } from "../utils/utils";
+import Logo from "./Logo";
 
 const NavBar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { data: session } = useSession();
+    const posthog = usePostHog();
 
     const router = useRouter();
     const currentPage = router.pathname;
+
+    const newLoginState = router.query.loginState;
+    if (newLoginState) {
+        if (newLoginState === "signedIn" && session && session.user) {
+            posthog.identify(session.user.id, {
+                email: session.user.email,
+                name: session.user.name,
+                image: session.user.image,
+            });
+        }
+        if (newLoginState === "signedOut") {
+            posthog.reset();
+        }
+        router.replace(router.pathname, undefined, { shallow: true });
+    }
 
     return (
         <div className="px-6 pt-6 lg:px-8">
@@ -62,7 +77,13 @@ const NavBar = () => {
                     <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
                         <button
                             onClick={() =>
-                                session ? signOut() : signIn("discord")
+                                session
+                                    ? signOut({
+                                          callbackUrl: `${router.pathname}?loginState=signedOut`,
+                                      })
+                                    : signIn("discord", {
+                                          callbackUrl: `${router.pathname}?loginState=signedIn`,
+                                      })
                             }
                             className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                             type="button"
@@ -123,8 +144,12 @@ const NavBar = () => {
                                     <button
                                         onClick={() =>
                                             session
-                                                ? signOut()
-                                                : signIn("discord")
+                                                ? signOut({
+                                                      callbackUrl: `${router.pathname}?loginState=signedOut`,
+                                                  })
+                                                : signIn("discord", {
+                                                      callbackUrl: `${router.pathname}?loginState=signedIn`,
+                                                  })
                                         }
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
                                         type="button"

@@ -1,23 +1,22 @@
-import { useSession } from "next-auth/react";
-
-import { trpc } from "../utils/trpc";
-
-import { Fragment, useEffect, useState } from "react";
+import { SeoHeaders } from "@/components/SeoHeaders";
 import { Dialog, Transition } from "@headlessui/react";
 import {
     Bars3Icon,
-    XMarkIcon,
+    BoltIcon,
     Cog6ToothIcon,
     LinkIcon,
-    BoltIcon,
+    XMarkIcon,
 } from "@heroicons/react/24/outline";
-import Logo from "../components/Logo";
-import Link from "next/link";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { Fragment, useEffect, useState } from "react";
 import GuildDropdown from "../components/GuildDropdown";
+import Logo from "../components/Logo";
+import { trpc } from "../utils/trpc";
 import { classNames } from "../utils/utils";
-import { SeoHeaders } from "@/components/SeoHeaders";
+import { usePostHog } from "posthog-js/react";
 
 type Query = {
     id: string;
@@ -34,6 +33,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
     const { id } = router.query as Query;
     const subPage = path.split("/")[3];
     const { data: session, status } = useSession();
+    const posthog = usePostHog();
 
     const { data: allowed, isLoading: loading } =
         trpc.discord.checkUserPermissions.useQuery({
@@ -68,9 +68,26 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
         setSidebarOpen(false);
     }, [path, id]);
 
+    const newLoginState = router.query.loginState;
+    if (newLoginState) {
+        if (newLoginState === "signedIn" && session && session.user) {
+            posthog.identify(session.user.id, {
+                email: session.user.email,
+                name: session.user.name,
+                image: session.user.image,
+            });
+        }
+        if (newLoginState === "signedOut") {
+            posthog.reset();
+        }
+        router.replace(router.pathname, undefined, { shallow: true });
+    }
+
     if (!session && status === "unauthenticated") {
         if (typeof window !== "undefined") {
-            router.push("/api/auth/signin");
+            signIn("discord", {
+                callbackUrl: "/dashboard?loginState=signedIn",
+            });
         }
         return (
             <SeoHeaders

@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps, AppType } from "next/app";
-import type { ReactElement, ReactNode } from "react";
+import { useEffect, type ReactElement, type ReactNode } from "react";
 import { trpc } from "../utils/trpc";
 import { slugifyWithCounter } from "@sindresorhus/slugify";
 import { DocsLayout } from "src/layouts/Docs";
@@ -101,9 +101,19 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
     const router = useRouter();
 
+    useEffect(() => {
+        // Track page views
+        const handleRouteChange = () => posthog.capture("$pageview");
+        router.events.on("routeChangeComplete", handleRouteChange);
+
+        return () => {
+            router.events.off("routeChangeComplete", handleRouteChange);
+        };
+    }, []);
+
     return (
-        <SessionProvider session={session}>
-            <PostHogProvider client={posthog}>
+        <PostHogProvider client={posthog}>
+            <SessionProvider session={session}>
                 {getLayout(
                     router.pathname.startsWith("/docs") ? (
                         <DocsLayout
@@ -118,8 +128,8 @@ const MyApp: AppType<{ session: Session | null }> = ({
                         <Component {...pageProps} />
                     ),
                 )}
-            </PostHogProvider>
-        </SessionProvider>
+            </SessionProvider>
+        </PostHogProvider>
     );
 };
 

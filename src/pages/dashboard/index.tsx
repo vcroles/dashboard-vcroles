@@ -1,14 +1,15 @@
 import type { NextPage } from "next";
-import { useSession, signIn } from "next-auth/react";
-
-import { trpc } from "../../utils/trpc";
-import NavBar from "../../components/NavBar";
-import Loading from "../../components/Loading";
-import { iconHashToUrl } from "../../utils/utils";
+import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { BottomBackground, TopBackground } from "src/components/Background";
 import { SeoHeaders } from "src/components/SeoHeaders";
-import Image from "next/image";
+import Loading from "../../components/Loading";
+import NavBar from "../../components/NavBar";
+import { trpc } from "../../utils/trpc";
+import { iconHashToUrl } from "../../utils/utils";
+import { usePostHog } from "posthog-js/react";
+import { useRouter } from "next/router";
 
 const Title: React.FC = () => {
     return (
@@ -24,6 +25,23 @@ const Dashboard: NextPage = () => {
     const { data: session, status } = useSession();
     const { data: guilds, isLoading: loading } =
         trpc.discord.getGuilds.useQuery();
+    const posthog = usePostHog();
+    const router = useRouter();
+
+    const newLoginState = router.query.loginState;
+    if (newLoginState) {
+        if (newLoginState === "signedIn" && session && session.user) {
+            posthog.identify(session.user.id, {
+                email: session.user.email,
+                name: session.user.name,
+                image: session.user.image,
+            });
+        }
+        if (newLoginState === "signedOut") {
+            posthog.reset();
+        }
+        router.replace(router.pathname, undefined, { shallow: true });
+    }
 
     if (!session && status === "unauthenticated") {
         return (
@@ -46,7 +64,12 @@ const Dashboard: NextPage = () => {
                                     <div className="mt-6 flex justify-center">
                                         <button
                                             type="button"
-                                            onClick={() => signIn("discord")}
+                                            onClick={() =>
+                                                signIn("discord", {
+                                                    callbackUrl:
+                                                        "/dashboard?loginState=signedIn",
+                                                })
+                                            }
                                             className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                                         >
                                             Sign in with Discord
