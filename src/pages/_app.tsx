@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
-import { type Session } from "next-auth";
-import { SessionProvider } from "next-auth/react";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { AppProps, AppType } from "next/app";
 import { useEffect, type ReactElement, type ReactNode } from "react";
 import { trpc } from "../utils/trpc";
@@ -81,9 +80,9 @@ type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout;
 };
 
-const MyApp: AppType<{ session: Session | null }> = ({
+const MyApp: AppType = ({
     Component,
-    pageProps: { session, ...pageProps },
+    pageProps: { ...pageProps },
 }: AppPropsWithLayout) => {
     const getLayout = Component.getLayout ?? ((page) => page);
 
@@ -113,7 +112,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 
     return (
         <PostHogProvider client={posthog}>
-            <SessionProvider session={session}>
+            <ClerkProvider {...pageProps}>
                 {getLayout(
                     router.pathname.startsWith("/docs") ? (
                         <DocsLayout
@@ -128,7 +127,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
                         <Component {...pageProps} />
                     ),
                 )}
-            </SessionProvider>
+            </ClerkProvider>
         </PostHogProvider>
     );
 };

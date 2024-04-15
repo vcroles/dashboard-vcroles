@@ -1,6 +1,5 @@
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { usePostHog } from "posthog-js/react";
@@ -8,22 +7,30 @@ import { useState } from "react";
 import { navigation } from "../constants";
 import { classNames } from "../utils/utils";
 import Logo from "./Logo";
+import {
+    SignInButton,
+    SignedIn,
+    SignedOut,
+    UserButton,
+    useUser,
+} from "@clerk/nextjs";
 
 const NavBar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const { data: session, status: authStatus } = useSession();
+    const userData = useUser();
     const posthog = usePostHog();
 
     const router = useRouter();
     const currentPage = router.pathname;
 
     const newLoginState = router.query.loginState;
-    if (newLoginState && authStatus !== "loading") {
-        if (newLoginState === "signedIn" && session && session.user) {
-            posthog.identify(session.user.id, {
-                email: session.user.email,
-                name: session.user.name,
-                image: session.user.image,
+    if (newLoginState && userData.isLoaded) {
+        if (newLoginState === "signedIn" && userData.isSignedIn) {
+            posthog.identify(userData.user.id, {
+                email: userData.user.primaryEmailAddress?.emailAddress,
+                name: userData.user.fullName,
+                username: userData.user.username,
+                image: userData.user.imageUrl,
             });
         }
         if (newLoginState === "signedOut") {
@@ -75,21 +82,16 @@ const NavBar = () => {
                         ))}
                     </div>
                     <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
-                        <button
-                            onClick={() =>
-                                session
-                                    ? signOut({
-                                          callbackUrl: `${router.pathname}?loginState=signedOut`,
-                                      })
-                                    : signIn("discord", {
-                                          callbackUrl: `${router.pathname}?loginState=signedIn`,
-                                      })
-                            }
-                            className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
-                            type="button"
-                        >
-                            {session ? "Log out" : "Log in"}
-                        </button>
+                        <SignedOut>
+                            <SignInButton
+                                afterSignInUrl={`${router.pathname}?loginState=signedIn`}
+                            />
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton
+                                afterSignOutUrl={`${router.pathname}?loginState=signedOut`}
+                            />
+                        </SignedIn>
                     </div>
                 </nav>
                 <Dialog
@@ -141,21 +143,16 @@ const NavBar = () => {
                                     ))}
                                 </div>
                                 <div className="py-6">
-                                    <button
-                                        onClick={() =>
-                                            session
-                                                ? signOut({
-                                                      callbackUrl: `${router.pathname}?loginState=signedOut`,
-                                                  })
-                                                : signIn("discord", {
-                                                      callbackUrl: `${router.pathname}?loginState=signedIn`,
-                                                  })
-                                        }
-                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
-                                        type="button"
-                                    >
-                                        {session ? "Log out" : "Log in"}
-                                    </button>
+                                    <SignedOut>
+                                        <SignInButton
+                                            afterSignInUrl={`${router.pathname}?loginState=signedIn`}
+                                        />
+                                    </SignedOut>
+                                    <SignedIn>
+                                        <UserButton
+                                            afterSignOutUrl={`${router.pathname}?loginState=signedOut`}
+                                        />
+                                    </SignedIn>
                                 </div>
                             </div>
                         </div>

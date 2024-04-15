@@ -5,6 +5,7 @@ import { env } from "../../../env/server.mjs";
 import { prisma, redis } from "../../db/client";
 import { protectedProcedure, router } from "../trpc";
 import { TRPCError } from "@trpc/server";
+import { clerkClient } from "@clerk/nextjs/server";
 
 const BASE_URL = "https://discord.com/api/v10";
 
@@ -138,9 +139,8 @@ const checkUserPermissions = async (
     accessToken: string | null,
     accountId: string,
     guildId: string,
-    userId: string,
 ) => {
-    if (userId === env.DISCORD_DEV_USER) {
+    if (accountId === env.DISCORD_DEV_USER) {
         return true;
     }
 
@@ -157,21 +157,50 @@ const checkUserPermissions = async (
     );
 };
 
+async function getUserToken(userId: string) {
+    const clerkTokenResponse = await clerkClient.users.getUserOauthAccessToken(
+        userId,
+        "oauth_discord",
+    );
+    // @ts-expect-error - this works :)
+    const accessToken = clerkTokenResponse[0].token;
+
+    if (!accessToken) {
+        return null;
+    }
+
+    return accessToken;
+}
+
+async function getUserAccount(userId: string) {
+    const user = await clerkClient.users.getUser(userId);
+    const discordAccounts = user.externalAccounts.filter(
+        (account) => account.provider === "oauth_discord",
+    );
+    const account = discordAccounts[0];
+
+    if (!account) {
+        return null;
+    }
+
+    return account;
+}
+
 export const discordRouter = router({
     getGuilds: protectedProcedure.query(async ({ ctx }) => {
-        const account = await ctx.authClient.account.findFirst({
-            where: {
-                userId: ctx.session.user.id,
-            },
-        });
+        const accessToken = await getUserToken(ctx.auth.userId);
+        if (!accessToken) {
+            return [];
+        }
 
+        const account = await getUserAccount(ctx.auth.userId);
         if (!account) {
             return [];
         }
 
         const userGuilds = await fetchUserGuilds(
-            account.access_token,
-            account.providerAccountId,
+            accessToken,
+            account.externalId,
         );
 
         const guilds = userGuilds.filter(
@@ -194,13 +223,10 @@ export const discordRouter = router({
     checkUserPermissions: protectedProcedure
         .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
-            const account = await ctx.authClient.account.findFirst({
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            });
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
 
-            if (!account) {
+            if (!accessToken || !account) {
                 return false;
             }
 
@@ -209,10 +235,9 @@ export const discordRouter = router({
             }
 
             return await checkUserPermissions(
-                account.access_token,
-                account.providerAccountId,
+                accessToken,
+                account.externalId,
                 input.guild,
-                account.providerAccountId,
             );
         }),
     getGuildChannels: protectedProcedure
@@ -222,13 +247,20 @@ export const discordRouter = router({
                 return [];
             }
 
-            const account = await ctx.authClient.account.findFirst({
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            });
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
 
             if (!account) {
+                return [];
+            }
+
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guild,
+            );
+
+            if (!hasPermissions) {
                 return [];
             }
 
@@ -282,13 +314,20 @@ export const discordRouter = router({
                 return [];
             }
 
-            const account = await ctx.authClient.account.findFirst({
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            });
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
 
             if (!account) {
+                return [];
+            }
+
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guild,
+            );
+
+            if (!hasPermissions) {
                 return [];
             }
 
@@ -334,6 +373,23 @@ export const discordRouter = router({
                 return null;
             }
 
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
+
+            if (!accessToken || !account) {
+                return null;
+            }
+
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guild,
+            );
+
+            if (!hasPermissions) {
+                return null;
+            }
+
             const guild = await ctx.prisma.guild.findUnique({
                 where: {
                     id: input.guild,
@@ -357,6 +413,23 @@ export const discordRouter = router({
                 return [];
             }
 
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
+
+            if (!accessToken || !account) {
+                return [];
+            }
+
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guild,
+            );
+
+            if (!hasPermissions) {
+                return [];
+            }
+
             const links = await ctx.prisma.link.findMany({
                 where: {
                     guildId: input.guild,
@@ -369,6 +442,23 @@ export const discordRouter = router({
         .input(z.object({ guild: z.union([z.string(), z.undefined()]) }))
         .query(async ({ ctx, input }) => {
             if (!input.guild) {
+                return [];
+            }
+
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
+
+            if (!accessToken || !account) {
+                return [];
+            }
+
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guild,
+            );
+
+            if (!hasPermissions) {
                 return [];
             }
 
@@ -394,27 +484,23 @@ export const discordRouter = router({
             }),
         )
         .mutation(async ({ ctx, input }) => {
-            const account = await ctx.authClient.account.findFirst({
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            });
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
 
-            if (!account) {
+            if (!accessToken || !account) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",
                 });
             }
 
-            if (
-                !(await checkUserPermissions(
-                    account.access_token,
-                    account.providerAccountId,
-                    input.guild,
-                    account.providerAccountId,
-                ))
-            ) {
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guild,
+            );
+
+            if (!hasPermissions) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",
@@ -443,27 +529,23 @@ export const discordRouter = router({
     deleteLink: protectedProcedure
         .input(z.object({ dbId: z.string(), guild: z.string() }))
         .mutation(async ({ ctx, input }) => {
-            const account = await ctx.authClient.account.findFirst({
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            });
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
 
-            if (!account) {
+            if (!accessToken || !account) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",
                 });
             }
 
-            if (
-                !(await checkUserPermissions(
-                    account.access_token,
-                    account.providerAccountId,
-                    input.guild,
-                    account.providerAccountId,
-                ))
-            ) {
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guild,
+            );
+
+            if (!hasPermissions) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",
@@ -505,27 +587,23 @@ export const discordRouter = router({
             }),
         )
         .mutation(async ({ ctx, input }) => {
-            const account = await ctx.authClient.account.findFirst({
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            });
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
 
-            if (!account) {
+            if (!accessToken || !account) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",
                 });
             }
 
-            if (
-                !(await checkUserPermissions(
-                    account.access_token,
-                    account.providerAccountId,
-                    input.guildId,
-                    account.providerAccountId,
-                ))
-            ) {
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guildId,
+            );
+
+            if (!hasPermissions) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",
@@ -549,27 +627,23 @@ export const discordRouter = router({
             }),
         )
         .mutation(async ({ ctx, input }) => {
-            const account = await ctx.authClient.account.findFirst({
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            });
+            const accessToken = await getUserToken(ctx.auth.userId);
+            const account = await getUserAccount(ctx.auth.userId);
 
-            if (!account) {
+            if (!accessToken || !account) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",
                 });
             }
 
-            if (
-                !(await checkUserPermissions(
-                    account.access_token,
-                    account.providerAccountId,
-                    input.guildId,
-                    account.providerAccountId,
-                ))
-            ) {
+            const hasPermissions = await checkUserPermissions(
+                accessToken,
+                account.externalId,
+                input.guildId,
+            );
+
+            if (!hasPermissions) {
                 throw new TRPCError({
                     code: "UNAUTHORIZED",
                     message: "You are not authorized to perform this action",

@@ -7,7 +7,6 @@ import {
     LinkIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,6 +16,7 @@ import Logo from "../components/Logo";
 import { trpc } from "../utils/trpc";
 import { classNames } from "../utils/utils";
 import { usePostHog } from "posthog-js/react";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 type Query = {
     id: string;
@@ -32,7 +32,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
     const path = router.pathname;
     const { id } = router.query as Query;
     const subPage = path.split("/")[3];
-    const { data: session, status } = useSession();
+    const userData = useUser();
     const posthog = usePostHog();
 
     const { data: allowed, isLoading: loading } =
@@ -69,12 +69,13 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
     }, [path, id]);
 
     const newLoginState = router.query.loginState;
-    if (newLoginState && status !== "loading") {
-        if (newLoginState === "signedIn" && session && session.user) {
-            posthog.identify(session.user.id, {
-                email: session.user.email,
-                name: session.user.name,
-                image: session.user.image,
+    if (newLoginState && userData.isLoaded) {
+        if (newLoginState === "signedIn" && userData.isSignedIn) {
+            posthog.identify(userData.user.id, {
+                email: userData.user.primaryEmailAddress?.emailAddress,
+                name: userData.user.fullName,
+                username: userData.user.username,
+                image: userData.user.imageUrl,
             });
         }
         if (newLoginState === "signedOut") {
@@ -83,12 +84,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
         router.replace(router.pathname, undefined, { shallow: true });
     }
 
-    if (!session && status === "unauthenticated") {
-        if (typeof window !== "undefined") {
-            signIn("discord", {
-                callbackUrl: "/dashboard?loginState=signedIn",
-            });
-        }
+    if (!userData.isLoaded) {
         return (
             <SeoHeaders
                 title="VC Roles | Dashboard"
@@ -96,6 +92,12 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                 url="https://vcroles.com/dashboard"
             />
         );
+    }
+
+    if (!userData.isSignedIn || !userData.user) {
+        // This should never happen because we are using the middleware
+        // to protect the /dashboard route
+        return;
     }
 
     if (!allowed && !loading) {
@@ -216,25 +218,19 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                     <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
                                         <div className="group block flex-shrink-0">
                                             <div className="flex items-center">
-                                                <div>
-                                                    <Image
-                                                        className="inline-block h-10 w-10 rounded-full"
-                                                        src={
-                                                            session?.user
-                                                                ?.image ??
-                                                            "https://cdn.discordapp.com/embed/avatars/0.png"
-                                                        }
-                                                        alt=""
-                                                        height={40}
-                                                        width={40}
-                                                    />
-                                                </div>
+                                                <UserButton
+                                                    afterSignOutUrl={`/dashboard?loginState=signedOut`}
+                                                />
                                                 <div className="ml-3">
                                                     <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                                                        {session?.user?.name}
+                                                        {userData.user.username}
                                                     </p>
                                                     <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
-                                                        {session?.user?.email}
+                                                        {
+                                                            userData.user
+                                                                .primaryEmailAddress
+                                                                ?.emailAddress
+                                                        }
                                                     </p>
                                                 </div>
                                             </div>
@@ -293,24 +289,19 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                         <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
                             <div className="group block w-full flex-shrink-0">
                                 <div className="flex items-center">
-                                    <div>
-                                        <Image
-                                            className="inline-block h-10 w-10 rounded-full"
-                                            src={
-                                                session?.user?.image ??
-                                                "https://cdn.discordapp.com/embed/avatars/0.png"
-                                            }
-                                            alt=""
-                                            height={40}
-                                            width={40}
-                                        />
-                                    </div>
+                                    <UserButton
+                                        afterSignOutUrl={`/dashboard?loginState=signedOut`}
+                                    />
                                     <div className="ml-3">
                                         <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                                            {session?.user?.name}
+                                            {userData.user.username}
                                         </p>
                                         <p className="overflow-clip text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                                            {session?.user?.email}
+                                            {
+                                                userData.user
+                                                    .primaryEmailAddress
+                                                    ?.emailAddress
+                                            }
                                         </p>
                                     </div>
                                 </div>
