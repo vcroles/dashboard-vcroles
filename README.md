@@ -9,7 +9,7 @@ This is based off the [T3 Stack](https://create.t3.gg/).
 ## Tech Stack
 
 -   [Next.js](https://nextjs.org)
--   [NextAuth.js](https://next-auth.js.org)
+-   [Clerk Auth](https://clerk.dev)
 -   [Prisma](https://prisma.io)
 -   [Tailwind CSS](https://tailwindcss.com)
 -   [tRPC](https://trpc.io)
@@ -37,33 +37,7 @@ Deployed on [Vercel](https://vercel.com).
 ### Setup
 
 1. Clone the repository
-2. Create a `.env` file in the root directory and add the following environment variables:
-
-```env
-# Prisma
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
-AUTH_DATABASE_URL=mysql://mysql:mysql@localhost:3306/mysql
-
-# Next Auth
-# You can generate the secret via 'openssl rand -base64 32' on Linux
-# More info: https://next-auth.js.org/configuration/options#secret
-NEXTAUTH_SECRET=
-NEXTAUTH_URL=http://localhost:3000
-
-# Next Auth Discord Provider
-DISCORD_CLIENT_ID=
-DISCORD_CLIENT_SECRET=
-
-# Discord Integration
-DISCORD_BOT_TOKEN=
-DISCORD_BOT_INVITE=
-SUPPORT_SERVER_INVITE=
-
-# Redis
-UPSTASH_REDIS_REST_URL=
-UPSTASH_REDIS_REST_TOKEN=
-```
-
+2. Copy the `.env.example` file to `.env` and add the required environment variables
 3. Run `pnpm install` to install dependencies
 4. Begin development by running `pnpm dev`
 
