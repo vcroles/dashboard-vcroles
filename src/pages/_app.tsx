@@ -12,6 +12,7 @@ import { env } from "src/env/client.mjs";
 import "../styles/globals.css";
 
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 if (typeof window !== "undefined") {
     // checks that we are client-side
@@ -114,6 +115,12 @@ const MyApp: AppType = ({
     return (
         <PostHogProvider client={posthog}>
             <ClerkProvider {...pageProps}>
+                <Head>
+                    <link
+                        rel="canonical"
+                        href={`https://www.vcroles.com${router.asPath}`}
+                    />
+                </Head>
                 {getLayout(
                     router.pathname.startsWith("/docs") ? (
                         <DocsLayout

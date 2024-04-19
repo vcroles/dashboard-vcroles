@@ -88,7 +88,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
             <SeoHeaders
                 title="VC Roles | Dashboard"
                 description="View the dashboard for your server"
-                url="https://vcroles.com/dashboard"
+                url="https://www.vcroles.com/dashboard"
             />
         );
     }
@@ -107,7 +107,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
             <SeoHeaders
                 title="VC Roles | Dashboard"
                 description="View the dashboard for your server"
-                url="https://vcroles.com/dashboard"
+                url="https://www.vcroles.com/dashboard"
             />
         );
     }
@@ -117,7 +117,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
             <SeoHeaders
                 title="VC Roles | Dashboard"
                 description="View the dashboard for your server"
-                url="https://vcroles.com/dashboard"
+                url="https://www.vcroles.com/dashboard"
             />
             <div className="h-full">
                 {/* Collapsible Sidebar */}

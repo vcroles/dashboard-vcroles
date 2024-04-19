@@ -7,7 +7,7 @@ export default function NotFound() {
             <SeoHeaders
                 title="VC Roles | 404"
                 description="VC Roles will enhance your Discord server by enriching voice channels with much needed features such as role assignment, channel generators, and more! It's easy to use and will help you manage your server with ease."
-                url="https://vcroles.com/404"
+                url="https://www.vcroles.com/404"
             />
 
             <div className="min-h-screen bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">

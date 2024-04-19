@@ -14,7 +14,7 @@ const PremiumPage: NextPage = () => {
             <SeoHeaders
                 title="VC Roles | Pricing"
                 description="VC Roles is a Discord bot that allows you to manage your voice channels with ease. It's free to use, but if you want to support us, you can upgrade to a premium plan."
-                url="https://vcroles.com/pricing"
+                url="https://www.vcroles.com/pricing"
             />
 
             <div className="isolate bg-white">

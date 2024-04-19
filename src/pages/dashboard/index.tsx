@@ -16,7 +16,7 @@ const Title: React.FC = () => {
         <SeoHeaders
             title="VC Roles | Dashboard"
             description="Select a server to view its dashboard."
-            url="https://vcroles.com/dashboard"
+            url="https://www.vcroles.com/dashboard"
         />
     );
 };

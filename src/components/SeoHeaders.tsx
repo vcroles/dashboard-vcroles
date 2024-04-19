@@ -19,7 +19,6 @@ export const SeoHeaders = ({
     return (
         <Head>
             <title>{title}</title>
-            <link rel="canonical" href={url} />
             <meta name="description" content={description} />
             {author && <meta name="author" content={author} />}
             <meta name="robots" content="index,follow" />

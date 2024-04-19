@@ -13,7 +13,7 @@ export default function Home() {
             <SeoHeaders
                 title="VC Roles | Home"
                 description="VC Roles will enhance your Discord server by enriching voice channels with much needed features such as role assignment, channel generators, and more! It's easy to use and will help you manage your server with ease."
-                url="https://vcroles.com/"
+                url="https://www.vcroles.com/"
             />
 
             <div className="isolate bg-white">

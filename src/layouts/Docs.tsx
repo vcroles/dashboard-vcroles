@@ -305,7 +305,7 @@ export function DocsLayout({
             <SeoHeaders
                 title={pageTitle}
                 description={description}
-                url={`https://vcroles.com${router.pathname}`}
+                url={`https://www.vcroles.com${router.pathname}`}
             />
             <Header navigation={navigation} />
 
