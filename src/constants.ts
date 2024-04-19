@@ -1,4 +1,3 @@
-import type { Tier } from "./components/Pricing";
 import {
     BoltIcon,
     LinkIcon,
@@ -51,58 +50,3 @@ export const features: Feature[] = [
         link: "/docs/features/audit-logs",
     },
 ];
-
-interface Pricing {
-    tiers: Tier[];
-}
-
-export const pricing: Pricing = {
-    tiers: [
-        {
-            title: "Premium",
-            monthly: 3.99,
-            yearly: 39.99,
-            description: "Our most basic plan, perfect for a single server.",
-            features: [
-                "Unlimited users",
-                "All features included",
-                "24-hour support response time",
-            ],
-            cta: "Subscribe now!",
-            mostPopular: false,
-            url: "https://cde90.gumroad.com/l/vcroles?option=Ypy6i23Wsp9LXur51GNQIA%3D%3D&wanted=true",
-            serverCount: 1,
-        },
-        {
-            title: "Premium Plus",
-            monthly: 6.99,
-            yearly: 69.99,
-            description:
-                "A step up from Premium, with more servers upgradable.",
-            features: [
-                "Unlimited users",
-                "All features included",
-                "24-hour support response time",
-            ],
-            cta: "Subscribe now!",
-            mostPopular: true,
-            url: "https://cde90.gumroad.com/l/vcroles?option=RmRNbhZ7ixse_w7gH3J2-w%3D%3D&wanted=true",
-            serverCount: 3,
-        },
-        {
-            title: "Premium Pro",
-            monthly: 14.99,
-            yearly: 149.99,
-            description: "Our most powerful plan, for those who need the best.",
-            features: [
-                "Unlimited users",
-                "All features included",
-                "24-hour support response time",
-            ],
-            cta: "Subscribe now!",
-            mostPopular: false,
-            url: "https://cde90.gumroad.com/l/vcroles?option=lGHZQh6McZGSzEhz98xSfw%3D%3D&wanted=true",
-            serverCount: 10,
-        },
-    ],
-};

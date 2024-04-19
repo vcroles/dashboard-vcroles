@@ -5,7 +5,7 @@ import FeatureSection from "../components/FeatureSection";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import PricingSection from "../components/Pricing";
-import { features, pricing } from "../constants";
+import { features } from "../constants";
 
 export default function Home() {
     return (
@@ -124,15 +124,15 @@ export default function Home() {
                     <FeatureSection features={features} />
                     <div className="mx-auto max-w-7xl bg-white px-4 pb-24 pt-12 sm:px-6 lg:px-8">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-none lg:text-6xl">
-                            There&apos;s a plan for everyone
+                            Unlock the power of VC Roles
                         </h2>
                         <div className="flex flex-col lg:flex-row">
                             <p className="mt-6 max-w-2xl text-xl text-gray-500">
                                 Ready to{" "}
                                 <span className="font-semibold">upgrade </span>
-                                your experience? Choose an affordable premium
-                                plan packed with all the features you need to
-                                manage your server.
+                                your experience? The VC Roles Premium plan
+                                unlocks the power of voice channel generators,
+                                voice channel analytics, and more!
                             </p>
                             {/* add a button to learn more on the premium page */}
                             <div className="mt-8 flex items-center gap-x-4 sm:ml-auto sm:justify-center">
@@ -150,7 +150,7 @@ export default function Home() {
                                 </Link>
                             </div>
                         </div>
-                        <PricingSection tiers={pricing.tiers} />
+                        <PricingSection />
                     </div>
                     <CTASection />
                     <Footer />

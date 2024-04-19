@@ -2,20 +2,6 @@ import Link from "next/link";
 
 const faqs = [
     {
-        question: "How do I activate my benefits?",
-        answer() {
-            return (
-                <p>
-                    To activate your benefits, you need to run the command{" "}
-                    <span className="rounded bg-gray-100 p-1 font-mono text-indigo-600">
-                        /premium activate [license_key]
-                    </span>{" "}
-                    with your license key.
-                </p>
-            );
-        },
-    },
-    {
         question: "Where can I buy premium?",
         answer() {
             return (
@@ -25,14 +11,14 @@ const faqs = [
                         className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500"
                         href="#pricing"
                     >
-                        here
+                        above
                     </Link>
-                    . Or from our Gumroad store{" "}
+                    . Or directly from the{" "}
                     <Link
-                        href="https://premium.vcroles.com/l/vcroles"
+                        href="https://discord.com/application-directory/775025797034541107/premium"
                         className="font-semibold text-indigo-600 hover:text-indigo-500"
                     >
-                        here
+                        Discord App Directory
                     </Link>
                     .
                 </p>
@@ -50,25 +36,7 @@ const faqs = [
                         href="#features"
                         className="font-semibold text-indigo-600 hover:text-indigo-500"
                     >
-                        here
-                    </Link>
-                    .
-                </p>
-            );
-        },
-    },
-    {
-        question: "Can I get a refund?",
-        answer() {
-            return (
-                <p>
-                    Refunds are not available. If you have any issues with the
-                    bot, please join our{" "}
-                    <Link
-                        href="/support"
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
-                    >
-                        support server
+                        above
                     </Link>
                     .
                 </p>
@@ -80,14 +48,10 @@ const faqs = [
         answer() {
             return (
                 <p>
-                    That depends on the tier you purchased. Please see the{" "}
-                    <Link
-                        href="#pricing"
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
-                    >
-                        pricing
-                    </Link>{" "}
-                    section for details on what you get with each tier.
+                    Premium subscriptions are only available on one server at a
+                    time, however after purchasing a subscription the
+                    user-specific benefits will be available to you across all
+                    servers.
                 </p>
             );
         },

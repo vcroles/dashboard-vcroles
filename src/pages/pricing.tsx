@@ -7,7 +7,6 @@ import NavBar from "../components/NavBar";
 import PremiumFAQs from "../components/PremiumFAQs";
 import PremiumFeatures from "../components/PremiumFeatures";
 import PricingSection from "../components/Pricing";
-import { pricing } from "../constants";
 
 const PremiumPage: NextPage = () => {
     return (
@@ -28,18 +27,18 @@ const PremiumPage: NextPage = () => {
                     <div className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-4xl">
                             <h2 className="text-3xl font-bold tracking-tight sm:text-center sm:text-6xl">
-                                Premium plans for everyone
+                                Unlock the power of VC Roles
                             </h2>
                             <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
                                 Ready to{" "}
                                 <span className="font-semibold">upgrade </span>
-                                your experience? Choose an affordable premium
-                                plan packed with all the features you need to
-                                manage your server.
+                                your experience? The VC Roles Premium plan
+                                unlocks the power of voice channel generators,
+                                voice channel analytics, and more!
                             </p>
                         </div>
                         <div id="pricing" />
-                        <PricingSection tiers={pricing.tiers} />
+                        <PricingSection />
                         <BottomBackground />
                     </div>
                     {/* Testimonials */}

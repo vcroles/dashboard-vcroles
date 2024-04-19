@@ -137,10 +137,6 @@ const navigation: NavigationItem[] = [
                 href: "/docs/commands/voice-admin",
             },
             {
-                title: "Premium",
-                href: "/docs/commands/premium",
-            },
-            {
                 title: "Miscellaneous",
                 href: "/docs/commands/misc",
             },

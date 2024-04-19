@@ -18,13 +18,13 @@ If you want to report a bug or request a feature, head over to our [GitHub page]
 
 {% quick-links %}
 
-{% quick-link title="Get Started" icon="installation" href="/docs/get-started" description="Get started with the bot" /%}
+{% quick-link title="Get Started" icon="installation" href="/docs/getting-started" description="Get started with the bot" /%}
 
 {% quick-link title="Basic Setup" icon="presets" href="/docs/basic-setup" description="Get the bot up and running" /%}
 
 {% quick-link title="Commands" icon="theming" href="/docs/commands/linking-and-unlinking" description="All the commands the bot has to offer" /%}
 
-{% quick-link title="FAQ" icon="plugins" href="/docs/faq" description="Frequently asked questions" /%}
+{% quick-link title="FAQ" icon="plugins" href="/docs/faqs" description="Frequently asked questions" /%}
 
 {% /quick-links %}
 
