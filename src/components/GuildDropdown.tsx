@@ -6,7 +6,6 @@ import {
     PlusIcon,
 } from "@heroicons/react/20/solid";
 import type { Guild } from "../server/trpc/router/discord";
-import Image from "next/image";
 
 import { iconHashToUrl, classNames } from "../utils/utils";
 import Link from "next/link";
@@ -33,7 +32,7 @@ const GuildDropdown: React.FC<{
                         <span className="flex items-center">
                             {selectedGuild ? (
                                 <>
-                                    <Image
+                                    <img
                                         src={
                                             selectedGuild?.icon
                                                 ? iconHashToUrl(
@@ -95,7 +94,7 @@ const GuildDropdown: React.FC<{
                                             }
                                         >
                                             <div className="flex items-center">
-                                                <Image
+                                                <img
                                                     src={
                                                         guild.icon
                                                             ? iconHashToUrl(

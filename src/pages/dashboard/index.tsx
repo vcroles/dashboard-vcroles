@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { BottomBackground, TopBackground } from "src/components/Background";
 import { SeoHeaders } from "src/components/SeoHeaders";
@@ -87,7 +86,7 @@ const Dashboard: NextPage = () => {
                                             className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
                                         >
                                             <div className="flex flex-1 flex-col p-8">
-                                                <Image
+                                                <img
                                                     className="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
                                                     src={
                                                         guild.icon

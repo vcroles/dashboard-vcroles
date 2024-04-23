@@ -17,8 +17,6 @@ const config = {
     },
     images: {
         domains: ["cdn.discordapp.com"],
-        loader: "custom",
-        loaderFile: "./src/image-loader.js",
     },
     async redirects() {
         return [
