@@ -70,11 +70,6 @@ const Document = () => {
                 <meta name="msapplication-TileColor" content="#603cba" />
                 <meta name="theme-color" content="#ffffff"></meta>
                 <Script
-                    defer
-                    src="https://litics.ecwrd.com/script.js"
-                    strategy="afterInteractive"
-                ></Script>
-                <Script
                     strategy="beforeInteractive"
                     dangerouslySetInnerHTML={{ __html: themeScript }}
                     id="theme-script"
