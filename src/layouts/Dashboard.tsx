@@ -32,7 +32,6 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
     const { id } = router.query as Query;
     const subPage = path.split("/")[3];
     const userData = useUser();
-    const posthog = usePostHog();
 
     const { data: allowed, isLoading: loading } =
         trpc.discord.checkUserPermissions.useQuery({
@@ -66,22 +65,6 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
     useEffect(() => {
         setSidebarOpen(false);
     }, [path, id]);
-
-    const newLoginState = router.query.loginState;
-    if (newLoginState && userData.isLoaded) {
-        if (newLoginState === "signedIn" && userData.isSignedIn) {
-            posthog.identify(userData.user.id, {
-                email: userData.user.primaryEmailAddress?.emailAddress,
-                name: userData.user.fullName,
-                username: userData.user.username,
-                image: userData.user.imageUrl,
-            });
-        }
-        if (newLoginState === "signedOut") {
-            posthog.reset();
-        }
-        router.replace(router.pathname, undefined, { shallow: true });
-    }
 
     if (!userData.isLoaded) {
         return (
@@ -217,9 +200,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                                     <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
                                         <div className="group block flex-shrink-0">
                                             <div className="flex items-center">
-                                                <UserButton
-                                                    afterSignOutUrl={`/dashboard?loginState=signedOut`}
-                                                />
+                                                <UserButton />
                                                 <div className="ml-3">
                                                     <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
                                                         {userData.user.username}
@@ -288,9 +269,7 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
                         <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
                             <div className="group block w-full flex-shrink-0">
                                 <div className="flex items-center">
-                                    <UserButton
-                                        afterSignOutUrl={`/dashboard?loginState=signedOut`}
-                                    />
+                                    <UserButton />
                                     <div className="ml-3">
                                         <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
                                             {userData.user.username}

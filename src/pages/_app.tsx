@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, useAuth, useUser } from "@clerk/nextjs";
 import type { AppProps, AppType } from "next/app";
 import { useEffect, type ReactElement, type ReactNode } from "react";
 import { trpc } from "../utils/trpc";
@@ -74,6 +74,34 @@ function collectHeadings(nodes: any, slugify = slugifyWithCounter()) {
     return sections;
 }
 
+function CSPostHogProvider({ children }: { children: ReactNode }) {
+    return (
+        <PostHogProvider client={posthog}>
+            <PostHogAuthWrapper>{children}</PostHogAuthWrapper>
+        </PostHogProvider>
+    );
+}
+
+function PostHogAuthWrapper({ children }: { children: ReactNode }) {
+    const auth = useAuth();
+    const userData = useUser();
+
+    useEffect(() => {
+        if (auth.userId && userData.user) {
+            posthog.identify(auth.userId, {
+                email: userData.user.primaryEmailAddress?.emailAddress,
+                name: userData.user.fullName,
+                username: userData.user.username,
+                image: userData.user.imageUrl,
+            });
+        } else if (auth.isLoaded && !auth.isSignedIn) {
+            posthog.reset();
+        }
+    }, [auth, userData]);
+
+    return children;
+}
+
 export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -113,8 +141,8 @@ const MyApp: AppType = ({
     }, []);
 
     return (
-        <PostHogProvider client={posthog}>
-            <ClerkProvider {...pageProps}>
+        <ClerkProvider {...pageProps}>
+            <CSPostHogProvider>
                 <Head>
                     <link
                         rel="canonical"
@@ -135,8 +163,8 @@ const MyApp: AppType = ({
                         <Component {...pageProps} />
                     ),
                 )}
-            </ClerkProvider>
-        </PostHogProvider>
+            </CSPostHogProvider>
+        </ClerkProvider>
     );
 };
 

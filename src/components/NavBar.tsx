@@ -17,27 +17,9 @@ import {
 
 const NavBar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const userData = useUser();
-    const posthog = usePostHog();
 
     const router = useRouter();
     const currentPage = router.pathname;
-
-    const newLoginState = router.query.loginState;
-    if (newLoginState && userData.isLoaded) {
-        if (newLoginState === "signedIn" && userData.isSignedIn) {
-            posthog.identify(userData.user.id, {
-                email: userData.user.primaryEmailAddress?.emailAddress,
-                name: userData.user.fullName,
-                username: userData.user.username,
-                image: userData.user.imageUrl,
-            });
-        }
-        if (newLoginState === "signedOut") {
-            posthog.reset();
-        }
-        router.replace(router.pathname, undefined, { shallow: true });
-    }
 
     return (
         <div className="px-6 pt-6 lg:px-8">
@@ -83,14 +65,10 @@ const NavBar = () => {
                     </div>
                     <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
                         <SignedOut>
-                            <SignInButton
-                                afterSignInUrl={`${router.pathname}?loginState=signedIn`}
-                            />
+                            <SignInButton />
                         </SignedOut>
                         <SignedIn>
-                            <UserButton
-                                afterSignOutUrl={`${router.pathname}?loginState=signedOut`}
-                            />
+                            <UserButton />
                         </SignedIn>
                     </div>
                 </nav>
@@ -144,14 +122,10 @@ const NavBar = () => {
                                 </div>
                                 <div className="py-6">
                                     <SignedOut>
-                                        <SignInButton
-                                            afterSignInUrl={`${router.pathname}?loginState=signedIn`}
-                                        />
+                                        <SignInButton />
                                     </SignedOut>
                                     <SignedIn>
-                                        <UserButton
-                                            afterSignOutUrl={`${router.pathname}?loginState=signedOut`}
-                                        />
+                                        <UserButton />
                                     </SignedIn>
                                 </div>
                             </div>

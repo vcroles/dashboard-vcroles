@@ -21,27 +21,8 @@ const Title: React.FC = () => {
 };
 
 const Dashboard: NextPage = () => {
-    const userData = useUser();
     const { data: guilds, isLoading: loading } =
         trpc.discord.getGuilds.useQuery();
-    const posthog = usePostHog();
-    const router = useRouter();
-
-    const newLoginState = router.query.loginState;
-    if (newLoginState && userData.isLoaded) {
-        if (newLoginState === "signedIn" && userData.isSignedIn) {
-            posthog.identify(userData.user.id, {
-                email: userData.user.primaryEmailAddress?.emailAddress,
-                name: userData.user.fullName,
-                username: userData.user.username,
-                image: userData.user.imageUrl,
-            });
-        }
-        if (newLoginState === "signedOut") {
-            posthog.reset();
-        }
-        router.replace(router.pathname, undefined, { shallow: true });
-    }
 
     return (
         <>
@@ -60,9 +41,7 @@ const Dashboard: NextPage = () => {
                                 Please sign in to view your dashboard.
                             </p>
                             <div className="mt-6 flex justify-center">
-                                <SignInButton
-                                    afterSignInUrl={`/dashboard?loginState=signedIn`}
-                                />
+                                <SignInButton />
                             </div>
                         </SignedOut>
                         <SignedIn>
