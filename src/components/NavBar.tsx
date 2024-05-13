@@ -2,7 +2,6 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { usePostHog } from "posthog-js/react";
 import { useState } from "react";
 import { navigation } from "../constants";
 import { classNames } from "../utils/utils";
@@ -12,7 +11,6 @@ import {
     SignedIn,
     SignedOut,
     UserButton,
-    useUser,
 } from "@clerk/nextjs";
 
 const NavBar = () => {

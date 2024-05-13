@@ -14,7 +14,6 @@ import GuildDropdown from "../components/GuildDropdown";
 import Logo from "../components/Logo";
 import { trpc } from "../utils/trpc";
 import { classNames } from "../utils/utils";
-import { usePostHog } from "posthog-js/react";
 import { UserButton, useUser } from "@clerk/nextjs";
 
 type Query = {

@@ -6,9 +6,7 @@ import Loading from "../../components/Loading";
 import NavBar from "../../components/NavBar";
 import { trpc } from "../../utils/trpc";
 import { iconHashToUrl } from "../../utils/utils";
-import { usePostHog } from "posthog-js/react";
-import { useRouter } from "next/router";
-import { SignInButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 const Title: React.FC = () => {
     return (
