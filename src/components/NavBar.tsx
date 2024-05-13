@@ -6,12 +6,7 @@ import { useState } from "react";
 import { navigation } from "../constants";
 import { classNames } from "../utils/utils";
 import Logo from "./Logo";
-import {
-    SignInButton,
-    SignedIn,
-    SignedOut,
-    UserButton,
-} from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const NavBar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
