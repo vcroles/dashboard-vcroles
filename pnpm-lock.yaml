@@ -7,22 +7,22 @@ settings:
 dependencies:
   '@clerk/backend':
     specifier: 1.0.0-beta.35
-    version: 1.0.0-beta.35(react-dom@18.2.0)(react@18.2.0)
+    version: 1.0.0-beta.35(react-dom@18.3.1)(react@18.3.1)
   '@clerk/nextjs':
     specifier: 5.0.0-beta.43
-    version: 5.0.0-beta.43(eslint@8.57.0)(next@14.2.3)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5)
+    version: 5.0.0-beta.43(eslint@8.57.0)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5)
   '@headlessui/react':
     specifier: ^1.7.19
-    version: 1.7.19(react-dom@18.2.0)(react@18.2.0)
+    version: 1.7.19(react-dom@18.3.1)(react@18.3.1)
   '@heroicons/react':
     specifier: ^2.1.3
-    version: 2.1.3(react@18.2.0)
+    version: 2.1.3(react@18.3.1)
   '@markdoc/markdoc':
     specifier: ^0.4.0
-    version: 0.4.0(@types/react@18.2.78)(react@18.2.0)
+    version: 0.4.0(@types/react@18.3.2)(react@18.3.1)
   '@markdoc/next.js':
     specifier: ^0.3.7
-    version: 0.3.7(@markdoc/markdoc@0.4.0)(next@14.2.3)(react@18.2.0)
+    version: 0.3.7(@markdoc/markdoc@0.4.0)(next@14.2.3)(react@18.3.1)
   '@prisma/client':
     specifier: ^5.12.1
     version: 5.12.1(prisma@5.12.1)
@@ -34,16 +34,16 @@ dependencies:
     version: 0.5.12(tailwindcss@3.4.3)
   '@tanstack/react-query':
     specifier: ^4.36.1
-    version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
+    version: 4.36.1(react-dom@18.3.1)(react@18.3.1)
   '@trpc/client':
     specifier: ^10.45.2
     version: 10.45.2(@trpc/server@10.45.2)
   '@trpc/next':
     specifier: ^10.45.2
-    version: 10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/react-query@10.45.2)(@trpc/server@10.45.2)(next@14.2.3)(react-dom@18.2.0)(react@18.2.0)
+    version: 10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/react-query@10.45.2)(@trpc/server@10.45.2)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1)
   '@trpc/react-query':
     specifier: ^10.45.2
-    version: 10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/server@10.45.2)(react-dom@18.2.0)(react@18.2.0)
+    version: 10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/server@10.45.2)(react-dom@18.3.1)(react@18.3.1)
   '@trpc/server':
     specifier: ^10.45.2
     version: 10.45.2
@@ -58,7 +58,7 @@ dependencies:
     version: 1.6.8
   next:
     specifier: 14.2.3
-    version: 14.2.3(react-dom@18.2.0)(react@18.2.0)
+    version: 14.2.3(react-dom@18.3.1)(react@18.3.1)
   next-sitemap:
     specifier: ^4.2.3
     version: 4.2.3(next@14.2.3)
@@ -66,11 +66,11 @@ dependencies:
     specifier: ^1.121.4
     version: 1.122.0
   react:
-    specifier: 18.2.0
-    version: 18.2.0
+    specifier: 18.3.1
+    version: 18.3.1
   react-dom:
-    specifier: 18.2.0
-    version: 18.2.0(react@18.2.0)
+    specifier: 18.3.1
+    version: 18.3.1(react@18.3.1)
   superjson:
     specifier: 2.2.1
     version: 2.2.1
@@ -90,10 +90,10 @@ devDependencies:
     version: 3.0.0
   '@types/react':
     specifier: ^18.2.78
-    version: 18.2.78
+    version: 18.3.2
   '@types/react-dom':
     specifier: ^18.2.25
-    version: 18.2.25
+    version: 18.3.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^7.6.0
     version: 7.7.0(@typescript-eslint/parser@7.7.0)(eslint@8.57.0)(typescript@5.4.5)
@@ -144,11 +144,11 @@ packages:
     dependencies:
       regenerator-runtime: 0.14.1
 
-  /@clerk/backend@1.0.0-beta.35(react-dom@18.2.0)(react@18.2.0):
+  /@clerk/backend@1.0.0-beta.35(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-zGdZRMCBXQpH5TzJDGcH3mu3l2K3Kcm/o10dKeG6v48eM0INyzYSBRqucB2lBF2qN/JvXwite4GyqOSc4JCqrA==}
     engines: {node: '>=18.17.0'}
     dependencies:
-      '@clerk/shared': 2.0.0-beta.21(react-dom@18.2.0)(react@18.2.0)
+      '@clerk/shared': 2.0.0-beta.21(react-dom@18.3.1)(react@18.3.1)
       cookie: 0.5.0
       snakecase-keys: 5.4.4
       tslib: 2.4.1
@@ -157,18 +157,18 @@ packages:
       - react-dom
     dev: false
 
-  /@clerk/clerk-react@5.0.0-beta.38(eslint@8.57.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5):
+  /@clerk/clerk-react@5.0.0-beta.38(eslint@8.57.0)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5):
     resolution: {integrity: sha512-ME3ooPbRFwgXZyT+H9WLfqiVR+doxKziG6ChlV2n90BmZQQVkYgrOTNSny67UXGDAVk49ZVdBImLvcJoBBLU5w==}
     engines: {node: '>=18.17.0'}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
     dependencies:
-      '@clerk/shared': 2.0.0-beta.21(react-dom@18.2.0)(react@18.2.0)
+      '@clerk/shared': 2.0.0-beta.21(react-dom@18.3.1)(react@18.3.1)
       '@clerk/types': 4.0.0-beta.27
       eslint-config-custom: 0.0.0(eslint@8.57.0)(typescript@5.4.5)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
       tslib: 2.4.1
     transitivePeerDependencies:
       - eslint
@@ -177,7 +177,7 @@ packages:
       - typescript
     dev: false
 
-  /@clerk/nextjs@5.0.0-beta.43(eslint@8.57.0)(next@14.2.3)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5):
+  /@clerk/nextjs@5.0.0-beta.43(eslint@8.57.0)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5):
     resolution: {integrity: sha512-5m+5CPrFK7+uSiR1RUUidgEFfl21N5LDo+v4UdgTFST0hN/rn2BOxKYquQWGdG4vJVuwMb0+bHIf+mLDlnx9aw==}
     engines: {node: '>=18.17.0'}
     peerDependencies:
@@ -185,14 +185,14 @@ packages:
       react: '>=18'
       react-dom: '>=18'
     dependencies:
-      '@clerk/backend': 1.0.0-beta.35(react-dom@18.2.0)(react@18.2.0)
-      '@clerk/clerk-react': 5.0.0-beta.38(eslint@8.57.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5)
-      '@clerk/shared': 2.0.0-beta.21(react-dom@18.2.0)(react@18.2.0)
+      '@clerk/backend': 1.0.0-beta.35(react-dom@18.3.1)(react@18.3.1)
+      '@clerk/clerk-react': 5.0.0-beta.38(eslint@8.57.0)(react-dom@18.3.1)(react@18.3.1)(typescript@5.4.5)
+      '@clerk/shared': 2.0.0-beta.21(react-dom@18.3.1)(react@18.3.1)
       crypto-js: 4.2.0
-      next: 14.2.3(react-dom@18.2.0)(react@18.2.0)
+      next: 14.2.3(react-dom@18.3.1)(react@18.3.1)
       path-to-regexp: 6.2.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
       tslib: 2.4.1
     transitivePeerDependencies:
       - eslint
@@ -201,7 +201,7 @@ packages:
       - typescript
     dev: false
 
-  /@clerk/shared@2.0.0-beta.21(react-dom@18.2.0)(react@18.2.0):
+  /@clerk/shared@2.0.0-beta.21(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-UnBgglq2g+4hdJlUc/NtbiMHaCHfpq1ZKaeug/Bc7QhTjRgopsjBxFjTQCm0xODlNIfWm3Sksql6u1PJnKQwMg==}
     engines: {node: '>=18.17.0'}
     requiresBuild: true
@@ -216,10 +216,10 @@ packages:
     dependencies:
       glob-to-regexp: 0.4.1
       js-cookie: 3.0.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
       std-env: 3.7.0
-      swr: 2.2.0(react@18.2.0)
+      swr: 2.2.0(react@18.3.1)
     dev: false
 
   /@clerk/types@4.0.0-beta.27:
@@ -266,25 +266,25 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  /@headlessui/react@1.7.19(react-dom@18.2.0)(react@18.2.0):
+  /@headlessui/react@1.7.19(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-Ll+8q3OlMJfJbAKM/+/Y2q6PPYbryqNTXDbryx7SXLIDamkF6iQFbriYHga0dY44PvDhvvBWCx1Xj4U5+G4hOw==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
       react-dom: ^16 || ^17 || ^18
     dependencies:
-      '@tanstack/react-virtual': 3.3.0(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-virtual': 3.3.0(react-dom@18.3.1)(react@18.3.1)
       client-only: 0.0.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /@heroicons/react@2.1.3(react@18.2.0):
+  /@heroicons/react@2.1.3(react@18.3.1):
     resolution: {integrity: sha512-fEcPfo4oN345SoqdlCDdSa4ivjaKbk0jTd+oubcgNxnNgAfzysfwWfQUr+51wigiWHQQRiZNd1Ao0M5Y3M2EGg==}
     peerDependencies:
       react: '>= 16'
     dependencies:
-      react: 18.2.0
+      react: 18.3.1
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
@@ -340,7 +340,7 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@markdoc/markdoc@0.4.0(@types/react@18.2.78)(react@18.2.0):
+  /@markdoc/markdoc@0.4.0(@types/react@18.3.2)(react@18.3.1):
     resolution: {integrity: sha512-fSh4P3Y4E7oaKYc2oNzSIJVPDto7SMzAuQN1Iyx53UxzleA6QzRdNWRxmiPqtVDaDi5dELd2yICoG91csrGrAw==}
     engines: {node: '>=14.7.0'}
     peerDependencies:
@@ -352,23 +352,23 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.78
-      react: 18.2.0
+      '@types/react': 18.3.2
+      react: 18.3.1
     optionalDependencies:
       '@types/markdown-it': 12.2.3
     dev: false
 
-  /@markdoc/next.js@0.3.7(@markdoc/markdoc@0.4.0)(next@14.2.3)(react@18.2.0):
+  /@markdoc/next.js@0.3.7(@markdoc/markdoc@0.4.0)(next@14.2.3)(react@18.3.1):
     resolution: {integrity: sha512-lp/J0Lfx8YPWes82HOMSDvXBfIkJxPKfEwgzGTwfFBJUGBNM1TBvchaaAzDP2X+HRORP4jNcGbJrZoXSdon0BQ==}
     peerDependencies:
       '@markdoc/markdoc': '*'
       next: '*'
       react: '*'
     dependencies:
-      '@markdoc/markdoc': 0.4.0(@types/react@18.2.78)(react@18.2.0)
+      '@markdoc/markdoc': 0.4.0(@types/react@18.3.2)(react@18.3.1)
       js-yaml: 4.1.0
-      next: 14.2.3(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
+      next: 14.2.3(react-dom@18.3.1)(react@18.3.1)
+      react: 18.3.1
     dev: false
 
   /@next/env@13.5.6:
@@ -604,7 +604,7 @@ packages:
     resolution: {integrity: sha512-DJSilV5+ytBP1FbFcEJovv4rnnm/CokuVvrBEtW/Va9DvuJ3HksbXUJEpI0aV1KtuL4ZoO9AVE6PyNLzF7tLeA==}
     dev: false
 
-  /@tanstack/react-query@4.36.1(react-dom@18.2.0)(react@18.2.0):
+  /@tanstack/react-query@4.36.1(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-y7ySVHFyyQblPl3J3eQBWpXZkliroki3ARnBKsdJchlgt7yJLRDUcf4B8soufgiYt3pEQIkBWBx1N9/ZPIeUWw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -617,20 +617,20 @@ packages:
         optional: true
     dependencies:
       '@tanstack/query-core': 4.36.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      use-sync-external-store: 1.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
-  /@tanstack/react-virtual@3.3.0(react-dom@18.2.0)(react@18.2.0):
+  /@tanstack/react-virtual@3.3.0(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-QFxmTSZBniq15S0vSZ55P4ToXquMXwJypPXyX/ux7sYo6a2FX3/zWoRLLc4eIOGWTjvzqcIVNKhcuFb+OZL3aQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@tanstack/virtual-core': 3.3.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /@tanstack/virtual-core@3.3.0:
@@ -645,7 +645,7 @@ packages:
       '@trpc/server': 10.45.2
     dev: false
 
-  /@trpc/next@10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/react-query@10.45.2)(@trpc/server@10.45.2)(next@14.2.3)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/next@10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/react-query@10.45.2)(@trpc/server@10.45.2)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-RSORmfC+/nXdmRY1pQ0AalsVgSzwNAFbZLYHiTvPM5QQ8wmMEHilseCYMXpu0se/TbPt9zVR6Ka2d7O6zxKkXg==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -656,16 +656,16 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@tanstack/react-query': 4.36.1(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-query': 4.36.1(react-dom@18.3.1)(react@18.3.1)
       '@trpc/client': 10.45.2(@trpc/server@10.45.2)
-      '@trpc/react-query': 10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/server@10.45.2)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/react-query': 10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/server@10.45.2)(react-dom@18.3.1)(react@18.3.1)
       '@trpc/server': 10.45.2
-      next: 14.2.3(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      next: 14.2.3(react-dom@18.3.1)(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/server@10.45.2)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1)(@trpc/client@10.45.2)(@trpc/server@10.45.2)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-BAqb9bGZIscroradlNx+Cc9522R+idY3BOSf5z0jHUtkxdMbjeGKxSSMxxu7JzoLqSIEC+LVzL3VvF8sdDWaZQ==}
     peerDependencies:
       '@tanstack/react-query': ^4.18.0
@@ -674,11 +674,11 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@tanstack/react-query': 4.36.1(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-query': 4.36.1(react-dom@18.3.1)(react@18.3.1)
       '@trpc/client': 10.45.2(@trpc/server@10.45.2)
       '@trpc/server': 10.45.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /@trpc/server@10.45.2:
@@ -729,14 +729,14 @@ packages:
   /@types/prop-types@15.7.12:
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
 
-  /@types/react-dom@18.2.25:
-    resolution: {integrity: sha512-o/V48vf4MQh7juIKZU2QGDfli6p1+OOi5oXx36Hffpc9adsHeXjVp8rHuPkjd8VT8sOJ2Zp05HR7CdpGTIUFUA==}
+  /@types/react-dom@18.3.0:
+    resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
     dependencies:
-      '@types/react': 18.2.78
+      '@types/react': 18.3.2
     dev: true
 
-  /@types/react@18.2.78:
-    resolution: {integrity: sha512-qOwdPnnitQY4xKlKayt42q5W5UQrSHjgoXNVEtxeqdITJ99k4VXJOP3vt8Rkm9HmgJpH50UNU+rlqfkfWOqp0A==}
+  /@types/react@18.3.2:
+    resolution: {integrity: sha512-Btgg89dAnqD4vV7R3hlwOxgqobUQKgx3MmrQRi0yYbs/P0ym8XozIAlkqVilPqHQwXs4e9Tf63rrCgl58BcO4w==}
     dependencies:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
@@ -2763,10 +2763,10 @@ packages:
       '@next/env': 13.5.6
       fast-glob: 3.3.2
       minimist: 1.2.8
-      next: 14.2.3(react-dom@18.2.0)(react@18.2.0)
+      next: 14.2.3(react-dom@18.3.1)(react@18.3.1)
     dev: false
 
-  /next@14.2.3(react-dom@18.2.0)(react@18.2.0):
+  /next@14.2.3(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-dowFkFTR8v79NPJO4QsBUtxv0g9BrS/phluVpMAt2ku7H+cbcBJlopXjkWlwxrk/xGqMemr7JkGPGemPrLLX7A==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -2790,9 +2790,9 @@ packages:
       caniuse-lite: 1.0.30001610
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      styled-jsx: 5.1.1(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.3
       '@next/swc-darwin-x64': 14.2.3
@@ -3169,21 +3169,21 @@ packages:
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  /react-dom@18.2.0(react@18.2.0):
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  /react-dom@18.3.1(react@18.3.1):
+    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^18.3.1
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
-      scheduler: 0.23.0
+      react: 18.3.1
+      scheduler: 0.23.2
     dev: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  /react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+  /react@18.3.1:
+    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
@@ -3296,8 +3296,8 @@ packages:
       yoga-wasm-web: 0.3.3
     dev: false
 
-  /scheduler@0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+  /scheduler@0.23.2:
+    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
     dependencies:
       loose-envify: 1.4.0
     dev: false
@@ -3470,7 +3470,7 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  /styled-jsx@5.1.1(react@18.2.0):
+  /styled-jsx@5.1.1(react@18.3.1):
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -3484,7 +3484,7 @@ packages:
         optional: true
     dependencies:
       client-only: 0.0.1
-      react: 18.2.0
+      react: 18.3.1
     dev: false
 
   /sucrase@3.35.0:
@@ -3517,13 +3517,13 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /swr@2.2.0(react@18.2.0):
+  /swr@2.2.0(react@18.3.1):
     resolution: {integrity: sha512-AjqHOv2lAhkuUdIiBu9xbuettzAzWXmCEcLONNKJRba87WAefz8Ca9d6ds/SzrPc235n1IxWYdhJ2zF3MNUaoQ==}
     peerDependencies:
       react: ^16.11.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      react: 18.2.0
-      use-sync-external-store: 1.2.0(react@18.2.0)
+      react: 18.3.1
+      use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
   /tailwindcss@3.4.3:
@@ -3721,12 +3721,12 @@ packages:
     dependencies:
       punycode: 2.3.1
 
-  /use-sync-external-store@1.2.0(react@18.2.0):
+  /use-sync-external-store@1.2.0(react@18.3.1):
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      react: 18.2.0
+      react: 18.3.1
     dev: false
 
   /util-deprecate@1.0.2:
