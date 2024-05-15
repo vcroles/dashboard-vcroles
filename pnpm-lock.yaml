@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@clerk/backend':
-    specifier: 1.0.0-beta.35
-    version: 1.0.0-beta.35(react-dom@18.3.1)(react@18.3.1)
+    specifier: 1.1.5
+    version: 1.1.5(react-dom@18.3.1)(react@18.3.1)
   '@clerk/nextjs':
     specifier: 5.0.11
     version: 5.0.11(next@14.2.3)(react-dom@18.3.1)(react@18.3.1)
@@ -146,19 +146,6 @@ packages:
       regenerator-runtime: 0.14.1
     dev: true
 
-  /@clerk/backend@1.0.0-beta.35(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-zGdZRMCBXQpH5TzJDGcH3mu3l2K3Kcm/o10dKeG6v48eM0INyzYSBRqucB2lBF2qN/JvXwite4GyqOSc4JCqrA==}
-    engines: {node: '>=18.17.0'}
-    dependencies:
-      '@clerk/shared': 2.0.0-beta.21(react-dom@18.3.1)(react@18.3.1)
-      cookie: 0.5.0
-      snakecase-keys: 5.4.4
-      tslib: 2.4.1
-    transitivePeerDependencies:
-      - react
-      - react-dom
-    dev: false
-
   /@clerk/backend@1.1.5(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-e1CD4A5y+H4NbGdGJSE1ZnLGAYaFssrG7NStMmpwaOJry7zF0AbcMMrTzPGWoeu9xrrIRllcOMnAzhehe0/kYg==}
     engines: {node: '>=18.17.0'}
@@ -203,27 +190,6 @@ packages:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       tslib: 2.4.1
-    dev: false
-
-  /@clerk/shared@2.0.0-beta.21(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-UnBgglq2g+4hdJlUc/NtbiMHaCHfpq1ZKaeug/Bc7QhTjRgopsjBxFjTQCm0xODlNIfWm3Sksql6u1PJnKQwMg==}
-    engines: {node: '>=18.17.0'}
-    requiresBuild: true
-    peerDependencies:
-      react: '>=18'
-      react-dom: '>=18'
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      glob-to-regexp: 0.4.1
-      js-cookie: 3.0.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      std-env: 3.7.0
-      swr: 2.2.0(react@18.3.1)
     dev: false
 
   /@clerk/shared@2.1.1(react-dom@18.3.1)(react@18.3.1):
