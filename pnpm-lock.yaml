@@ -84,7 +84,7 @@ devDependencies:
     version: 0.5.7(tailwindcss@3.4.3)
   '@types/node':
     specifier: ^20.12.7
-    version: 20.12.7
+    version: 20.12.12
   '@types/prettier':
     specifier: ^3.0.0
     version: 3.0.0
@@ -713,8 +713,8 @@ packages:
     dev: false
     optional: true
 
-  /@types/node@20.12.7:
-    resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
+  /@types/node@20.12.12:
+    resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
