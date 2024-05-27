@@ -1,7 +1,6 @@
 # *
 User-agent: *
 Allow: /
-Disallow: /api/
 
 # Host
 Host: https://www.vcroles.com

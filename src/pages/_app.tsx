@@ -138,7 +138,7 @@ const MyApp: AppType = ({
         return () => {
             router.events.off("routeChangeComplete", handleRouteChange);
         };
-    }, []);
+    }, [router.events]);
 
     return (
         <ClerkProvider {...pageProps}>

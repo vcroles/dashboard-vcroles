@@ -3,12 +3,14 @@
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "eslint-plugin-react-compiler"],
     "extends": [
         "next/core-web-vitals",
         "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
-        "@typescript-eslint/consistent-type-imports": "warn"
+        "@typescript-eslint/consistent-type-imports": "warn",
+        "react-compiler/react-compiler": "error",
+        "@next/next/no-img-element": "off"
     }
 }

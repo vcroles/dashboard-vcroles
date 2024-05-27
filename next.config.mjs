@@ -10,7 +10,6 @@ import withMarkdoc from "@markdoc/next.js";
 /** @type {import("next").NextConfig} */
 const config = {
     reactStrictMode: true,
-    swcMinify: true,
     i18n: {
         locales: ["en"],
         defaultLocale: "en",
@@ -34,7 +33,7 @@ const config = {
     },
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
     experimental: {
-        scrollRestoration: true,
+        reactCompiler: true,
     },
     async rewrites() {
         return [
