@@ -163,7 +163,7 @@ async function getUserToken(userId: string) {
         "oauth_discord",
     );
     // @ts-expect-error - this works :)
-    const accessToken = clerkTokenResponse[0].token;
+    const accessToken = clerkTokenResponse[0]?.token;
 
     if (!accessToken) {
         return null;
