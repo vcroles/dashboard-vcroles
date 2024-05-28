@@ -166,7 +166,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                         setOpen={setModalOpen}
                         title="Delete Link"
                         description="Are you sure you want to delete this link?"
-                        handleDelete={() => {
+                        handleDelete={async () => {
                             if (selectedLink) {
                                 deleteMutation.mutate({
                                     dbId: selectedLink.dbId,
