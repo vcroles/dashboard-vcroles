@@ -38,19 +38,19 @@ export function ClientDashboardLayout({
             name: "Server Settings",
             href: `/dashboard/${guildId}`,
             icon: Cog6ToothIcon,
-            current: pathname === "/dashboard/[id]",
+            current: pathname === `/dashboard/${guildId}`,
         },
         {
             name: "Linked Channels",
             href: `/dashboard/${guildId}/links`,
             icon: LinkIcon,
-            current: pathname === "/dashboard/[id]/links",
+            current: pathname === `/dashboard/${guildId}/links`,
         },
         {
             name: "Voice Generators",
             href: `/dashboard/${guildId}/generators`,
             icon: BoltIcon,
-            current: pathname === "/dashboard/[id]/generators",
+            current: pathname === `/dashboard/${guildId}/generators`,
         },
     ];
 

@@ -1,5 +1,32 @@
-// TODO: reimplement this using server components
+import { redirect } from "next/navigation";
+import {
+    getGuildChannels,
+    getGuildData,
+    getGuildLinks,
+    getGuildRoles,
+} from "src/server/server-utils";
+import { ClientLinksDashboardPage } from "./_components/_page";
 
-export default function LinksPage() {
-    return <div>Links</div>;
+export default async function LinksPage({
+    params,
+}: {
+    params: { id: string };
+}) {
+    const channels = await getGuildChannels(params.id);
+    const roles = await getGuildRoles(params.id);
+    const guild = await getGuildData(params.id);
+    const links = await getGuildLinks(params.id);
+
+    if (!guild) {
+        return redirect("/dashboard");
+    }
+
+    return (
+        <ClientLinksDashboardPage
+            guild={guild}
+            channels={channels}
+            roles={roles}
+            links={links}
+        />
+    );
 }

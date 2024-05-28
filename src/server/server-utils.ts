@@ -254,3 +254,11 @@ export async function getGuildData(guildId: string) {
 
     return guild;
 }
+
+export async function getGuildLinks(guildId: string) {
+    const links = await prisma.link.findMany({
+        where: { guildId },
+    });
+
+    return links;
+}

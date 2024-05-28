@@ -35,34 +35,6 @@ export function ClientDashboardPage({
 
     const [showSavedNotification, setShowSavedNotification] = useState(false);
 
-    // const utils = trpc.useContext();
-    // const mutation = trpc.discord.updateGuildData.useMutation({
-    //     onMutate: () => {
-    //         utils.discord.getGuildData.cancel({ guild: id });
-    //         const optimisticUpdate = utils.discord.getGuildData.getData({
-    //             guild: id,
-    //         });
-    //         if (optimisticUpdate) {
-    //             utils.discord.getGuildData.setData(
-    //                 { guild: id },
-    //                 optimisticUpdate,
-    //             );
-    //         }
-    //     },
-    //     onSettled: () => {
-    //         utils.discord.getGuildData.invalidate({ guild: id });
-    //     },
-    // });
-
-    // // every time the ID changes, update the state
-    // useEffect(() => {
-    //     setLoggingToggle(guild?.logging ? true : false);
-    //     setLoggingChannel(currentChannel);
-    //     setTtsToggle(guild?.ttsEnabled ? true : false);
-    //     setTtsRole(currentRole);
-    //     setTtsLeave(guild?.ttsLeave ? true : false);
-    // }, [guild, currentChannel, currentRole]);
-
     return (
         <>
             <form
