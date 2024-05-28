@@ -5,7 +5,7 @@ import {
     getGuildLinks,
     getGuildRoles,
 } from "src/server/server-utils";
-import { ClientLinksDashboardPage } from "./_components/_page";
+import { ClientLinksDashboardPage } from "./_components/links-page";
 
 export default async function LinksPage({
     params,

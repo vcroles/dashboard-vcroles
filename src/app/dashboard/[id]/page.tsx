@@ -4,7 +4,7 @@ import {
     getGuildRoles,
 } from "src/server/server-utils";
 import { redirect } from "next/navigation";
-import { ClientDashboardPage } from "./_components/_page";
+import { ClientDashboardPage } from "./_components/settings-page";
 
 export default async function DashboardPage({
     params,
