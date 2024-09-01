@@ -158,12 +158,11 @@ const checkUserPermissions = async (
 };
 
 async function getUserToken(userId: string) {
-    const clerkTokenResponse = await clerkClient.users.getUserOauthAccessToken(
+    const clerkTokenResponse = await clerkClient().users.getUserOauthAccessToken(
         userId,
         "oauth_discord",
     );
-    // @ts-expect-error - this works :)
-    const accessToken = clerkTokenResponse[0]?.token;
+    const accessToken = clerkTokenResponse.data[0]?.token;
 
     if (!accessToken) {
         return null;
@@ -173,7 +172,7 @@ async function getUserToken(userId: string) {
 }
 
 async function getUserAccount(userId: string) {
-    const user = await clerkClient.users.getUser(userId);
+    const user = await clerkClient().users.getUser(userId);
     const discordAccounts = user.externalAccounts.filter(
         (account) => account.provider === "oauth_discord",
     );
