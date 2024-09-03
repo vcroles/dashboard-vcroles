@@ -12,7 +12,7 @@
         "postbuild": "next-sitemap --config next-sitemap.config.mjs"
     },
     "dependencies": {
-        "@clerk/backend": "1.9.0",
+        "@clerk/backend": "1.9.2",
         "@clerk/nextjs": "5.3.7",
         "@headlessui/react": "^2.0.0",
         "@heroicons/react": "^2.1.3",
