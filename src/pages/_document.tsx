@@ -74,6 +74,13 @@ const Document = () => {
                     dangerouslySetInnerHTML={{ __html: themeScript }}
                     id="theme-script"
                 />
+                <Script
+                    src="https://uptime.betterstack.com/widgets/announcement.js"
+                    data-id="195414"
+                    async={true}
+                    type="text/javascript"
+                    strategy="afterInteractive"
+                ></Script>
             </Head>
             <body>
                 <Main />
