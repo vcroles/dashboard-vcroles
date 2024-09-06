@@ -8,7 +8,7 @@ export default function StatsSection() {
                     </h2>
                     <p className="mt-6 text-base leading-7 text-gray-600">
                         VC Roles is a powerful Discord bot that enriches your
-                        server's voice channels with features like role
+                        server&apos;s voice channels with features like role
                         assignment, channel generators, and more. Join thousands
                         of servers already benefiting from our services.
                     </p>
@@ -38,7 +38,7 @@ export default function StatsSection() {
                             </p>
                             <p className="mt-2 text-base leading-7 text-gray-400">
                                 Join the growing community of Discord servers
-                                enhanced by VC Roles - there's features for
+                                enhanced by VC Roles - there&apos;s features for
                                 servers of all sizes!
                             </p>
                         </div>
@@ -52,7 +52,7 @@ export default function StatsSection() {
                                 Members across Discord
                             </p>
                             <p className="mt-2 text-base leading-7 text-indigo-200">
-                                We're proud to empower more than 15 million
+                                We&apos;re proud to empower more than 15 million
                                 members across Discord.
                             </p>
                         </div>
