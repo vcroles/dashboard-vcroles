@@ -2,7 +2,7 @@
 
 ## [Website](https://vcroles.com)
 
-This is the website for the [VC Roles Discord Bot](https://github.com/CDE90/VCRoles).
+This is the website for the [VC Roles Discord Bot](https://github.com/vcroles/VCRoles).
 
 This is based off the [T3 Stack](https://create.t3.gg/).
 

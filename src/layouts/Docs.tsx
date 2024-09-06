@@ -185,7 +185,7 @@ function Header({ navigation }: { navigation: NavigationItem[] }) {
             <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
                 <ThemeSelector className="relative z-10" />
                 <Link
-                    href="https://github.com/CDE90/dashboard-vcroles"
+                    href="https://github.com/vcroles/dashboard-vcroles"
                     className="group"
                     aria-label="GitHub"
                 >

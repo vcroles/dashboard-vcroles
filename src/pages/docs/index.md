@@ -6,13 +6,13 @@ pageTitle: VC Roles | Documentation
 
 ## [Add to your Discord Server!](/invite)
 
-[Discord Support Server](/support) | [View GitHub](https://github.com/CDE90/VCRoles) | [Top.gg Page](https://top.gg/bot/775025797034541107)
+[Discord Support Server](/support) | [View GitHub](https://github.com/vcroles/VCRoles) | [Top.gg Page](https://top.gg/bot/775025797034541107)
 
 ## Introduction
 
 Welcome to the VC Roles documentation! Here you'll find everything you need to get up and running with the bot!
 
-If you want to report a bug or request a feature, head over to our [GitHub page](https://github.com/CDE90/VCRoles), and make a new issue!
+If you want to report a bug or request a feature, head over to our [GitHub page](https://github.com/vcroles/VCRoles), and make a new issue!
 
 ### Ready to start?
 

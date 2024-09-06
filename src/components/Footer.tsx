@@ -3,7 +3,7 @@ import React from "react";
 const navigation = [
     {
         name: "GitHub",
-        href: "https://github.com/CDE90/dashboard-vcroles",
+        href: "https://github.com/vcroles/dashboard-vcroles",
         icon: (props: React.SVGProps<SVGSVGElement>) => (
             <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                 <path
