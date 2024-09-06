@@ -181,10 +181,6 @@ Sets a role which cannot use the voice channel generator - when a user with that
 
 Sets whether the generator channel should be hidden when the channel limit is reached.
 
-{% callout title="Premium" %}
-This feature is only available to [Premium](/pricing) users.
-{% /callout %}
-
 ### Generator Hide At Limit Usage
 
 `/generator hide_at_limit <generator> <enabled>`

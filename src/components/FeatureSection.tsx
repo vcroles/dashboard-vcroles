@@ -3,7 +3,7 @@ import type { Feature } from "src/constants";
 
 const FeatureSection: React.FC<{ features: Feature[] }> = ({ features }) => {
     return (
-        <div className="overflow-hidden ">
+        <div className="overflow-hidden">
             <div className="relative mx-auto max-w-7xl px-6 pb-24 sm:pb-32 lg:px-8 lg:pb-40">
                 <svg
                     className="absolute left-full top-0 -translate-x-1/2 -translate-y-3/4 transform lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"

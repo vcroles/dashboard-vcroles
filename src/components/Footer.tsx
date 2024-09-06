@@ -47,8 +47,7 @@ const Footer = () => {
                 </div>
                 <div className="mt-8 md:order-1 md:mt-0">
                     <p className="text-center text-base text-gray-400">
-                        &copy; {new Date().getFullYear()} VC Roles All rights
-                        reserved.
+                        &copy; 2024 Ethan Coward All rights reserved.
                     </p>
                 </div>
             </div>

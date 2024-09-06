@@ -116,10 +116,6 @@ The owner must have left the channel for you to be able to claim it.
 
 Invites a user to your voice channel. The user will receive a DM, letting them know, and the channel permissions will be updated to let them in (so if your channel is locked and you invite them, they are allowed to join).
 
-{% callout title="Premium" %}
-This command is only available in [premium](/pricing) servers.
-{% /callout %}
-
 ### Interface Invite Usage
 
 `/interface invite <user> [message]`

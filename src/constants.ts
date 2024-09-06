@@ -7,10 +7,10 @@ import {
 
 export const navigation = [
     { name: "Home", href: "/" },
-    { name: "Pricing", href: "/pricing" },
     { name: "Dashboard", href: "/dashboard" },
     { name: "Documentation", href: "/docs" },
     { name: "Invite", href: "/invite" },
+    { name: "GitHub", href: "https://github.com/vcroles" },
 ];
 
 export type Feature = {

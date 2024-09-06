@@ -4,7 +4,7 @@ description: The official documentation for VC Roles.
 pageTitle: VC Roles | Documentation
 ---
 
-## [Add to your Discord Server!](/invite) | [Upgrade to Premium](/pricing)
+## [Add to your Discord Server!](/invite)
 
 [Discord Support Server](/support) | [View GitHub](https://github.com/CDE90/VCRoles) | [Top.gg Page](https://top.gg/bot/775025797034541107)
 
@@ -54,10 +54,6 @@ This is the bot you need to make your server more interactive, and bring your co
     -   TTS commands are used to make the bot read a message in a voice channel
     -   Options for multiple languages.
     -   Great for users who have no mic and still want to be heard
--   [Analytics Commands](/docs/features/analytics)
-    -   See insights on what's happening in your voice channels.
-    -   How much time is being spent in them? How many times do people join? How many commands are being used? and more!
-    -   See beautiful graphs with per-day data or per-hour visualisations, or prefer to analyse yourself? Download an export of the data as a csv.
 -   [Voice Admin Commands](/docs/features/voice-admin)
     -   Used to mute, unmute, deafen and undeafen all members in a voice channel
 -   [Audit logging (for voice channels)](/docs/features/audit-logs)

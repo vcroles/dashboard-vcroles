@@ -1,4 +1,4 @@
-import { Dialog } from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -70,7 +70,7 @@ const NavBar = () => {
                     open={mobileMenuOpen}
                     onClose={setMobileMenuOpen}
                 >
-                    <Dialog.Panel
+                    <DialogPanel
                         // focus="true"
                         className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden"
                     >
@@ -123,7 +123,7 @@ const NavBar = () => {
                                 </div>
                             </div>
                         </div>
-                    </Dialog.Panel>
+                    </DialogPanel>
                 </Dialog>
             </div>
         </div>

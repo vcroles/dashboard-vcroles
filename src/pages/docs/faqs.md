@@ -8,12 +8,6 @@ Here is a selection of VC Roles FAQs, if you feel like any are missing, let us k
 
 ---
 
-## What does Premium offer?
-
-For a list of the premium features offered, visit the [pricing page](/pricing).
-
----
-
 ## Why does it say 'You must be the channel owner to edit?'
 
 Since our voice generator update, we have added the ability to limit command usage to the owner of the voice channel. If the previous owner has left, you can use the [/interface claim](/docs/commands/interface-commands#interface-claim) command to become the owner, and get access to the editing commands.

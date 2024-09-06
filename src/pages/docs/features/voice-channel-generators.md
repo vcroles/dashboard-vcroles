@@ -10,10 +10,6 @@ Voice channel generators are a feature that allows you to create a voice channel
 
 Generators are highly customisable, giving users the ability to edit their channel however they like, such as locking, hiding, renaming and editing which roles/members can join their channel for ultimate control.
 
-{% callout title="Premium" %}
-All servers are able to create one free generator, but to create more than one, you will need to [upgrade to premium](/pricing).
-{% /callout %}
-
 ## How can I make a voice channel generator?
 
 Currently the only way to create a voice channel generator is using discord commands. You can find more information about the commands on the [commands page](/docs/commands/generators).
@@ -61,7 +57,7 @@ Using the [/generator toggle](/docs/commands/generators#generator-toggle) comman
 -   **LOCK** - when enabled all generated channels are locked, but you can toggle this option to allow members to join their channel without needing to be given the permission.
 -   **HIDE** - when enabled all generated channels are hidden, but you can toggle this option to allow members to see their channel without needing to be given the permission.
 -   **OWNER** - when enabled all generated channels are owned by the member who created them, so only they can edit the channel.
--   **TEXT** - when enabled all generated channels get their own private text channel. This is a [premium feature](/pricing).
+-   **TEXT** - when enabled all generated channels get their own private text channel.
 
 To view which options are enabled, you can use the [/generator options](/docs/commands/generators#generator-options) command.
 

@@ -29,7 +29,3 @@ View the [TTS feature docs](/docs/features/tts#how-can-i-use-text-to-speech) pag
 ## How can I manage audit logging settings?
 
 View the [Audit Logging feature docs](/docs/features/audit-logs#how-can-i-use-audit-logging) page for more information.
-
-## How can I manage other settings?
-
-You can manage other settings, such as analytics using the [analytics commands](/docs/commands/analytics).

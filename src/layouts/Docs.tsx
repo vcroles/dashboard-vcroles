@@ -58,10 +58,6 @@ const navigation: NavigationItem[] = [
                 href: "/docs/features/tts",
             },
             {
-                title: "Analytics",
-                href: "/docs/features/analytics",
-            },
-            {
                 title: "Audit Logs",
                 href: "/docs/features/audit-logs",
             },
@@ -123,10 +119,6 @@ const navigation: NavigationItem[] = [
             {
                 title: "TTS",
                 href: "/docs/commands/tts",
-            },
-            {
-                title: "Analytics",
-                href: "/docs/commands/analytics",
             },
             {
                 title: "Audit Logging",
