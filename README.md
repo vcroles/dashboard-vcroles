@@ -71,4 +71,4 @@ Feel free to reach out to me in the [support server](https://vcroles.com/support
 
 ## License
 
-This project is licensed under the [Apache 2.0 with Commons Clause](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
