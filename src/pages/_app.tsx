@@ -8,6 +8,7 @@ import { DocsLayout } from "src/layouts/Docs";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { env } from "src/env/client.mjs";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "../styles/globals.css";
 
@@ -143,6 +144,7 @@ const MyApp: AppType = ({
     return (
         <ClerkProvider {...pageProps}>
             <CSPostHogProvider>
+                <ReactQueryDevtools initialIsOpen={false} />
                 <Head>
                     <link
                         rel="canonical"
