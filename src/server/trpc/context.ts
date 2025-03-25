@@ -1,15 +1,11 @@
-import { type inferAsyncReturnType } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 
 import { prisma } from "../db/client";
 import { getAuth } from "@clerk/nextjs/server";
-import type {
-    SignedInAuthObject,
-    SignedOutAuthObject,
-} from "@clerk/backend/internal";
+import type { AuthObject } from "@clerk/backend";
 
 interface AuthContext {
-    auth: SignedInAuthObject | SignedOutAuthObject;
+    auth: AuthObject;
 }
 
 /** Use this helper for:
@@ -34,4 +30,4 @@ export const createContext = async (opts: CreateNextContextOptions) => {
     });
 };
 
-export type Context = inferAsyncReturnType<typeof createContext>;
+export type Context = Awaited<ReturnType<typeof createContext>>;

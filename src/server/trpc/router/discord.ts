@@ -158,10 +158,9 @@ const checkUserPermissions = async (
 };
 
 async function getUserToken(userId: string) {
-    const clerkTokenResponse = await clerkClient().users.getUserOauthAccessToken(
-        userId,
-        "oauth_discord",
-    );
+    const clerkTokenResponse = await (
+        await clerkClient()
+    ).users.getUserOauthAccessToken(userId, "discord");
     const accessToken = clerkTokenResponse.data[0]?.token;
 
     if (!accessToken) {
@@ -172,7 +171,7 @@ async function getUserToken(userId: string) {
 }
 
 async function getUserAccount(userId: string) {
-    const user = await clerkClient().users.getUser(userId);
+    const user = await (await clerkClient()).users.getUser(userId);
     const discordAccounts = user.externalAccounts.filter(
         (account) => account.provider === "oauth_discord",
     );
