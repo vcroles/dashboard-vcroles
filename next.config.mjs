@@ -32,9 +32,6 @@ const config = {
         ];
     },
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-    experimental: {
-        reactCompiler: true,
-    },
     async rewrites() {
         return [
             {
