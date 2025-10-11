@@ -6,11 +6,11 @@
         "build": "next build",
         "dev": "next dev --turbo",
         "postinstall": "prisma generate --schema prisma/schema.prisma",
-        "lint": "next lint",
+        "lint": "eslint .",
         "start": "next start",
         "prettier": "prettier --write .",
         "postbuild": "next-sitemap --config next-sitemap.config.mjs",
-        "check": "next lint && tsc --noEmit"
+        "check": "eslint . && tsc --noEmit"
     },
     "dependencies": {
         "@clerk/backend": "^1.34.0",
@@ -19,7 +19,7 @@
         "@heroicons/react": "^2.2.0",
         "@markdoc/markdoc": "^0.4.0",
         "@markdoc/next.js": "^0.3.7",
-        "@prisma/client": "^5.22.0",
+        "@prisma/client": "^6.17.1",
         "@sindresorhus/slugify": "^2.2.1",
         "@tailwindcss/typography": "^0.5.19",
         "@tanstack/react-query": "^5.90.2",
@@ -40,6 +40,9 @@
         "zod": "^3.25.76"
     },
     "devDependencies": {
+        "@eslint/compat": "^1.4.0",
+        "@eslint/eslintrc": "^3.3.1",
+        "@eslint/js": "^9.37.0",
         "@tailwindcss/forms": "^0.5.10",
         "@types/node": "^20.19.20",
         "@types/react": "^18.3.26",
@@ -49,10 +52,11 @@
         "autoprefixer": "^10.4.21",
         "eslint": "^9.37.0",
         "eslint-config-next": "^15.5.4",
+        "eslint-plugin-react-hooks": "^7.0.0",
         "postcss": "^8.5.6",
         "prettier": "^3.6.2",
         "prettier-plugin-tailwindcss": "^0.6.14",
-        "prisma": "^5.22.0",
+        "prisma": "^6.17.1",
         "tailwindcss": "^3.4.18",
         "typescript": "^5.9.3"
     },
