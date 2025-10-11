@@ -1,6 +1,6 @@
 import type { LinkType, Link } from "~/client";
 import { useRouter } from "next/router";
-import { useEffect, useState, type ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import ChannelDropdown from "../../../components/ChannelDropdown";
 import ChannelSelectionBox from "../../../components/ChannelSelectionBox";
 import DeleteModal from "../../../components/DeleteModal";
@@ -34,10 +34,14 @@ const DashboardLinksPage: NextPageWithLayout = () => {
     // Get the guild links
     const { data: linkData } = trpc.discord.getLinks.useQuery({ guild: id });
 
-    // Set the guild links
-    const [links, setLinks] = useState(linkData);
-
+    // Reset state when id changes
+    const [lastId, setLastId] = useState(id);
     const [selectedLink, setSelectedLink] = useState<Link | null>(null);
+
+    if (lastId !== id) {
+        setLastId(id);
+        setSelectedLink(null);
+    }
 
     const selectedChannel = channels?.find(
         (channel) => channel.id === selectedLink?.id,
@@ -51,6 +55,14 @@ const DashboardLinksPage: NextPageWithLayout = () => {
     const [createLinkChannel, setCreateLinkChannel] = useState<Channel | null>(
         null,
     );
+
+    // Reset channel selection when link type changes
+    const [lastCreateLinkType, setLastCreateLinkType] = useState(createLinkType);
+    if (lastCreateLinkType !== createLinkType) {
+        setLastCreateLinkType(createLinkType);
+        setCreateLinkChannel(null);
+    }
+
     const allowedChannelTypes =
         createLinkType === "REGULAR"
             ? [2]
@@ -61,10 +73,6 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                 : createLinkType === "PERMANENT"
                   ? [2, 4, 13]
                   : [];
-
-    useEffect(() => {
-        setCreateLinkChannel(null);
-    }, [createLinkType]);
 
     const utils = trpc.useContext();
     const updateMutation = trpc.discord.updateLink.useMutation({
@@ -115,15 +123,6 @@ const DashboardLinksPage: NextPageWithLayout = () => {
         },
     });
 
-    // every time the ID changes, update the state
-    useEffect(() => {
-        setLinks(linkData);
-    }, [id, linkData]);
-
-    useEffect(() => {
-        setSelectedLink(null);
-    }, [id]);
-
     return (
         <>
             <form
@@ -152,9 +151,9 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                 </div>
 
                 <div className="pt-8">
-                    {(links?.length ?? 0) > 0 ? (
+                    {(linkData?.length ?? 0) > 0 ? (
                         <LinkDropdown
-                            links={links ?? []}
+                            links={linkData ?? []}
                             channels={channels ?? []}
                             selectedLink={selectedLink}
                             setSelectedLink={setSelectedLink}
@@ -296,7 +295,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                                         type="button"
                                         className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                         onClick={() => {
-                                            const previousLink = links?.find(
+                                            const previousLink = linkData?.find(
                                                 (l) =>
                                                     l.dbId ===
                                                     selectedLink.dbId,
@@ -392,7 +391,7 @@ const DashboardLinksPage: NextPageWithLayout = () => {
                             type="button"
                             className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
-                                const link = links?.find(
+                                const link = linkData?.find(
                                     (l) =>
                                         l.type === createLinkType &&
                                         (l.id === createLinkChannel?.id ||

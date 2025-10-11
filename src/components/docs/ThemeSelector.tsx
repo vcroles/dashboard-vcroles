@@ -51,33 +51,33 @@ function SystemIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function ThemeSelector(props: React.ComponentProps<"div">) {
-    const [selectedTheme, setSelectedTheme] = useState<Theme>();
+    const [selectedTheme, setSelectedTheme] = useState<Theme>(() => {
+        // Initialize from DOM on mount
+        if (typeof document !== "undefined") {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            return themes.find((theme) => theme.value === currentTheme) ?? themes[2]!;
+        }
+        return themes[2]!;
+    });
 
     useEffect(() => {
-        if (selectedTheme) {
-            document.documentElement.setAttribute(
-                "data-theme",
-                selectedTheme.value,
-            );
-        } else {
-            setSelectedTheme(
-                themes.find(
-                    (theme) =>
-                        theme.value ===
-                        document.documentElement.getAttribute("data-theme"),
-                ),
-            );
-        }
+        // Update DOM when theme changes
+        document.documentElement.setAttribute(
+            "data-theme",
+            selectedTheme.value,
+        );
     }, [selectedTheme]);
 
     useEffect(() => {
-        const handler = () =>
-            setSelectedTheme(
-                themes.find(
-                    (theme) =>
-                        theme.value === (window.localStorage.theme ?? "system"),
-                ),
+        const handler = () => {
+            const newTheme = themes.find(
+                (theme) =>
+                    theme.value === (window.localStorage.theme ?? "system"),
             );
+            if (newTheme) {
+                setSelectedTheme(newTheme);
+            }
+        };
 
         window.addEventListener("storage", handler);
 

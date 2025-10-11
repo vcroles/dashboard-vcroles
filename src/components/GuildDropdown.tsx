@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useMemo } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import {
     CheckIcon,
@@ -16,16 +16,13 @@ const GuildDropdown: React.FC<{
     selectedID: string;
     subPage?: string;
 }> = ({ guilds, selectedID, subPage }) => {
-    const [selectedGuild, setSelectedGuild] = useState(
-        guilds.find((g) => g.id === selectedID),
+    const selectedGuild = useMemo(
+        () => guilds.find((g) => g.id === selectedID),
+        [selectedID, guilds],
     );
 
-    useEffect(() => {
-        setSelectedGuild(guilds.find((g) => g.id === selectedID));
-    }, [selectedID, guilds]);
-
     return (
-        <Listbox value={selectedGuild}>
+        <Listbox value={selectedGuild} by="id">
             {({ open }) => (
                 <div className="relative mt-1">
                     <Listbox.Button className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">

@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, startTransition, useEffect, useState } from "react";
 import GuildDropdown from "../components/GuildDropdown";
 import Logo from "../components/Logo";
 import { trpc } from "../utils/trpc";
@@ -62,7 +62,10 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
     ];
 
     useEffect(() => {
-        setSidebarOpen(false);
+        // Close sidebar on navigation - use startTransition to mark as non-urgent
+        startTransition(() => {
+            setSidebarOpen(false);
+        });
     }, [path, id]);
 
     if (!userData.isLoaded) {

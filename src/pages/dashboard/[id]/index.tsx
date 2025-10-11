@@ -1,6 +1,6 @@
 import { Switch } from "@headlessui/react";
 import { useRouter } from "next/router";
-import { type ReactElement, useEffect, useState } from "react";
+import { type ReactElement, useMemo, useState } from "react";
 
 import type { NextPageWithLayout } from "../../_app";
 import DashboardLayout from "../../../layouts/Dashboard";
@@ -26,26 +26,44 @@ const DashboardPage: NextPageWithLayout = () => {
     const { data: roles } = trpc.discord.getGuildRoles.useQuery({ guild: id });
     const { data: guild } = trpc.discord.getGuildData.useQuery({ guild: id });
 
-    // Audit logging state
-    const [loggingToggle, setLoggingToggle] = useState(
-        guild?.logging ? true : false,
+    // Derive current values from props
+    const currentChannel = useMemo(
+        () => channels?.find((channel) => channel.id === guild?.logging) ?? null,
+        [channels, guild?.logging]
     );
-    const currentChannel =
-        channels?.find((channel) => channel.id === guild?.logging) ?? null;
-    const [loggingChannel, setLoggingChannel] = useState<Channel | null>(
-        currentChannel,
+    const currentRole = useMemo(
+        () => roles?.find((role) => role.id === guild?.ttsRole) ?? null,
+        [roles, guild?.ttsRole]
     );
 
-    // TTS state
-    const [ttsToggle, setTtsToggle] = useState(
-        guild?.ttsEnabled ? true : false,
-    );
-    const currentRole =
-        roles?.find((role) => role.id === guild?.ttsRole) ?? null;
-    const [ttsRole, setTtsRole] = useState<Role | null>(currentRole);
-    const [ttsLeave, setTtsLeave] = useState(guild?.ttsLeave ? true : false);
+    // Track edited state - null means "not edited, use server value"
+    const [editedLoggingToggle, setEditedLoggingToggle] = useState<boolean | null>(null);
+    const [editedLoggingChannel, setEditedLoggingChannel] = useState<Channel | null | undefined>(undefined);
+    const [editedTtsToggle, setEditedTtsToggle] = useState<boolean | null>(null);
+    const [editedTtsRole, setEditedTtsRole] = useState<Role | null | undefined>(undefined);
+    const [editedTtsLeave, setEditedTtsLeave] = useState<boolean | null>(null);
 
     const [showSavedNotification, setShowSavedNotification] = useState(false);
+
+    // Track last id to detect changes
+    const [lastId, setLastId] = useState(id);
+
+    // Reset edited state when id changes
+    if (lastId !== id) {
+        setLastId(id);
+        setEditedLoggingToggle(null);
+        setEditedLoggingChannel(undefined);
+        setEditedTtsToggle(null);
+        setEditedTtsRole(undefined);
+        setEditedTtsLeave(null);
+    }
+
+    // Derive displayed values - use edited value if exists, otherwise server value
+    const loggingToggle = editedLoggingToggle ?? (guild?.logging ? true : false);
+    const loggingChannel = editedLoggingChannel === undefined ? currentChannel : editedLoggingChannel;
+    const ttsToggle = editedTtsToggle ?? (guild?.ttsEnabled ? true : false);
+    const ttsRole = editedTtsRole === undefined ? currentRole : editedTtsRole;
+    const ttsLeave = editedTtsLeave ?? (guild?.ttsLeave ? true : false);
 
     const utils = trpc.useContext();
     const mutation = trpc.discord.updateGuildData.useMutation({
@@ -61,21 +79,20 @@ const DashboardPage: NextPageWithLayout = () => {
                 );
             }
         },
+        onSuccess: () => {
+            // Clear edited state after successful save
+            setEditedLoggingToggle(null);
+            setEditedLoggingChannel(undefined);
+            setEditedTtsToggle(null);
+            setEditedTtsRole(undefined);
+            setEditedTtsLeave(null);
+        },
         onSettled: () => {
             utils.discord.getGuildData.invalidate({ guild: id });
         },
     });
 
     const textChannels = channels?.filter((channel) => channel.type === 0);
-
-    // every time the ID changes, update the state
-    useEffect(() => {
-        setLoggingToggle(guild?.logging ? true : false);
-        setLoggingChannel(currentChannel);
-        setTtsToggle(guild?.ttsEnabled ? true : false);
-        setTtsRole(currentRole);
-        setTtsLeave(guild?.ttsLeave ? true : false);
-    }, [id, guild, currentChannel, currentRole]);
 
     return (
         <>
@@ -138,7 +155,7 @@ const DashboardPage: NextPageWithLayout = () => {
                                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                                     <Switch
                                         checked={loggingToggle}
-                                        onChange={setLoggingToggle}
+                                        onChange={setEditedLoggingToggle}
                                         className={classNames(
                                             loggingToggle
                                                 ? "bg-indigo-600"
@@ -174,7 +191,7 @@ const DashboardPage: NextPageWithLayout = () => {
                                         channels={textChannels ?? []}
                                         disabled={!loggingToggle}
                                         selectedChannel={loggingChannel}
-                                        setSelectedChannel={setLoggingChannel}
+                                        setSelectedChannel={setEditedLoggingChannel}
                                     />
                                     {loggingToggle && !loggingChannel && (
                                         <p className="mt-2 text-sm text-red-600">
@@ -215,7 +232,7 @@ const DashboardPage: NextPageWithLayout = () => {
                                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                                     <Switch
                                         checked={ttsToggle}
-                                        onChange={setTtsToggle}
+                                        onChange={setEditedTtsToggle}
                                         className={classNames(
                                             ttsToggle
                                                 ? "bg-indigo-600"
@@ -251,7 +268,7 @@ const DashboardPage: NextPageWithLayout = () => {
                                         roles={roles ?? []}
                                         disabled={!ttsToggle}
                                         selectedRole={ttsRole}
-                                        setSelectedRole={setTtsRole}
+                                        setSelectedRole={setEditedTtsRole}
                                     />
                                 </div>
                             </div>
@@ -268,7 +285,7 @@ const DashboardPage: NextPageWithLayout = () => {
                                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                                     <Switch
                                         checked={ttsLeave}
-                                        onChange={setTtsLeave}
+                                        onChange={setEditedTtsLeave}
                                         className={classNames(
                                             ttsLeave
                                                 ? "bg-indigo-600"
@@ -301,19 +318,12 @@ const DashboardPage: NextPageWithLayout = () => {
                             type="button"
                             className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => {
-                                setLoggingToggle(guild?.logging ? true : false);
-                                setLoggingChannel(
-                                    channels?.find(
-                                        (c) => c.id === guild?.logging,
-                                    ) ?? null,
-                                );
-                                setTtsToggle(guild?.ttsEnabled ? true : false);
-                                setTtsRole(
-                                    roles?.find(
-                                        (r) => r.id === guild?.ttsRole,
-                                    ) ?? null,
-                                );
-                                setTtsLeave(guild?.ttsLeave ? true : false);
+                                // Reset to server values by clearing edited state
+                                setEditedLoggingToggle(null);
+                                setEditedLoggingChannel(undefined);
+                                setEditedTtsToggle(null);
+                                setEditedTtsRole(undefined);
+                                setEditedTtsLeave(null);
                             }}
                         >
                             Cancel
