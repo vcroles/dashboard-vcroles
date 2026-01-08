@@ -27,7 +27,7 @@
         "@trpc/client": "^11.6.0",
         "@trpc/next": "^11.6.0",
         "@trpc/react-query": "^11.6.0",
-        "@trpc/server": "^11.6.0",
+        "@trpc/server": "^11.8.0",
         "@upstash/redis": "^1.35.5",
         "@vercel/og": "^1.0.0",
         "axios": "^1.12.2",
