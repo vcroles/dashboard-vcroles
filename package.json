@@ -30,7 +30,7 @@
         "@trpc/server": "^11.6.0",
         "@upstash/redis": "^1.35.5",
         "@vercel/og": "^1.0.0",
-        "axios": "^1.12.2",
+        "axios": "^1.13.5",
         "next": "^15.5.4",
         "next-sitemap": "^4.2.3",
         "posthog-js": "^1.275.1",
